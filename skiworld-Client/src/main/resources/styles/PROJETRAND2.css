@@ -1,0 +1,184 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+.whiteBackGround{
+    
+    -fx-background-color: rgb(241,241,241) ; 
+}
+
+.shadow-effect{
+     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 30, 0.2 , 1, 1 );   
+}
+.buttonLogin {
+   -fx-background-color: #80B201 ;
+   -fx-border-color: #6E9901 ;
+   -fx-text-fill: #fff ;
+   -fx-font-weight: bold;
+   -fx-font-family: "Arial";
+
+}
+
+.buttonLogin:hover {
+   -fx-background-color: rgb(129,196,8);
+  
+   
+}
+.slider .thumb{
+ //-fx-background-image :;   
+ -fx-background-color: #80B201 ;
+   
+}
+
+.progress-bar > .bar {
+   
+    -fx-background-color: linear-gradient(
+        from 0px .75em to .75em 0px,
+        repeat,
+        -fx-accent 0%,
+        -fx-accent 49%,
+        derive(-fx-accent, 30%) 50%,
+        derive(-fx-accent, 30%) 99%
+    );
+}
+.label-head{
+   -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-family: "Arial";
+
+}
+.opacity-projet-affiche{
+    
+    -fx-opacity:0.7 ;
+    
+}
+
+.label-titre-projet{
+   -fx-text-fill: #80B201;
+    -fx-font-weight: bold;
+   -fx-font-family: "Arial";
+
+    
+}
+.label-pays-projet{
+   -fx-text-fill: #444;
+    -fx-font-weight: bold;
+    -fx-font-family: "Arial";
+
+    
+    
+}
+.details-projet{
+    
+    -fx-border-color: #b7d36f;
+    -fx-background-color: #fff;
+    -fx-border-width: 4px; 
+}
+.normal-text{
+    
+  -fx-text-fill: #444;
+    
+  -fx-font-family: "Arial";
+}
+.separator-rectangle{
+    
+    -fx-border-color: #b7d36f;
+    -fx-fill: #fff;
+}
+.green-bar  { -fx-background-color: rgb(250,250,250)  ;  }
+.yellow-bar { -fx-background-color: rgb(247,247,247) ; }
+.orange-bar { -fx-background-color: rgb(244,244,244) ; }
+.red-bar    { -fx-background-color: rgb(241,241,241) ;   }
+
+.radio-button {
+-fx-font-family: "Arial";
+-fx-font-size: 18;
+-fx-text-fill: #80B201;
+
+ -fx-font-weight: bold;
+}
+
+.nbrVoteRestant{
+ -fx-font-family: "Arial";
+-fx-font-size: 30;
+-fx-text-fill: #f44336 ; 
+ -fx-font-weight: bold;
+    
+}
+
+.alert{
+     -fx-text-fill: #f44336 ;
+     -fx-font-weight: bold;
+}
+
+
+.BlackBackGround{
+    
+    -fx-background-color: rgb(52,52,52) ; 
+}
+
+.imageProfil{
+    
+    -fx-border-radius : 3px;
+}
+.textProfilAtive {
+    -fx-text-fill:#80b201 ; 
+    -fx-font-size: 15px;
+}
+
+.textProfil {
+    
+}
+.textProfil:hover {
+   -fx-text-fill:#80b201;  
+}
+.buttonWarning {
+   -fx-background-color: #f09b27;
+   -fx-border-color: #ed9010;
+}
+
+.buttonWarning:hover {
+   -fx-background-color: #e57900;
+}
+
+.imageBackGroung {
+    -fx-background-image: url("../../../../../MTOCrowdRise/profils/user.png");
+}
+
+
+.monProfil {
+    -fx-background-color: rgb(245,245,245);
+    -fx-border-color: rgb(52,52,52);
+}
+
+.buttonMonProfil {
+    -fx-background-color: rgb(0,0,27);
+}
+.buttonMonProfilSelect {
+    -fx-background-color: transparent;
+}
+.buttonMonProfilSelect:hover {
+    -fx-background-color: rgb(224,224,224);
+}
+.buttonSucc{
+    -fx-background-color: transparent;
+    -fx-text-fill: #80b801;
+//    -fx-font-size: 12px;
+}
+
+.buttonSucc:hover{
+    -fx-background-color: transparent;
+    -fx-text-fill: rgb(129,196,8);
+//    -fx-font-size: 12px;
+}
+.buttonCommentaire{
+   -fx-background-color: #702502 ;
+   -fx-border-color: #6E9901 ;
+   -fx-text-fill: #fff ;
+   -fx-font-weight: bold;
+   -fx-font-family: "Arial";
+
+}
