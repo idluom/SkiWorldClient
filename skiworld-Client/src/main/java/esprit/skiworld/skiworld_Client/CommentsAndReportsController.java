@@ -12,6 +12,7 @@ import org.controlsfx.control.Notifications;
 import Entity.Comment;
 import Entity.Report;
 import Service.CommentEJBRemote;
+import Service.ReportEJBRemote;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -42,10 +43,13 @@ public class CommentsAndReportsController implements Initializable{
 	private TableColumn <Report, Date> reportDate;
 	
 	ObservableList<Comment> champs;
-	
+	ObservableList<Report> reports;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		/**
+		 * Comments Table Filling
+		 */
 		InitialContext ctx = null;
 		CommentEJBRemote proxy = null;
 		try {
@@ -53,15 +57,28 @@ public class CommentsAndReportsController implements Initializable{
 			String jndiName = "/skiworld-ear/skiworld-ejb/CommentEJB!Service.CommentEJBRemote" ;
 			proxy = (CommentEJBRemote) ctx.lookup(jndiName);
 			champs = FXCollections.observableArrayList(proxy.findAllComments());
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
+		} catch (NamingException e) {}
 		
 		alias.setCellValueFactory(new PropertyValueFactory<>("userAlias"));
 		comments.setCellValueFactory(new PropertyValueFactory<>("comment"));
 		dates.setCellValueFactory(new PropertyValueFactory<>("dateComment"));
-		
 		commentTable.setItems(champs);
+		
+		/**
+		 * Reports Table Filling
+		 */
+		ReportEJBRemote proxy2 = null;
+		try {
+			ctx = new InitialContext();
+			String jndiName2 = "/skiworld-ear/skiworld-ejb/ReportEJB!Service.ReportEJBRemote" ;
+			proxy2 = (ReportEJBRemote) ctx.lookup(jndiName2);
+			reports = FXCollections.observableArrayList(proxy2.findAllReports());
+		} catch (NamingException e) {}
+		
+		mail.setCellValueFactory(new PropertyValueFactory<>("senderMail"));
+		reportObject.setCellValueFactory(new PropertyValueFactory<>("mailObject"));
+		reportDate.setCellValueFactory(new PropertyValueFactory<>("dateReport"));
+		reportTable.setItems(reports);
 	}
 	
 	@FXML

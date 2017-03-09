@@ -1,5 +1,6 @@
 package esprit.skiworld.skiworld_Client;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -42,7 +43,11 @@ public class AuthenticationController implements Initializable{
 		}
 		auth = proxy.authentication(usernameTF.getText(), passwordTF.getText());
 		if (auth instanceof Admin ) {
-			System.out.println("Hello "+auth.getFirstName());
+			try {
+				MainApp.changeScene("/fxml/CommentsAndReports.fxml", "Comments And Reports");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		} else {
 			System.out.println("You Shall Not Pass !!!!!");
 		}
