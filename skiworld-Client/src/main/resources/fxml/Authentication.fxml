@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="900.0"
+	xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="esprit.skiworld.skiworld_Client.AuthenticationController">
+	<children>
+		<JFXTextField fx:id="usernameTF" labelFloat="true"
+			layoutX="277.0" layoutY="150.0" promptText="username"
+			AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="150.0" />
+		<JFXPasswordField fx:id="passwordTF" labelFloat="true"
+			layoutX="277.0" layoutY="219.0" promptText="password"
+			AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="220.0" />
+		<JFXButton layoutX="547.0" layoutY="194.0" onAction="#connectAction"
+			text="Connect" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="200.0" />
+	</children>
+</AnchorPane>
