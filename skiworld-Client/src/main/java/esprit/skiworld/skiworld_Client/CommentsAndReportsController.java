@@ -24,7 +24,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import javafx.scene.control.TableColumn;
 
-public class CommentsAndReportsController implements Initializable{
+public class CommentsAndReportsController implements Initializable {
 	@FXML
 	private TableView <Comment> commentTable;
 	@FXML

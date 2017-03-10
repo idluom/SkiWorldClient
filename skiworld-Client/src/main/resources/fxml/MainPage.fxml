@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Box?>
+<?import javafx.scene.shape.Ellipse?>
+
+<AnchorPane depthTest="ENABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" stylesheets="@MainStyle.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.MainPageController">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="900.0">
+         <image>
+            <Image url="@map.png" />
+         </image>
+      </ImageView>
+      <Ellipse fx:id="skiier" fill="#ff1f1f" layoutX="30.0" layoutY="67.0" radiusX="4.0" radiusY="4.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fx:id="skiier1" fill="#ff1f1f" layoutX="5.0" layoutY="410.0" radiusX="4.0" radiusY="4.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fx:id="skiier11" fill="#ff1f1f" layoutX="5.0" layoutY="410.0" radiusX="4.0" radiusY="4.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label layoutX="120.0" layoutY="36.0" styleClass="tooltip" text="The Restaurant" />
+      <Label layoutX="637.0" layoutY="56.0" styleClass="tooltip" text="Shop" />
+      <Label layoutX="507.0" layoutY="129.0" styleClass="tooltip" text="Bar" />
+      <Label layoutX="13.0" layoutY="250.0" styleClass="tooltip" text="Hotel" />
+      <Label layoutX="331.0" layoutY="442.0" styleClass="tooltip" text="Hotel" />
+      <Label layoutX="709.0" layoutY="342.0" styleClass="tooltip" text="Skiworld Transport Agency" />
+      <Label layoutX="405.0" layoutY="235.0" styleClass="tooltip" text="Hospital" />
+      <Label layoutX="238.0" layoutY="243.0" styleClass="tooltip" text="Civil Protection" />
+      <Label layoutY="160.0" styleClass="tooltip" text="Administration" />
+      <Label layoutX="461.0" layoutY="183.0" styleClass="tooltip" text="Police Station" />
+      <Label layoutX="830.0" layoutY="228.0" styleClass="tooltip" text="Ski Trips -&gt;" />
+      <Box fx:id="box" accessibleRole="BUTTON" depth="50.0" depthTest="ENABLE" height="70.0" layoutX="70.0" layoutY="191.0" onMouseClicked="#clickCube" rotate="8.0" width="80.0" AnchorPane.leftAnchor="0.0">
+         <rotationAxis>
+            <Point3D x="1.0" y="1.0" />
+         </rotationAxis>
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" color="RED" height="255.0" offsetX="7.0" offsetY="7.0" radius="127.0" spread="1.0" width="255.0" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Box>
+      <Button layoutX="820.0" layoutY="231.0" mnemonicParsing="false" onAction="#clickSkiTrips" prefWidth="80.0" style="-fx-background-color: transparent;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="restau" layoutX="111.0" layoutY="80.0" mnemonicParsing="false" onAction="#clickRestau" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: transparent;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="hotel" layoutX="45.0" layoutY="234.0" mnemonicParsing="false" onAction="#clickHotel" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: transparent;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button layoutX="628.0" layoutY="87.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="60.0" style="-fx-background-color: transparent;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="transport" layoutX="670.0" layoutY="389.0" mnemonicParsing="false" onAction="#clickTransport" prefHeight="53.0" prefWidth="139.0" style="-fx-background-color: transparent;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+   </children>
+   <rotationAxis>
+      <Point3D x="1.0" />
+   </rotationAxis>
+</AnchorPane>

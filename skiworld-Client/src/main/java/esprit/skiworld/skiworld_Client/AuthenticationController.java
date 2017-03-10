@@ -42,9 +42,10 @@ public class AuthenticationController implements Initializable{
 			e.printStackTrace();
 		}
 		auth = proxy.authentication(usernameTF.getText(), passwordTF.getText());
+		System.out.println(auth.getFirstName()+" "+auth.getLastName());
 		if (auth instanceof Admin ) {
 			try {
-				MainApp.changeScene("/fxml/CommentsAndReports.fxml", "Comments And Reports");
+				MainApp.changeScene("/fxml/MainPage.fxml", "Home Page");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

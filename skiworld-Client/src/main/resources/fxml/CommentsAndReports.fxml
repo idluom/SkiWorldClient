@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="esprit.skiworld.skiworld_Client.CommentsAndReportsController">
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.CommentsAndReportsController">
    <children>
-      <TabPane layoutX="94.0" layoutY="101.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0">
+      <TabPane layoutX="94.0" layoutY="101.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" styleClass="tab-header-background" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0" tabMinHeight="10.0" tabMinWidth="10.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0">
         <tabs>
-          <Tab text="Comments">
+          <Tab closable="false" text="Comments">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="commentTable" layoutX="7.0" layoutY="7.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="commentTable" layoutX="7.0" layoutY="7.0" prefHeight="200.0" prefWidth="200.0" styleClass="list-view" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                            <TableColumn fx:id="alias" prefWidth="120.0" text="User's Alias" />
-                            <TableColumn fx:id="comments" prefWidth="360.0" text="Comment" />
-                              <TableColumn fx:id="dates" prefWidth="120.0" text="Date" />
+                            <TableColumn fx:id="alias" prefWidth="120.0" resizable="false" text="User's Alias" />
+                            <TableColumn fx:id="comments" prefWidth="360.0" resizable="false" text="Comment" />
+                              <TableColumn fx:id="dates" prefWidth="120.0" resizable="false" text="Date" />
                           </columns>
                         </TableView>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Reports">
+          <Tab closable="false" text="Reports">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="reportTable" layoutX="7.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="reportTable" layoutX="7.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" styleClass="list-view" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                            <TableColumn fx:id="mail" prefWidth="120.0" text="User's Mail" />
-                            <TableColumn fx:id="reportObject" prefWidth="360.0" text="Report's Object" />
-                              <TableColumn fx:id="reportDate" prefWidth="120.0" text="Date" />
+                            <TableColumn fx:id="mail" prefWidth="230.0" resizable="false" text="User's Mail" />
+                            <TableColumn fx:id="reportObject" prefWidth="250.0" resizable="false" text="Report's Object" />
+                              <TableColumn fx:id="reportDate" prefWidth="120.0" resizable="false" text="Date" />
                           </columns>
                         </TableView>
                      </children>
@@ -43,6 +43,9 @@
             </content>
           </Tab>
         </tabs>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </TabPane>
       <JFXButton layoutX="757.0" layoutY="131.0" onAction="#refreshTables" text="refresh" AnchorPane.leftAnchor="750.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="130.0" />
    </children>
