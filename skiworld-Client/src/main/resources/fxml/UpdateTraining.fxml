@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.UpdateTrainingController">
+   <children>
+      <Label fx:id="Bdlab" layoutX="59.0" layoutY="167.0" text="Begining Date" />
+      <Label fx:id="Edlab" layoutX="59.0" layoutY="229.0" text="End Date" />
+      <Label fx:id="Levellab" layoutX="70.0" layoutY="292.0" text="Level" />
+      <Label fx:id="Numberlab" layoutX="62.0" layoutY="355.0" text="Number" />
+      <Label fx:id="PriceLab" layoutX="71.0" layoutY="426.0" text="Price" />
+      <JFXDatePicker fx:id="BdTF" layoutX="156.0" layoutY="151.0" />
+      <JFXDatePicker fx:id="EdTF" layoutX="156.0" layoutY="218.0" />
+      <ChoiceBox fx:id="LevelTF" layoutX="156.0" layoutY="288.0" prefWidth="150.0" />
+      <JFXTextField fx:id="NumberTF" layoutX="156.0" layoutY="348.0" maxWidth="68.0" minWidth="68.0" prefHeight="31.0" prefWidth="68.0" />
+      <JFXTextField fx:id="PriceTF" layoutX="156.0" layoutY="419.0" maxWidth="68.0" minWidth="68.0" prefHeight="31.0" prefWidth="68.0" />
+      <JFXButton layoutX="574.0" layoutY="237.0" onAction="#Update" text="Update" />
+      <JFXButton layoutX="576.0" layoutY="309.0" onAction="#Cancel" text="Cancel" />
+   </children>
+</AnchorPane>

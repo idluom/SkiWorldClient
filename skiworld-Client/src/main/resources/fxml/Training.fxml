@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -16,7 +17,10 @@
 				<TableColumn fx:id="priceCol" prefWidth="100.0" text="Price" />
 			</columns>
 		</TableView>
-      <JFXTextField fx:id="search" layoutX="34.0" layoutY="87.0" promptText="Search..." />
+      <JFXTextField fx:id="RechercheTF" layoutX="34.0" layoutY="87.0" promptText="Search..." />
+      <JFXButton layoutX="679.0" layoutY="233.0" onAction="#Add" text="Add Training" />
+      <JFXButton layoutX="682.0" layoutY="307.0" onAction="#Delete" text="Delete Training" />
+      <JFXButton layoutX="679.0" layoutY="374.0" onAction="#Update" text="Update Training" />
     
 		
 	</children>

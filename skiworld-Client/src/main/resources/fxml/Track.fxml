@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -15,5 +16,8 @@
         </columns>
       </TableView>
       <JFXTextField fx:id="RechercheTF" layoutX="46.0" layoutY="77.0" promptText="Search" />
+      <JFXButton layoutX="557.0" layoutY="275.0" onAction="#DeleteTrack" text="Delete Track" />
+      <JFXButton layoutX="572.0" layoutY="319.0" onAction="#Add" text="Add Track" />
+      <JFXButton layoutX="572.0" layoutY="375.0" onAction="#Edit" text="Edit Track" />
    </children>
 </AnchorPane>
