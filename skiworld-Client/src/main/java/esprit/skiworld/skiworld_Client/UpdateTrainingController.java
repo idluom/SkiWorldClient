@@ -7,9 +7,9 @@ import java.util.ResourceBundle;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import Entity.Track;
+
 import Entity.Training;
-import Service.TrackEJBRemote;
+
 import Service.TrainingEJBRemote;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
