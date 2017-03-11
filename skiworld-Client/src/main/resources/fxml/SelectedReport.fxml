@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="350.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.SelectedReportController">
+   <children>
+      <Label layoutX="22.0" layoutY="39.0" text="User's Email :" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="40.0" />
+      <Label layoutX="22.0" layoutY="73.0" text="Report's Object :" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="70.0" />
+      <Label layoutX="18.0" layoutY="118.0" text="Report's Date :" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="100.0" />
+      <Label layoutX="17.0" layoutY="160.0" text="Report's Body :" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="130.0" />
+      <Label fx:id="email" layoutX="116.0" layoutY="40.0" prefWidth="220.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="40.0" />
+      <Label fx:id="object" layoutX="126.0" layoutY="50.0" prefWidth="220.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="70.0" />
+      <Label fx:id="date" layoutX="126.0" layoutY="50.0" prefWidth="220.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="100.0" />
+      <Separator layoutX="347.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="347.0" AnchorPane.rightAnchor="347.0" AnchorPane.topAnchor="0.0" />
+      <TextArea fx:id="body" layoutX="120.0" layoutY="130.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="130.0" />
+      <Text layoutX="166.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Report" AnchorPane.leftAnchor="166.0" AnchorPane.rightAnchor="498.22265625" AnchorPane.topAnchor="10.0" />
+      <Text layoutX="509.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Response" AnchorPane.topAnchor="10.0" />
+      <TextArea fx:id="response" layoutX="422.0" layoutY="39.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="40.0" />
+      <JFXButton layoutX="601.0" layoutY="305.0" onAction="#respondToReport" prefWidth="100.0" text="Respond" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="47.0" />
+   </children>
+</AnchorPane>
