@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.AddNewStaffController">
+   <children>
+      <Label layoutX="61.0" layoutY="89.0" text="First Name :" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="80.0" />
+      <Label layoutX="61.0" layoutY="131.0" text="Last Name :" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="130.0" />
+      <Label layoutX="61.0" layoutY="171.0" text="Date of Birth :" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="180.0" />
+      <Label layoutX="61.0" layoutY="209.0" text="ID number : " AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="230.0" />
+      <Label layoutX="520.0" layoutY="89.0" text="Username :" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="80.0" />
+      <Label layoutX="520.0" layoutY="138.0" text="Password :" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="130.0" />
+      <Label layoutX="520.0" layoutY="188.0" text="Confirmation :" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="180.0" />
+      <Label layoutX="520.0" layoutY="233.0" text="Phone Number :" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="230.0" />
+      <Separator layoutX="447.0" layoutY="6.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="447.0" AnchorPane.rightAnchor="447.0" AnchorPane.topAnchor="60.0" />
+      <Label layoutX="60.0" layoutY="275.0" text="Address :" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="280.0" />
+      <Label layoutX="520.0" layoutY="275.0" text="Email :" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="280.0" />
+      <JFXTextField fx:id="first" layoutX="151.0" layoutY="76.0" prefWidth="200.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="550.0" AnchorPane.topAnchor="75.0" />
+      <JFXTextField fx:id="last" layoutX="161.0" layoutY="86.0" prefWidth="200.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="550.0" AnchorPane.topAnchor="125.0" />
+      <JFXDrawer layoutX="163.0" layoutY="180.0" prefWidth="200.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="550.0" AnchorPane.topAnchor="175.0">
+         <children>
+            <JFXDatePicker fx:id="date" prefWidth="200.0" />
+         </children>
+      </JFXDrawer>
+      <JFXTextField fx:id="id" layoutX="161.0" layoutY="86.0" prefWidth="200.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="550.0" AnchorPane.topAnchor="225.0" />
+      <JFXTextField fx:id="address" layoutX="161.0" layoutY="86.0" prefWidth="200.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="550.0" AnchorPane.topAnchor="275.0" />
+      <JFXTextField fx:id="username" layoutX="161.0" layoutY="86.0" prefWidth="200.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="75.0" />
+      <JFXPasswordField  fx:id="password" layoutX="161.0" layoutY="86.0" prefWidth="200.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="125.0" />
+      <JFXPasswordField  fx:id="confirmation" layoutX="161.0" layoutY="86.0" prefWidth="200.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="175.0" />
+      <JFXTextField fx:id="phone" layoutX="161.0" layoutY="86.0" prefWidth="200.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="225.0" />
+      <JFXTextField fx:id="mail" layoutX="161.0" layoutY="86.0" prefWidth="200.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="275.0" />
+      <ChoiceBox fx:id="role" layoutX="150.0" layoutY="334.0" prefWidth="200.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="550.0" AnchorPane.topAnchor="325.0" />
+      <Label layoutX="57.0" layoutY="338.0" text="Role :" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="330.0" />
+      <Separator layoutX="350.0" layoutY="387.0" prefWidth="200.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Separator layoutX="347.0" layoutY="59.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" />
+      <JFXButton layoutX="424.0" layoutY="415.0" onAction="#confirm" text="Confirm" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0" />
+   </children>
+</AnchorPane>

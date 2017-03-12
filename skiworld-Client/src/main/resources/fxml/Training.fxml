@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.TrainingController">
+	<children>
+		<TableView fx:id="TableTrack" layoutX="43.0" layoutY="200.0" prefHeight="295.0" prefWidth="595.0">
+			<columns>
+				<TableColumn fx:id="BDCol" prefWidth="153.0" text="Begining Date" />
+				<TableColumn fx:id="EDCol" minWidth="5.0" prefWidth="147.0" text="End Date" />
+				<TableColumn fx:id="levelCol" prefWidth="116.0" text="Level" />
+				<TableColumn fx:id="NumberCol" prefWidth="77.0" text="Number" />
+				<TableColumn fx:id="priceCol" prefWidth="100.0" text="Price" />
+			</columns>
+		</TableView>
+      <JFXTextField fx:id="RechercheTF" layoutX="34.0" layoutY="87.0" promptText="Search..." />
+      <JFXButton layoutX="679.0" layoutY="233.0" onAction="#Add" text="Add Training" />
+      <JFXButton layoutX="682.0" layoutY="307.0" onAction="#Delete" text="Delete Training" />
+      <JFXButton layoutX="679.0" layoutY="374.0" onAction="#Update" text="Update Training" />
+    
+		
+	</children>
+</AnchorPane>

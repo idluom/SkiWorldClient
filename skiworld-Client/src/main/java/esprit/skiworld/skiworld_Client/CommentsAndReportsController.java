@@ -84,7 +84,7 @@ public class CommentsAndReportsController implements Initializable {
 		reportTable.setItems(reports);
 		
 		/**
-		 * Double Click on the selected Item to open new Stage.
+		 * Double Click on the selected Item to open a new Stage.
 		 */
 		reportTable.setOnMousePressed(new EventHandler<MouseEvent>() {
 			@Override
