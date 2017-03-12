@@ -1,13 +1,19 @@
 package esprit.skiworld.skiworld_Client;
 
 import java.net.URL;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import org.controlsfx.control.Notifications;
+
+import com.jfoenix.controls.JFXTimePicker;
 
 import Entity.Training;
 
@@ -22,8 +28,12 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.util.Duration;
 
 public class AddTrainingController implements Initializable,Comparable<LocalDate> {
+	@FXML
+	private JFXTimePicker BdTTF;
+	
 	@FXML
 	private DatePicker BdTF;
 	@FXML
@@ -67,7 +77,15 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 			alert.setHeaderText("Empty Begining Date Field");
 			alert.showAndWait();
 			ok = 1;
-			System.out.println("ffff");
+			
+		}
+		if (BdTTF.getValue()== null) {
+			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+			alert.setTitle("SELECTED");
+			alert.setHeaderText("Empty Begining Time Field");
+			alert.showAndWait();
+			ok = 1;
+			
 		}
 		if (EdTF.getValue()==null) {
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -92,6 +110,10 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 		}
 		LocalDate dateB = BdTF.getValue();
 		LocalDate dateE = EdTF.getValue();
+		//LocalTime dateET = EdTTF.getValue();
+		LocalTime dateBT = BdTTF.getValue();
+		//LocalTime dateET = EdTTF.getValue();
+
 		if(dateB.compareTo(dateE)>0){
 			System.out.println("ggg");
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -121,12 +143,27 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 				proxy = (TrainingEJBRemote) ctx.lookup("/skiworld-ejb/TrainingEJB!Service.TrainingEJBRemote");
 				// ObservableList<Track> champs =
 				// FXCollections.observableArrayList(proxy.findAll());
-				training.setBegeningDate(java.sql.Date.valueOf(dateB));
-				training.setEndDate(java.sql.Date.valueOf(dateE));
-				training.setLevel(level);
-				training.setPrice(price);
-				training.setNumber(number);
-				proxy.addTraining(training);
+				String DD = java.sql.Date.valueOf(dateB)+" "+(java.sql.Time.valueOf(dateBT));
+				
+				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+				
+
+				java.util.Date da;
+				java.util.Date Df;
+				try {
+					String a = EdTF.getValue().toString();
+					da = df.parse(DD);
+					training.setBegeningDate(da);
+					training.setEndDate(java.sql.Date.valueOf(dateE));
+					training.setLevel(level);
+					training.setPrice(price);
+					training.setNumber(number);
+					proxy.addTraining(training);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 				
 			} catch (NamingException e) {
 				// TODO Auto-generated catch block
@@ -134,10 +171,9 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 			}
 
 			// les alerts
-			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-			alert.setTitle("SELECTED");
-			alert.setHeaderText("Training Added");
-			alert.showAndWait();
+			Notifications notBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5)).
+					title("Action Completed").text("The Training was successfuly Added");
+			notBuilder.showConfirm();
 		}
 	}
 

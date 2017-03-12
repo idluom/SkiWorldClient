@@ -1,6 +1,7 @@
 package esprit.skiworld.skiworld_Client;
 
 import java.io.IOException;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -8,9 +9,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import Entity.Track;
-import Entity.Training;
 import Service.TrackEJBRemote;
-import Service.TrainingEJBRemote;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;

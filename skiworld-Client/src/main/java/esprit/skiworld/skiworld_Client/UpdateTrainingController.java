@@ -1,6 +1,7 @@
 package esprit.skiworld.skiworld_Client;
 
 import java.net.URL;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -59,7 +60,7 @@ public class UpdateTrainingController implements Initializable, Comparable<Local
 	}
 
 	@FXML
-	public void Update() {
+	public void Update() throws ParseException {
 		int ok = 0;
 		if (BdTF.getValue()== null) {
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
