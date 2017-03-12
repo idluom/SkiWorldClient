@@ -1,7 +1,6 @@
 package esprit.skiworld.skiworld_Client;
 
 import java.net.URL;
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;

@@ -2,12 +2,17 @@ package esprit.skiworld.skiworld_Client;
 
 import java.net.URL;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import org.controlsfx.control.Notifications;
+
+import com.jfoenix.controls.JFXTimePicker;
 
 import Entity.Training;
 
@@ -21,9 +26,11 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.util.Duration;
 
 public class UpdateTrainingController implements Initializable, Comparable<LocalDate> {
-
+	@FXML
+	private JFXTimePicker BdTTF;
 	@FXML
 	private DatePicker BdTF;
 	@FXML
@@ -93,6 +100,7 @@ public class UpdateTrainingController implements Initializable, Comparable<Local
 		}
 		LocalDate dateB = BdTF.getValue();
 		LocalDate dateE = EdTF.getValue();
+		LocalTime dateBT = BdTTF.getValue();
 		if(dateB.compareTo(dateE)>0){
 			System.out.println("ggg");
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -111,14 +119,21 @@ public class UpdateTrainingController implements Initializable, Comparable<Local
 				}
 				TrainingEJBRemote proxy;
 				try {
+					String DD = java.sql.Date.valueOf(dateB)+" "+(java.sql.Time.valueOf(dateBT));
+					
+					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+					java.util.Date da;
+					da = df.parse(DD);
 					proxy = (TrainingEJBRemote) ctx.lookup("/skiworld-ejb/TrainingEJB!Service.TrainingEJBRemote");
 					//ObservableList<Track> champs = FXCollections.observableArrayList(proxy.findAll());
 					Training training=new Training();
 					float price = Float.valueOf(PriceTF.getText());
 					int number = Integer.valueOf(NumberTF.getText());
 					String level = (String) LevelTF.getValue();
-			        training=proxy.findTrainingById(TrackController.comp.getIdTrack());
-			        training.setBegeningDate(java.sql.Date.valueOf(dateB));
+					//System.out.println(TrackController.comp.getIdTrack());
+			        training=proxy.findTrainingById(TrainingController.comp.getIdTraining());
+			        training.setBegeningDate(da);
+			        //training.setBegeningDate(java.sql.Date.valueOf(dateB));
 					training.setEndDate(java.sql.Date.valueOf(dateE));
 					training.setLevel(level);
 					training.setPrice(price);
@@ -130,10 +145,9 @@ public class UpdateTrainingController implements Initializable, Comparable<Local
 				}
 		        
 		        // les alerts
-		        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-		        alert.setTitle("SELECTED");
-		        alert.setHeaderText("Training Updated");
-		        alert.showAndWait();
+				Notifications notBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5)).
+						title("Action Completed").text("The Training was successfuly Updated");
+				notBuilder.showConfirm();
 		        }
 	}
 

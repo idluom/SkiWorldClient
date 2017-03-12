@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -21,5 +22,6 @@
       <JFXTextField fx:id="PriceTF" layoutX="156.0" layoutY="419.0" maxWidth="68.0" minWidth="68.0" prefHeight="31.0" prefWidth="68.0" />
       <JFXButton layoutX="574.0" layoutY="237.0" onAction="#Update" text="Update" />
       <JFXButton layoutX="576.0" layoutY="309.0" onAction="#Cancel" text="Cancel" />
+      <JFXTimePicker fx:id="BdTTF" layoutX="354.0" layoutY="151.0" prefHeight="28.0" prefWidth="102.0" />
    </children>
 </AnchorPane>

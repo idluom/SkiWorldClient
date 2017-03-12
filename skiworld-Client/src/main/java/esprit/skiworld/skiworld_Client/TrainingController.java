@@ -166,6 +166,7 @@ public class TrainingController implements Initializable {
 		try {
 			proxy = (TrainingEJBRemote) ctx.lookup("/skiworld-ejb/TrainingEJB!Service.TrainingEJBRemote");
 			comp = TableTrack.getSelectionModel().getSelectedItem();
+			
 
 			proxy.deleteTraining(comp);
 			int selectedIndex = TableTrack.getSelectionModel().getSelectedIndex();
@@ -191,6 +192,7 @@ public class TrainingController implements Initializable {
 	private void Update() {
 
 		comp = TableTrack.getSelectionModel().getSelectedItem();
+		System.out.println(comp);
 		if (comp == null) {
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			alert.setTitle("SELECTED");
