@@ -8,9 +8,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.CommentsAndReportsController">
+<AnchorPane prefHeight="500.0" prefWidth="900.0" stylesheets="@../styles/menu_items.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.CommentsAndReportsController">
    <children>
-      <TabPane layoutX="94.0" layoutY="101.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" styleClass="tab-header-background" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0" tabMinHeight="10.0" tabMinWidth="10.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="100.0">
+      <TabPane layoutX="94.0" layoutY="101.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0" tabMinHeight="10.0" tabMinWidth="10.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="100.0">
         <tabs>
           <Tab closable="false" text="Comments">
             <content>
@@ -32,7 +32,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="reportTable" layoutX="7.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" styleClass="list-view" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="reportTable" layoutX="7.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
                             <TableColumn fx:id="mail" prefWidth="230.0" resizable="false" text="User's Mail" />
                             <TableColumn fx:id="reportObject" prefWidth="250.0" resizable="false" text="Report's Object" />
@@ -48,6 +48,6 @@
             <Insets />
          </opaqueInsets>
       </TabPane>
-      <JFXButton layoutX="757.0" layoutY="131.0" onAction="#refreshTables" text="Refresh" AnchorPane.leftAnchor="790.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="130.0" />
+      <JFXButton layoutX="757.0" layoutY="131.0" onAction="#refreshTables" styleClass="btn" text="Refresh" AnchorPane.leftAnchor="790.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="130.0" />
    </children>
 </AnchorPane>

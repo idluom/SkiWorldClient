@@ -15,9 +15,11 @@ import Entity.Member;
 import Entity.RestaurantOwner;
 import Entity.ShopOwner;
 import Service.MemberEJBRemote;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -70,11 +72,11 @@ public class AuthenticationController implements Initializable{
 		}
 		auth = proxy.authentication(usernameTF.getText(), passwordTF.getText());
 		if (auth instanceof Admin || auth instanceof RestaurantOwner || auth instanceof ShopOwner || auth instanceof HotelManager ) {
-			Notifications notifBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5))
-					.title("Welcome").text("Welcome "+auth.getFirstName()+" "+auth.getLastName());
-			notifBuilder.showConfirm();
+			
 			try {
+				
 				MainApp.changeScene("/fxml/MainPage.fxml", "Home Page");
+				MainApp.s.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -93,5 +95,18 @@ public class AuthenticationController implements Initializable{
 	
 	public static void setAuth(Member auth) {
 		AuthenticationController.auth = auth;
+	}
+	
+	public void quit() {
+		Notifications nb = Notifications.create().darkStyle().hideAfter(Duration.seconds(5))
+				.title("Logout").text("Are you sure ? Click here to disconnect !").graphic(usernameTF)
+				.position(Pos.CENTER).hideCloseButton()
+				.onAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						MainApp.s.close();
+					}
+				});
+		nb.showConfirm();
 	}
 }

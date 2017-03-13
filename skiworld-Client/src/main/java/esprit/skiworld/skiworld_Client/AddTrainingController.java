@@ -1,5 +1,6 @@
 package esprit.skiworld.skiworld_Client;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -173,6 +174,11 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 			Notifications notBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5)).
 					title("Action Completed").text("The Training was successfuly Added");
 			notBuilder.showConfirm();
+			try {
+				MainApp.changeScene("/fxml/Training.fxml", "Ski School");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
