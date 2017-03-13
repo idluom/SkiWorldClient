@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTimePicker?>
 <?import java.net.URL?>
@@ -12,20 +13,24 @@
 
 <AnchorPane minHeight="427.0" minWidth="800.0" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.AddTrainingController">
    <children>
-      <Label fx:id="Bdlab" layoutX="65.0" layoutY="174.0" text="Begining Date :" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="150.0" />
-      <Label fx:id="Edlab" layoutX="75.0" layoutY="246.0" text="End Date :" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="200.0" />
-      <Label fx:id="Levellab" layoutX="75.0" layoutY="312.0" text="Level :" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="250.0" />
-      <Label fx:id="Numberlab" layoutX="75.0" layoutY="370.0" text="Number of Persons :" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="300.0" />
-      <Label fx:id="Pricelab" layoutX="75.0" layoutY="423.0" text="Price Per Person :" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="350.0" />
-      <JFXDatePicker fx:id="BdTF" layoutX="198.0" layoutY="167.0" promptText="01/01/2017" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="380.0" AnchorPane.topAnchor="150.0" />
-      <JFXDatePicker fx:id="EdTF" layoutX="198.0" layoutY="239.0" promptText="01/01/02017" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="380.0" AnchorPane.topAnchor="200.0" />
-      <JFXTextField fx:id="NumberTF" labelFloat="true" layoutX="223.0" layoutY="372.0" maxWidth="75.0" minWidth="64.0" prefHeight="31.0" prefWidth="75.0" promptText="Number" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="300.0" />
-      <JFXTextField fx:id="PriceTF" labelFloat="true" layoutX="223.0" layoutY="425.0" maxWidth="75.0" minWidth="64.0" prefHeight="31.0" prefWidth="75.0" promptText="Price" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="350.0" />
+      <Label fx:id="Bdlab" layoutX="93.0" layoutY="217.0" text="Begining Date :" AnchorPane.leftAnchor="93.0" AnchorPane.topAnchor="217.0" />
+      <Label fx:id="Edlab" layoutX="91.0" layoutY="259.0" text="End Date :" AnchorPane.leftAnchor="91.0" AnchorPane.topAnchor="259.0" />
+      <Label fx:id="Levellab" layoutX="100.0" layoutY="306.0" text="Level :" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="306.0" />
+      <Label fx:id="Numberlab" layoutX="100.0" layoutY="359.0" text="Number of Persons :" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="359.0" />
+      <Label fx:id="Pricelab" layoutX="100.0" layoutY="412.0" text="Price Per Person :" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="412.0" />
+      <JFXDatePicker fx:id="BdTF" layoutX="220.0" layoutY="211.0" promptText="01/01/2017" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="380.0" AnchorPane.topAnchor="211.0" />
+      <JFXDatePicker fx:id="EdTF" layoutX="220.0" layoutY="253.0" promptText="01/01/02017" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="380.0" AnchorPane.topAnchor="253.0" />
+      <JFXTextField fx:id="NumberTF" labelFloat="true" layoutX="220.0" layoutY="352.0" maxWidth="75.0" minWidth="64.0" prefHeight="31.0" prefWidth="75.0" promptText="Number" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="352.0" />
+      <JFXTextField fx:id="PriceTF" labelFloat="true" layoutX="220.0" layoutY="405.0" maxWidth="75.0" minWidth="64.0" prefHeight="31.0" prefWidth="75.0" promptText="Price" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="405.0" />
       <JFXButton layoutX="520.0" layoutY="287.0" onAction="#Add" styleClass="btn" text="Add Training" AnchorPane.leftAnchor="520.0" AnchorPane.rightAnchor="160.0" />
       <JFXButton layoutX="537.0" layoutY="354.0" onAction="#Cancel" styleClass="btn" text="Cancel" AnchorPane.leftAnchor="520.0" AnchorPane.rightAnchor="160.0" />
-      <ChoiceBox fx:id="LevelTF" layoutX="209.0" layoutY="329.0" prefWidth="150.0" styleClass="combo-box" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="415.0" AnchorPane.topAnchor="250.0" />
-      <JFXTimePicker fx:id="BdTTF" layoutX="400.0" layoutY="167.0" promptText="00 : 00" AnchorPane.leftAnchor="420.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="150.0" />
+      <ChoiceBox fx:id="LevelTF" layoutX="218.0" layoutY="301.0" prefWidth="150.0" styleClass="combo-box" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="417.0" AnchorPane.topAnchor="301.0" />
+      <JFXTimePicker fx:id="BdTTF" layoutX="440.0" layoutY="211.0" promptText="00 : 00" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="211.0" />
       <Text layoutX="347.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add A New Training" />
+      <Label layoutX="103.0" layoutY="77.0" text="Title :" />
+      <Label layoutX="101.0" layoutY="104.0" text="Description :" />
+      <JFXTextArea fx:id="DescriptionTF" layoutX="211.0" layoutY="113.0" prefHeight="78.0" prefWidth="395.0" promptText="..." />
+      <JFXTextField fx:id="TitleTF" layoutX="220.0" layoutY="73.0" promptText="Title" />
       
    </children>
    <stylesheets>

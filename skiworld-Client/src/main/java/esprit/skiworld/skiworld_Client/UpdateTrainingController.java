@@ -25,10 +25,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
 
 public class UpdateTrainingController implements Initializable, Comparable<LocalDate> {
+	@FXML 
+	private TextField TitleTF;
+	@FXML 
+	private TextArea DescriptionTF;
 	@FXML
 	private JFXTimePicker BdTTF;
 	@FXML
@@ -58,6 +63,8 @@ public class UpdateTrainingController implements Initializable, Comparable<Local
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		TitleTF.setText(TrainingController.comp.getTitle());
+		DescriptionTF.setText(TrainingController.comp.getDescription());
 		LevelTF.setValue("Hard");
 		LevelTF.setItems(comboList);
 		PriceTF.setText(Float.valueOf(TrainingController.comp.getPrice()).toString());
@@ -141,16 +148,20 @@ public class UpdateTrainingController implements Initializable, Comparable<Local
 					training.setLevel(level);
 					training.setPrice(price);
 					training.setNumber(number);
+					training.setTitle(TitleTF.getText());
+					training.setDescription(DescriptionTF.getText());
 					proxy.updateTraing(training);
+					
 				} catch (NamingException e) {
 					e.printStackTrace();
 				}
-		        
+				TrainingController.s.close();
 		        // les alerts
 				Notifications notBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5)).
 						title("Action Completed").text("The Training was successfuly Updated");
 				notBuilder.showConfirm();
 		        }
+		 TrainingController.s.close();
 	}
 
 	@FXML

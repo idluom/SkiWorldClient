@@ -12,6 +12,8 @@ import java.util.ResourceBundle;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import org.controlsfx.control.Notifications;
+
 import Entity.Track;
 import Entity.Training;
 
@@ -21,7 +23,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
@@ -30,13 +35,17 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class TrainingController implements Initializable {
-
+	public static Stage s = new Stage();
 	@FXML
 	private TableColumn<Training, String> BDCol;
 	@FXML
 	private TableColumn<Training, String> EDCol;
+	@FXML
+	private TableColumn<Training, String> Title;
 	@FXML
 	private TableColumn<Training, String> levelCol;
 	@FXML
@@ -53,7 +62,8 @@ public class TrainingController implements Initializable {
 	private TextField RechercheTF;
 	@FXML
 	private TableView<Training> TableTrack = null;
-	
+	@FXML
+	ObservableList<Training> champs;
 	List<Track> clubs = new ArrayList<>();
 	public static Training comp;
 	@SuppressWarnings("unchecked")
@@ -90,10 +100,11 @@ public class TrainingController implements Initializable {
 
 			e.printStackTrace();
 		}
-		ObservableList<Training> champs = FXCollections.observableArrayList(proxy.findAllTraining());
+		champs = FXCollections.observableArrayList(proxy.findAllTraining());
 		System.out.println(champs);
 
 		TableTrack.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+		Title.setCellValueFactory(new PropertyValueFactory<>("title"));
 		BDCol.setCellValueFactory(new PropertyValueFactory<>("begeningDate"));
 		EDCol.setCellValueFactory(new PropertyValueFactory<>("endDate"));
 		levelCol.setCellValueFactory(new PropertyValueFactory<>("level"));
@@ -177,21 +188,44 @@ public class TrainingController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		Notifications notBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5)).
+				title("Action Completed").text("The Training was successfuly Deleted");
+		notBuilder.showConfirm();
 	}
 
 	@FXML
 	private void Add() {
 		try {
-			MainApp.changeScene("/fxml/AjoutTraining.fxml", "Add Training");
+			
+			Parent root = FXMLLoader.load(MainApp.class.getResource("/fxml/AjoutTraining.fxml"));
+	        Scene scene = new Scene(root);
+	        s.setScene(scene);
+	        s.showAndWait();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		InitialContext ctx = null;
+		try {
+			ctx = new InitialContext();
+		} catch (NamingException e) {
+
+			e.printStackTrace();
+		}
+		TrainingEJBRemote proxy;
+		try {
+			proxy = (TrainingEJBRemote) ctx.lookup("/skiworld-ejb/TrainingEJB!Service.TrainingEJBRemote");
+			champs = FXCollections.observableArrayList(proxy.findAllTraining());
+			TableTrack.setItems(champs);
+
+		} catch (NamingException e) {
+
 			e.printStackTrace();
 		}
 	}
 	@FXML
 	private void Update() {
-
+		
 		comp = TableTrack.getSelectionModel().getSelectedItem();
 		System.out.println(comp);
 		if (comp == null) {
@@ -202,9 +236,30 @@ public class TrainingController implements Initializable {
 		}
 		
 		try {
-			MainApp.changeScene("/fxml/UpdateTraining.fxml", "Update Training");
+			
+			Parent root = FXMLLoader.load(MainApp.class.getResource("/fxml/UpdateTraining.fxml"));
+		    Scene scene = new Scene(root);
+		    s.setScene(scene);
+		    s.showAndWait();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		InitialContext ctx = null;
+		try {
+			ctx = new InitialContext();
+		} catch (NamingException e) {
+
+			e.printStackTrace();
+		}
+		TrainingEJBRemote proxy;
+		try {
+			proxy = (TrainingEJBRemote) ctx.lookup("/skiworld-ejb/TrainingEJB!Service.TrainingEJBRemote");
+			ObservableList<Training> champs = FXCollections.observableArrayList(proxy.findAllTraining());
+			TableTrack.setItems(champs);
+
+		} catch (NamingException e) {
+
 			e.printStackTrace();
 		}
 	}

@@ -8,24 +8,32 @@ import java.util.ResourceBundle;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import org.controlsfx.control.Notifications;
+
 import Entity.Track;
+import Entity.Training;
 import Service.TrackEJBRemote;
+import Service.TrainingEJBRemote;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 
 public class TrackController implements Initializable {
-
+	public static Stage s = new Stage();
 	MainApp application;
 	@FXML
 	private TableView<Track> TableTrack;
@@ -36,15 +44,16 @@ public class TrackController implements Initializable {
 	@FXML
 	private TableColumn<Track, String> priceCol;
 	@FXML
+	private TableColumn<Track, String> Title;
+	@FXML
 	private TextField RechercheTF;
-
+	ObservableList<Track> champs;
 	public static Track comp;
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		
+
 		RechercheTF.textProperty().addListener(new ChangeListener() {
 
 			@Override
@@ -67,7 +76,7 @@ public class TrackController implements Initializable {
 			System.out.println(champs);
 			TableTrack.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 			lengthCol.setCellValueFactory(new PropertyValueFactory<>("length"));
-
+			Title.setCellValueFactory(new PropertyValueFactory<>("title"));
 			priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 			diffCol.setCellValueFactory(new PropertyValueFactory<>("difficulty"));
 
@@ -108,15 +117,40 @@ public class TrackController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		Notifications notBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5))
+				.title("Action Completed").text("The Track was successfuly Deleted");
+		notBuilder.showConfirm();
 
 	}
 
 	@FXML
 	private void Add() {
 		try {
-			MainApp.changeScene("/fxml/AjoutTrack.fxml", "Add Track");
+
+			Parent root = FXMLLoader.load(MainApp.class.getResource("/fxml/AjoutTrack.fxml"));
+			Scene scene = new Scene(root);
+			s.setScene(scene);
+			s.showAndWait();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		InitialContext ctx = null;
+		try {
+			ctx = new InitialContext();
+		} catch (NamingException e) {
+
+			e.printStackTrace();
+		}
+		TrackEJBRemote proxy;
+		try {
+			proxy = (TrackEJBRemote) ctx.lookup("/skiworld-ejb/TrackEJB!Service.TrackEJBRemote");
+			champs = FXCollections.observableArrayList(proxy.findAll());
+			TableTrack.setItems(champs);
+
+		} catch (NamingException e) {
+
 			e.printStackTrace();
 		}
 	}
@@ -131,16 +165,36 @@ public class TrackController implements Initializable {
 			alert.setHeaderText("No Track Selected");
 			alert.showAndWait();
 		}
-		System.out.println("ok; " + comp);
+		
 		try {
-			MainApp.changeScene("/fxml/UpdateTrack.fxml", "Update Track");
+			Parent root = FXMLLoader.load(MainApp.class.getResource("/fxml/UpdateTrack.fxml"));
+			Scene scene = new Scene(root);
+			s.setScene(scene);
+			s.showAndWait();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
+		InitialContext ctx = null;
+		try {
+			ctx = new InitialContext();
+		} catch (NamingException e) {
+
+			e.printStackTrace();
+		}
+		TrackEJBRemote proxy;
+		try {
+			proxy = (TrackEJBRemote) ctx.lookup("/skiworld-ejb/TrackEJB!Service.TrackEJBRemote");
+			champs = FXCollections.observableArrayList(proxy.findAll());
+			TableTrack.setItems(champs);
+
+		} catch (NamingException e) {
+
+			e.printStackTrace();
+		}
+		
 	}
 
-	
 	private void filterMembreList(String oldValue, String newValue) {
 		ObservableList<Track> filteredList = FXCollections.observableArrayList();
 

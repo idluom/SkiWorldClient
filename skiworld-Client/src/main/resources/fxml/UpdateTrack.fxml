@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.net.URL?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.UpdateTrackController">
    <children>
-      <Label fx:id="difflab" layoutX="60.0" layoutY="141.0" text="Difficulty :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="120.0" />
-      <Label fx:id="lenthlab" layoutX="47.0" layoutY="190.0" text="Length :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="180.0" />
-      <Label fx:id="pricelab" layoutX="53.0" layoutY="256.0" text="Price :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="240.0" />
+      <Label fx:id="difflab" layoutX="70.0" layoutY="255.0" text="Difficulty :" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="255.0" />
+      <Label fx:id="lenthlab" layoutX="75.0" layoutY="290.0" text="Length :" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="290.0" />
+      <Label fx:id="pricelab" layoutX="80.0" layoutY="326.0" text="Price :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="326.0" />
       <JFXButton layoutX="405.0" layoutY="116.0" onAction="#Cancel" styleClass="btn" text="Cancel" AnchorPane.topAnchor="120.0" />
-      <JFXButton layoutX="246.0" layoutY="309.0" onAction="#Update" styleClass="btn" text="Update" AnchorPane.rightAnchor="160.0" />
-      <JFXTextField fx:id="diff" layoutX="167.0" layoutY="144.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="120.0" />
-      <JFXTextField fx:id="length" layoutX="167.0" layoutY="185.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="180.0" />
-      <JFXTextField fx:id="price" layoutX="167.0" layoutY="242.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="240.0" />
+      <JFXButton layoutX="256.0" layoutY="359.0" onAction="#Update" styleClass="btn" text="Update" AnchorPane.rightAnchor="160.0" />
+      <JFXTextField fx:id="length" layoutX="140.0" layoutY="284.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="284.0" />
+      <JFXTextField fx:id="price" layoutX="140.0" layoutY="320.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="320.0" />
       <Text layoutX="211.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Track" />
+      <Label layoutX="66.0" layoutY="60.0" text="Title :" />
+      <Label layoutX="61.0" layoutY="96.0" text="Description :" />
+      <JFXTextArea fx:id="DescriptionTF" layoutX="140.0" layoutY="96.0" prefHeight="141.0" prefWidth="245.0" promptText="..." />
+      <JFXTextField fx:id="TitleTF" layoutX="144.0" layoutY="56.0" prefHeight="28.0" prefWidth="200.0" promptText="Title" />
+      <ChoiceBox fx:id="diff" layoutX="144.0" layoutY="251.0" prefHeight="25.0" prefWidth="193.0" />
    </children>
    <stylesheets>
       <URL value="@../styles/menu_items.css" />

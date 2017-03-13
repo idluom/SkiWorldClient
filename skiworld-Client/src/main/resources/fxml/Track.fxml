@@ -12,6 +12,7 @@
    <children>
       <TableView fx:id="TableTrack" layoutX="61.0" layoutY="171.0" prefHeight="365.0" prefWidth="500.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="100.0">
         <columns>
+            <TableColumn fx:id="Title" prefWidth="75.0" text="Title" />
           <TableColumn fx:id="lengthCol" prefWidth="192.0" text="Length" />
           <TableColumn fx:id="diffCol" prefWidth="168.0" text="Difficulty" />
             <TableColumn fx:id="priceCol" prefWidth="136.0" text="Price" />

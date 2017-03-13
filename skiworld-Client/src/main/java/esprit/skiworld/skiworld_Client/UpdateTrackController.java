@@ -10,16 +10,26 @@ import org.controlsfx.control.Notifications;
 
 import Entity.Track;
 import Service.TrackEJBRemote;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
 
 public class UpdateTrackController implements Initializable {
+	@FXML 
+	private TextField TitleTF;
+	@FXML 
+	private TextArea DescriptionTF;
 	@FXML
-	private TextField diff;
+	private ChoiceBox<String> diff;
+	ObservableList<String> comboList = FXCollections.observableArrayList("Easy", "Amateur", "Average", "Hard",
+			"Professional");
 	@FXML
 	private TextField length;
 	@FXML
@@ -30,10 +40,13 @@ public class UpdateTrackController implements Initializable {
 	private Label difflab;
 	@FXML
 	private Label lengthlab;
-
+	ObservableList<Track> champs;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		diff.setText(TrackController.comp.getDifficulty().toString());
+		TitleTF.setText(TrackController.comp.getTitle());
+		DescriptionTF.setText(TrackController.comp.getDescription());
+		diff.setValue("Hard");
+		diff.setItems(comboList);
 		price.setText(Float.valueOf(TrackController.comp.getPrice()).toString());
 		length.setText(Float.valueOf(TrackController.comp.getLength()).toString());
 	}
@@ -42,13 +55,13 @@ public class UpdateTrackController implements Initializable {
 	private void Update() {
 
 		int ok = 0;
-		if (diff.getText().toString().equals("")) {
+		if (TitleTF.getText().toString().equals("")) {
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			alert.setTitle("SELECTED");
-			alert.setHeaderText("Empty Difficulty Field");
+			alert.setHeaderText("Empty Title Field");
 			alert.showAndWait();
 			ok = 1;
-			System.out.println("ffff");
+			
 		}
 		if (price.getText().toString().equals("")) {
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -75,13 +88,14 @@ public class UpdateTrackController implements Initializable {
 			TrackEJBRemote proxy;
 			try {
 				proxy = (TrackEJBRemote) ctx.lookup("/skiworld-ejb/TrackEJB!Service.TrackEJBRemote");
-				// ObservableList<Track> champs =
-				// FXCollections.observableArrayList(proxy.findAll());
+				//champs = FXCollections.observableArrayList(proxy.findAll());
+				
 				Track track = new Track();
 
 				track = proxy.findTrackById(TrackController.comp.getIdTrack());
-				track.setDifficulty(diff.getText());
-				;
+				track.setDifficulty(diff.getValue());
+				track.setDescription(DescriptionTF.getText());
+				track.setTitle(TitleTF.getText());
 				track.setLength(Float.valueOf(length.getText()));
 				track.setPrice(Float.valueOf(price.getText()));
 				proxy.updateTrack(track);
@@ -89,17 +103,20 @@ public class UpdateTrackController implements Initializable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			
+			TrackController.s.close();
+			
 			// les alerts
 			Notifications notBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5))
 					.title("Action Completed").text("The Track was successfuly Updated");
 			notBuilder.showConfirm();
 		}
+		TrainingController.s.close();
 	}
 
 	@FXML
 	private void Cancel() {
-		diff.clear();
+		
 		length.clear();
 		price.clear();
 	}

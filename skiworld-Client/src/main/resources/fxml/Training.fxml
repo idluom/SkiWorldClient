@@ -10,8 +10,9 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.TrainingController">
 	<children>
-		<TableView fx:id="TableTrack" layoutX="43.0" layoutY="200.0" prefHeight="295.0" prefWidth="595.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0">
+		<TableView fx:id="TableTrack" layoutX="43.0" layoutY="200.0" prefHeight="295.0" prefWidth="613.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0">
 			<columns>
+            <TableColumn fx:id="Title" prefWidth="75.0" text="Title" />
 				<TableColumn fx:id="BDCol" prefWidth="153.0" text="Begining Date" />
 				<TableColumn fx:id="EDCol" minWidth="5.0" prefWidth="147.0" text="End Date" />
 				<TableColumn fx:id="levelCol" prefWidth="116.0" text="Level" />

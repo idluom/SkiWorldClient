@@ -29,6 +29,7 @@ import javafx.scene.control.ChoiceBox;
 
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
 
@@ -50,6 +51,10 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 	private ChoiceBox<String> LevelTF;
 	ObservableList<String> comboList = FXCollections.observableArrayList("Easy", "Amateur", "Average", "Hard",
 			"Professional");
+	@FXML 
+	private TextField TitleTF;
+	@FXML 
+	private TextArea DescriptionTF;
 	@FXML
 	private Label Pricelab;
 	@FXML
@@ -167,6 +172,8 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 					Df = dff.parse(b);
 					if(proxy.findAllTrainingByLevel(level,Df).size()==0){
 						training.setBegeningDate(da);
+						training.setDescription(DescriptionTF.getText());
+						training.setTitle(TitleTF.getText());
 						training.setEndDate(java.sql.Date.valueOf(dateE));
 						training.setLevel(level);
 						training.setPrice(price);
@@ -187,11 +194,11 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 						Notifications notBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5)).
 								title("Action Completed").text("The Training was successfuly Added");
 						notBuilder.showConfirm();
-						try {
-							MainApp.changeScene("/fxml/Training.fxml", "Ski School");
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
+//						try {
+//							MainApp.changeScene("/fxml/Training.fxml", "Ski School");
+//						} catch (IOException e) {
+//							e.printStackTrace();
+//						}
 					}
 					
 				} catch (ParseException e) {
@@ -208,6 +215,7 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 		
 			
 		}
+		TrainingController.s.close();
 	}
 
 	@FXML
