@@ -60,7 +60,7 @@ public class AddShopController implements  Initializable {
     private Button select;
     @FXML
     private Button bac;
-    Blob image;
+    byte[] image;
     
 	
 	
@@ -145,12 +145,17 @@ public class AddShopController implements  Initializable {
             if (selectedFile != null) {
 
                 File path = selectedFile.getAbsoluteFile();
-                byte[] b = IOUtils.readFully(new FileInputStream(path), -1, true);
-                Blob ff = new SerialBlob(b);
-                image = ff;
+                //byte[] b = IOUtils.readFully(new FileInputStream(path), -1, true);
+               // Blob ff = new SerialBlob(b);
+                //File file = new File("/images/bilel.jpg");
+                byte[] byteFile = new byte[(int)path.length()];
+                FileInputStream fs = new FileInputStream(path);
+                fs.read(byteFile);
+                fs.close();
+                image = byteFile;
                 Image i = new Image(selectedFile.toURI().toString());
                 imgEquipement.setImage(i);
-                System.out.println("hhhh");
+                
             }
         }
 

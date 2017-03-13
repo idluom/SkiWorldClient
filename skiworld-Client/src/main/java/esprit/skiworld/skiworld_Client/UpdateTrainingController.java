@@ -102,10 +102,16 @@ public class UpdateTrainingController implements Initializable, Comparable<Local
 		LocalDate dateE = EdTF.getValue();
 		LocalTime dateBT = BdTTF.getValue();
 		if(dateB.compareTo(dateE)>0){
-			System.out.println("ggg");
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			alert.setTitle("Date Error");
 			alert.setHeaderText("Begining Date Can not before the End Date !!!!");
+			alert.showAndWait();
+			ok=1;
+		}
+		if(dateB.isBefore(LocalDate.now())) {
+			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+			alert.setTitle("Date Error");
+			alert.setHeaderText("Begining Date Unsuportable !!!!");
 			alert.showAndWait();
 			ok=1;
 		}
@@ -120,17 +126,14 @@ public class UpdateTrainingController implements Initializable, Comparable<Local
 				TrainingEJBRemote proxy;
 				try {
 					String DD = java.sql.Date.valueOf(dateB)+" "+(java.sql.Time.valueOf(dateBT));
-					
 					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 					java.util.Date da;
 					da = df.parse(DD);
 					proxy = (TrainingEJBRemote) ctx.lookup("/skiworld-ejb/TrainingEJB!Service.TrainingEJBRemote");
-					//ObservableList<Track> champs = FXCollections.observableArrayList(proxy.findAll());
 					Training training=new Training();
 					float price = Float.valueOf(PriceTF.getText());
 					int number = Integer.valueOf(NumberTF.getText());
 					String level = (String) LevelTF.getValue();
-					//System.out.println(TrackController.comp.getIdTrack());
 			        training=proxy.findTrainingById(TrainingController.comp.getIdTraining());
 			        training.setBegeningDate(da);
 			        //training.setBegeningDate(java.sql.Date.valueOf(dateB));
@@ -140,7 +143,6 @@ public class UpdateTrainingController implements Initializable, Comparable<Local
 					training.setNumber(number);
 					proxy.updateTraing(training);
 				} catch (NamingException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 		        

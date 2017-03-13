@@ -76,7 +76,6 @@ public class UpdateTrackController implements Initializable {
 			//ObservableList<Track> champs = FXCollections.observableArrayList(proxy.findAll());
 			Track track=new Track();
 	        
-	        
 	        track=proxy.findTrackById(TrackController.comp.getIdTrack());
 	        track.setDifficulty(diff.getText());;
 	        track.setLength(Float.valueOf(length.getText()));

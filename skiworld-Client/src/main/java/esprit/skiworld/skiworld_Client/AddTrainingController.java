@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javax.naming.InitialContext;
@@ -116,7 +117,6 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 		//LocalTime dateET = EdTTF.getValue();
 
 		if(dateB.compareTo(dateE)>0){
-			System.out.println("ggg");
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			alert.setTitle("Date Error");
 			alert.setHeaderText("Begining Date Can not before the End Date !!!!");
@@ -131,7 +131,7 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 			alert.showAndWait();
 			ok=1;
 		}
-			
+		
 		if (ok == 0) {
 
 			
@@ -153,21 +153,47 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 				// ObservableList<Track> champs =
 				// FXCollections.observableArrayList(proxy.findAll());
 				String DD = java.sql.Date.valueOf(dateB)+" "+(java.sql.Time.valueOf(dateBT));
-				
+				Date DDD = java.sql.Date.valueOf(dateB);
 				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+				SimpleDateFormat dff = new SimpleDateFormat("yyyy-MM-dd");
 				
-
+				
 				java.util.Date da;
 				java.util.Date Df;
 				try {
 					String a = EdTF.getValue().toString();
+					String b = BdTF.getValue().toString();
 					da = df.parse(DD);
-					training.setBegeningDate(da);
-					training.setEndDate(java.sql.Date.valueOf(dateE));
-					training.setLevel(level);
-					training.setPrice(price);
-					training.setNumber(number);
-					proxy.addTraining(training);
+					Df = dff.parse(b);
+					if(proxy.findAllTrainingByLevel(level,Df).size()==0){
+						training.setBegeningDate(da);
+						training.setEndDate(java.sql.Date.valueOf(dateE));
+						training.setLevel(level);
+						training.setPrice(price);
+						training.setNumber(number);
+						ok=0;
+						
+					}
+					else {
+						Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+						alert.setTitle("Date Error");
+						alert.setHeaderText("You Can not add Training with the same Level on the same Date of Begining !!!!");
+						alert.showAndWait();
+						ok=1;
+					}
+					if(ok==0){
+						proxy.addTraining(training);
+						// les alerts
+						Notifications notBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5)).
+								title("Action Completed").text("The Training was successfuly Added");
+						notBuilder.showConfirm();
+						try {
+							MainApp.changeScene("/fxml/Training.fxml", "Ski School");
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+					
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -179,15 +205,8 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 				e.printStackTrace();
 			}
 
-			// les alerts
-			Notifications notBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5)).
-					title("Action Completed").text("The Training was successfuly Added");
-			notBuilder.showConfirm();
-			try {
-				MainApp.changeScene("/fxml/Training.fxml", "Ski School");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		
+			
 		}
 	}
 

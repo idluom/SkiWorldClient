@@ -22,7 +22,7 @@ public class TrackClient {
 		//proxy.addTrack(t);
 		//t.setDifficulty("hard");
 		//proxy.addTrack(t);
-		t2=proxy.findTrackById(1);
+		//t2=proxy.findTrackById(1);
 		//t2.setDifficulty("easy");
 		//proxy.updateTrack(t2);
 		
