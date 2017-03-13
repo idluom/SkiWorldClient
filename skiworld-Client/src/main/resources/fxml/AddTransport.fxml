@@ -70,7 +70,7 @@
       <JFXTimePicker fx:id="arrTime" layoutX="630.0" layoutY="200.0" promptText="00 : 00" AnchorPane.leftAnchor="620.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="220.0" />
       <JFXTextField fx:id="arrPlace" labelFloat="true" layoutX="630.0" layoutY="140.0" promptText="Arrival" AnchorPane.leftAnchor="620.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="120.0" />
       <JFXButton fx:id="addButton" layoutX="429.0" layoutY="404.0" onAction="#addAction" styleClass="btn" text="Add" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="408.0" AnchorPane.rightAnchor="408.0" />
-      <ChoiceBox layoutX="618.0" layoutY="321.0" prefWidth="150.0" styleClass="combo-box" AnchorPane.leftAnchor="620.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="320.0" />
+      <ChoiceBox fx:id="type" layoutX="618.0" layoutY="321.0" prefWidth="150.0" styleClass="combo-box" AnchorPane.leftAnchor="620.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="320.0" />
       <Text layoutX="395.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add A New Transport" AnchorPane.topAnchor="20.0" />
    </children>
    <stylesheets>

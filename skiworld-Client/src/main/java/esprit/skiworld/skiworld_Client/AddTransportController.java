@@ -49,7 +49,7 @@ public class AddTransportController implements Initializable {
 	@FXML
 	JFXTextField cost;
 	@FXML
-	ChoiceBox<String> type;
+	ChoiceBox<String> type = new ChoiceBox<>();
 	@FXML
 	JFXDatePicker depDate;
 	@FXML

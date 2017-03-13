@@ -47,7 +47,7 @@ public class UpdateTransportController implements Initializable{
 	JFXButton addButton;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ObservableList<String> ls = FXCollections.observableArrayList("Avoin","Bus","Taxi","Train");
+		ObservableList<String> ls = FXCollections.observableArrayList("Avion","Bus","Taxi","Train");
 		type.setItems(ls);
 		
 		depP.setText(TransportController.upTrans.getDeparturePlace().toString());
