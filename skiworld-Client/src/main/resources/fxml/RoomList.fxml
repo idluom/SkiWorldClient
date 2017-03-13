@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.RoomListController">
+   <children>
+      <TableView fx:id="tableRooms" layoutX="64.0" layoutY="118.0" prefHeight="400.0" prefWidth="545.0">
+         <columns>
+            <TableColumn fx:id="sbed" prefWidth="117.0" text="Simple bed" />
+            <TableColumn fx:id="dbed" prefWidth="109.0" text="Double bed" />
+            <TableColumn fx:id="price" minWidth="0.0" prefWidth="101.0" text="Price" />
+            <TableColumn fx:id="description" prefWidth="217.0" text="Description" />
+         </columns>
+      </TableView>
+      <Button layoutX="64.0" layoutY="30.0" mnemonicParsing="false" onAction="#clickBack" text="&lt;" />
+      <Button fx:id="addRoom" layoutX="653.0" layoutY="247.0" mnemonicParsing="false" onAction="#addRoom" prefHeight="25.0" prefWidth="72.0" text="Ajouter" />
+      <Button fx:id="deleteRoom" layoutX="653.0" layoutY="318.0" mnemonicParsing="false" onAction="#deleteRoom" text="Supprimer" />
+      <Separator layoutY="93.0" prefHeight="2.0" prefWidth="801.0" style="-fx-background-color: black;" />
+      <TextField fx:id="filterInput" layoutX="644.0" layoutY="118.0" prefHeight="25.0" prefWidth="90.0" promptText="Simple bed" />
+      <TextField fx:id="filterInput1" layoutX="644.0" layoutY="156.0" prefHeight="25.0" prefWidth="90.0" promptText="Double bed" />
+   </children>
+</AnchorPane>

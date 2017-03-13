@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" minHeight="500.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.UpdateEventsController">
+   <children>
+      <Label layoutX="100.0" layoutY="34.0" text="Name" />
+      <Label layoutX="101.0" layoutY="76.0" text="Place" />
+      <Label layoutX="98.0" layoutY="312.0" text="Description" />
+      <TextField fx:id="nameTF" layoutX="237.0" layoutY="26.0" />
+      <TextField fx:id="placeTF" layoutX="237.0" layoutY="68.0" />
+      <Button layoutX="237.0" layoutY="443.0" mnemonicParsing="false" onAction="#updateEvent" text="Update" />
+      <Label layoutX="103.0" layoutY="229.0" text="Date" />
+      <Button layoutX="389.0" layoutY="443.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+      <TextArea fx:id="descTA" layoutX="237.0" layoutY="305.0" prefHeight="131.0" prefWidth="221.0" />
+      <TextField fx:id="priceTF" layoutX="237.0" layoutY="109.0" />
+      <Label layoutX="102.0" layoutY="117.0" text="Price" />
+      <Label layoutX="102.0" layoutY="160.0" text="Number places" />
+      <TextField fx:id="numberPTF" layoutX="237.0" layoutY="152.0" />
+      <JFXDatePicker fx:id="dateP" layoutX="237.0" layoutY="210.0" prefHeight="39.0" prefWidth="166.0" />
+      <JFXTimePicker fx:id="timeP" layoutX="433.0" layoutY="210.0" prefHeight="39.0" prefWidth="142.0" />
+   </children>
+</AnchorPane>
