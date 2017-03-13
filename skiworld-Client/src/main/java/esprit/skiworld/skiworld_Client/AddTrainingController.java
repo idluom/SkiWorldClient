@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import javax.naming.InitialContext;
@@ -123,6 +124,14 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 			ok=1;
 		}
 		
+		if(dateB.isBefore(LocalDate.now())) {
+			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+			alert.setTitle("Date Error");
+			alert.setHeaderText("Begining Date Unsuportable !!!!");
+			alert.showAndWait();
+			ok=1;
+		}
+			
 		if (ok == 0) {
 
 			
