@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.AddTripsController">
+   <children>
+      <SplitPane dividerPositions="0.33534743202416917" layoutX="106.0" layoutY="69.0" prefHeight="333.0" prefWidth="333.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label text="Description" AnchorPane.topAnchor="10.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="2.0" layoutY="166.0" text="Date" AnchorPane.topAnchor="166.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutY="65.0" prefHeight="17.0" prefWidth="100.0" text="Number of places" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="65.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="16.0" layoutY="111.0" prefHeight="17.0" prefWidth="46.0" text="Price" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="111.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="4.0" layoutY="223.0" prefHeight="17.0" prefWidth="39.0" text="Time" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="223.0" />
+                  <Label layoutY="282.0" prefHeight="17.0" prefWidth="46.0" text="Link" AnchorPane.leftAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="325.0" prefWidth="217.0">
+               <children>
+                  <JFXTimePicker fx:id="TimeId" layoutX="15.0" layoutY="141.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="220.0" />
+                  <JFXDatePicker fx:id="dateId" layoutX="7.0" layoutY="102.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="160.0" />
+                  <JFXTextField fx:id="DescriptionId" labelFloat="true" layoutY="14.0" promptText="Description">
+                     <font>
+                        <Font name="Comic Sans MS Italic" size="12.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="PriceId" labelFloat="true" layoutY="45.0" promptText="Price" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="110.0">
+                     <font>
+                        <Font name="Comic Sans MS Italic" size="12.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="NumberId" labelFloat="true" layoutX="8.0" layoutY="75.0" promptText="Number Of Places" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0">
+                     <font>
+                        <Font name="Comic Sans MS" size="12.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="LinkId" labelFloat="true" layoutY="275.0" promptText="Link" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <JFXButton buttonType="RAISED" layoutX="91.0" layoutY="27.0" onAction="#BackAction" ripplerFill="#2e00ff" text="Back">
+         <font>
+            <Font name="Comic Sans MS Italic" size="12.0" />
+         </font></JFXButton>
+      <JFXButton fx:id="AjouterTripid" buttonType="RAISED" layoutX="273.0" layoutY="434.0" onAction="#AjouterTrip" ripplerFill="#ff1100" text="Add">
+         <font>
+            <Font name="Comic Sans MS Italic" size="12.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.UpdateTripsController">
+   <children>
+      <SplitPane dividerPositions="0.33534743202416917" layoutX="116.0" layoutY="103.0" prefHeight="309.0" prefWidth="333.0">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label text="Description" AnchorPane.topAnchor="10.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="2.0" layoutY="107.0" text="Date" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="140.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="4.0" layoutY="52.0" prefHeight="17.0" prefWidth="100.0" text="Number of places" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="90.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutY="28.0" prefHeight="17.0" prefWidth="46.0" text="Price" AnchorPane.topAnchor="50.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="-2.0" layoutY="154.0" prefHeight="17.0" prefWidth="39.0" text="Time" AnchorPane.leftAnchor="-2.0" AnchorPane.topAnchor="180.0" />
+                  <Label layoutX="7.0" layoutY="197.0" text="Link" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="220.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <JFXTimePicker fx:id="TimeId" layoutX="15.0" layoutY="141.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="170.0" />
+                  <JFXDatePicker fx:id="dateId" layoutX="7.0" layoutY="102.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="130.0" />
+                  <JFXTextField fx:id="LinkId" labelFloat="true" layoutY="192.0" promptText="LinK" AnchorPane.topAnchor="210.0">
+                     <font>
+                        <Font name="Comic Sans MS Italic" size="12.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="DescriptionId" labelFloat="true" layoutY="14.0" AnchorPane.topAnchor="10.0" />
+                  <JFXTextField fx:id="PriceId" layoutX="8.0" layoutY="39.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0" />
+                  <JFXTextField fx:id="NumberId" layoutY="75.0" AnchorPane.topAnchor="90.0" />
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+      <JFXButton fx:id="SaveId" buttonType="RAISED" layoutX="249.0" layoutY="430.0" onAction="#SaveAction" prefHeight="26.0" prefWidth="53.0" ripplerFill="BLACK" style="-fx-background-color: #4447fe;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS" size="12.0" />
+         </font></JFXButton>
+   </children>
+</AnchorPane>

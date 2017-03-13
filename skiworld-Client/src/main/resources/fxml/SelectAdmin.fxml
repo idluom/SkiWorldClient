@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.SelectAdminController">
+   <children>
+      <JFXButton fx:id="adminId" buttonType="RAISED" layoutX="224.0" layoutY="93.0" onAction="#AdminAction" prefHeight="25.0" prefWidth="124.0" ripplerFill="RED" text="Admin" AnchorPane.leftAnchor="224.0">
+         <font>
+            <Font name="Comic Sans MS Italic" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="shopkeeperId" buttonType="RAISED" layoutX="224.0" layoutY="194.0" onAction="#ShopkeeperAction" prefHeight="25.0" prefWidth="127.0" ripplerFill="#f80000" text="Shopkeeper" AnchorPane.leftAnchor="224.0">
+         <font>
+            <Font name="Comic Sans MS Italic" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="restaurantId" buttonType="RAISED" layoutX="224.0" layoutY="147.0" onAction="#RestaurantAction" prefHeight="25.0" prefWidth="127.0" ripplerFill="#ff0202" text="Restaurant owner" AnchorPane.leftAnchor="224.0">
+         <font>
+            <Font name="Comic Sans MS Italic" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="hotelId" buttonType="RAISED" layoutX="224.0" layoutY="250.0" onAction="#HotelOwnerAction" prefHeight="25.0" prefWidth="127.0" ripplerFill="#ee0000" text="Hotel owner" wrapText="true" AnchorPane.leftAnchor="224.0">
+         <font>
+            <Font name="Comic Sans MS Italic" size="12.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
