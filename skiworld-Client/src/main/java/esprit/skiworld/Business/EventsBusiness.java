@@ -1,5 +1,6 @@
 package esprit.skiworld.Business;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.naming.InitialContext;
@@ -63,5 +64,15 @@ public class EventsBusiness {
 		
 		return proxy.findAllEvent();
 		
+	}
+	public boolean findEventByDate(Date date){
+		try {
+			ctx = new InitialContext();
+			proxy = (EventEJBRemote) ctx.lookup(jndiName);
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+		
+		return proxy.findEventByDate(date);
 	}
 }

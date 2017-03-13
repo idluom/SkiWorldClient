@@ -71,6 +71,8 @@ public class UpdateEventsController implements Initializable {
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		descTA.setScrollLeft(1000);
+		descTA.setWrapText(true);
 		nameTF.setText(EventsListController.getEvent().getName());
 		placeTF.setText(EventsListController.getEvent().getPlace());
 		descTA.setText(EventsListController.getEvent().getDescription());

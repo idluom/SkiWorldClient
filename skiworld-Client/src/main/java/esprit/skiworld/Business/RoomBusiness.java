@@ -65,6 +65,15 @@ public class RoomBusiness {
 		return proxy.findAllRoom();
 		
 	}
+	public Long findNumberRoom(int sbed,int dbed) {
+		try {
+			ctx = new InitialContext();
+			proxy = (RoomEJBRemote) ctx.lookup(jndiName);
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+		return proxy.findNumberRoom(sbed, dbed);
+	}
 	
 
 }

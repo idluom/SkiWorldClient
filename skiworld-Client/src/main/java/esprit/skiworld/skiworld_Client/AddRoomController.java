@@ -37,7 +37,8 @@ public class AddRoomController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		// TODO
+		descTA.setScrollLeft(1000);
+		descTA.setWrapText(true);
 	}
 
 	public void setDialogStage(Stage dialogStage) {
@@ -47,14 +48,35 @@ public class AddRoomController implements Initializable {
 	@FXML
 	public void ajouterRoom(ActionEvent event) throws NamingException {
 		if (isInputValid()) {
-			if (descTA.getText() == null || descTA.getText().length() == 0) {
-				Alert alert = new Alert(AlertType.CONFIRMATION);
-				alert.setTitle("Confirmation Dialog");
-				alert.setHeaderText("No description !!");
-				alert.setContentText("Do you want to proceed?");
+			if (new RoomBusiness().findNumberRoom(Integer.valueOf(sbedTF.getText()), Integer.valueOf(dbedTF.getText())) < 5) {
 
-				Optional<ButtonType> result = alert.showAndWait();
-				if (result.get() == ButtonType.OK) {
+				if (descTA.getText() == null || descTA.getText().length() == 0) {
+					Alert alert = new Alert(AlertType.CONFIRMATION);
+					alert.setTitle("Confirmation Dialog");
+					alert.setHeaderText("No description !!");
+					alert.setContentText("Do you want to proceed?");
+
+					Optional<ButtonType> result = alert.showAndWait();
+					if (result.get() == ButtonType.OK) {
+						Room room = new Room();
+						room.setNbrSimpleBed(Integer.valueOf(sbedTF.getText()));
+						room.setNbrDoubleBed(Integer.valueOf(dbedTF.getText()));
+						room.setPrice(Float.valueOf(priceTF.getText()));
+						room.setDescription(descTA.getText());
+						InitialContext ctx = new InitialContext();
+						HotelEJBRemote proxy2 = (HotelEJBRemote) ctx
+								.lookup("/skiworld-ejb/HotelEJB!Service.HotelEJBRemote");
+						Long l = new Long(1);
+						Hotel hotel = proxy2.findHotelById(l);
+						room.setHotel(hotel);
+
+						new RoomBusiness().addRoom(room);
+						RoomListController.s.close();
+
+					} else {
+
+					}
+				} else {
 					Room room = new Room();
 					room.setNbrSimpleBed(Integer.valueOf(sbedTF.getText()));
 					room.setNbrDoubleBed(Integer.valueOf(dbedTF.getText()));
@@ -69,31 +91,21 @@ public class AddRoomController implements Initializable {
 
 					new RoomBusiness().addRoom(room);
 					RoomListController.s.close();
-					
-
-				} else {
 
 				}
-			}else{
-				Room room = new Room();
-				room.setNbrSimpleBed(Integer.valueOf(sbedTF.getText()));
-				room.setNbrDoubleBed(Integer.valueOf(dbedTF.getText()));
-				room.setPrice(Float.valueOf(priceTF.getText()));
-				room.setDescription(descTA.getText());
-				InitialContext ctx = new InitialContext();
-				HotelEJBRemote proxy2 = (HotelEJBRemote) ctx
-						.lookup("/skiworld-ejb/HotelEJB!Service.HotelEJBRemote");
-				Long l = new Long(1);
-				Hotel hotel = proxy2.findHotelById(l);
-				room.setHotel(hotel);
 
-				new RoomBusiness().addRoom(room);
-				RoomListController.s.close();
+			}else {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.initOwner(dialogStage);
+				alert.setTitle("ERROR");
+				alert.setHeaderText("You already have 5 exemples of this room");
+				alert.setContentText("Change simple or double beds numbers");
+
+				alert.showAndWait();
+
 				
 			}
-
 		}
-
 	}
 
 	// Event Listener on Button.onAction

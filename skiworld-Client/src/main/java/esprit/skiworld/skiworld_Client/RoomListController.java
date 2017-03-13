@@ -50,6 +50,7 @@ public class RoomListController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
 		    champs = FXCollections.observableArrayList(new RoomBusiness().findAllRoom());
 			
 		

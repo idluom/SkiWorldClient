@@ -32,6 +32,8 @@ public class UpdateRoomController implements Initializable {
 	private TextArea descTA;
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		descTA.setScrollLeft(1000);
+		descTA.setWrapText(true);
 		sbedTF.setText((RoomListController.getRoom().getNbrSimpleBed()+""));
 		dbedTF.setText((RoomListController.getRoom().getNbrDoubleBed()+""));
 		priceTF.setText((RoomListController.getRoom().getPrice()+""));

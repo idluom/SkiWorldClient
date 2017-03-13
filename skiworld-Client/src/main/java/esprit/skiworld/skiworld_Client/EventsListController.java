@@ -32,6 +32,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.input.MouseEvent;
 
 public class EventsListController implements Initializable {
+	
 	@FXML
 	private TableView<Events> tableEvents;
 	@FXML
@@ -75,6 +76,19 @@ public class EventsListController implements Initializable {
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String s="2017-03-27";
+		try {
+			Date date1=sdf.parse(s);
+			Boolean b=new EventsBusiness().findEventByDate(date1);
+			System.out.println(b);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		
 		champs = FXCollections.observableArrayList(new EventsBusiness().findAllEvent());
 		
 		name.setCellValueFactory(new PropertyValueFactory<Events, String>("name"));
