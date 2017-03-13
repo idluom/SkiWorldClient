@@ -3,9 +3,13 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.net.URL?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.TrackController">
@@ -22,7 +26,16 @@
       <JFXButton layoutX="671.0" layoutY="160.0" onAction="#DeleteTrack" styleClass="btn" text="Delete Track" AnchorPane.leftAnchor="680.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="140.0" />
       <JFXButton layoutX="686.0" layoutY="204.0" onAction="#Add" styleClass="btn" text="Add Track" AnchorPane.leftAnchor="680.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="180.0" />
       <JFXButton layoutX="686.0" layoutY="260.0" onAction="#Edit" styleClass="btn" text="Edit Track" AnchorPane.leftAnchor="680.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="220.0" />
-      <Text layoutX="422.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tracks' List" AnchorPane.topAnchor="20.0" />
+      <Text fill="#2b579a" layoutX="100.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tracks' List" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font></Text>
+      <ProgressBar fx:id="ProgressLoading" layoutY="36.0" prefWidth="200.0" progress="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0" />
+      <ImageView fx:id="loading" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="250.0">
+         <image>
+            <Image url="@../images/loading.GIF" />
+         </image>
+      </ImageView>
    </children>
    <stylesheets>
       <URL value="@../styles/menu_items.css" />

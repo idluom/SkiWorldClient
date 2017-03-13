@@ -31,15 +31,13 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import javafx.scene.transform.Translate;
 import javafx.scene.control.Alert.AlertType;
 import javafx.util.Duration;
 
+public class AuthenticationController implements Initializable {
 
-public class AuthenticationController implements Initializable{
-	
 	private static Member auth;
-	
+
 	@FXML
 	Label userLabel;
 	@FXML
@@ -56,44 +54,45 @@ public class AuthenticationController implements Initializable{
 	AnchorPane root;
 	@FXML
 	TextField passwordTF;
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		FadeTransition ft = new FadeTransition(Duration.seconds(4),root);
+		FadeTransition ft = new FadeTransition(Duration.seconds(4), root);
 		ft.setFromValue(0);
 		ft.setToValue(1);
-		
-		TranslateTransition ttUser = new TranslateTransition(Duration.seconds(2),userLabel);
+
+		TranslateTransition ttUser = new TranslateTransition(Duration.seconds(2), userLabel);
 		ttUser.setFromX(100);
 		ttUser.setToX(0);
-		
-		TranslateTransition ttPass = new TranslateTransition(Duration.seconds(2),passLabel);
+
+		TranslateTransition ttPass = new TranslateTransition(Duration.seconds(2), passLabel);
 		ttPass.setFromX(100);
 		ttPass.setToX(0);
-		
-		TranslateTransition ttSki = new TranslateTransition(Duration.seconds(2),skiworld);
+
+		TranslateTransition ttSki = new TranslateTransition(Duration.seconds(2), skiworld);
 		ttSki.setFromX(100);
 		ttSki.setToX(0);
-		
-		TranslateTransition ttWelcome = new TranslateTransition(Duration.seconds(2),welcome);
+
+		TranslateTransition ttWelcome = new TranslateTransition(Duration.seconds(2), welcome);
 		ttWelcome.setFromX(100);
 		ttWelcome.setToX(0);
-		
-		TranslateTransition ttUserTF = new TranslateTransition(Duration.seconds(2),usernameTF);
+
+		TranslateTransition ttUserTF = new TranslateTransition(Duration.seconds(2), usernameTF);
 		ttUserTF.setFromX(-100);
 		ttUserTF.setToX(0);
-		
-		TranslateTransition ttPassTF = new TranslateTransition(Duration.seconds(2),passwordTF);
+
+		TranslateTransition ttPassTF = new TranslateTransition(Duration.seconds(2), passwordTF);
 		ttPassTF.setFromX(-100);
 		ttPassTF.setToX(0);
-		
-		TranslateTransition ttButton = new TranslateTransition(Duration.seconds(2),connect);
+
+		TranslateTransition ttButton = new TranslateTransition(Duration.seconds(2), connect);
 		ttButton.setFromX(100);
 		ttButton.setToX(0);
-		
-		ParallelTransition pt = new ParallelTransition(ft,ttUser,ttPass,ttSki,ttWelcome,ttUserTF,ttPassTF,ttButton);
+
+		ParallelTransition pt = new ParallelTransition(ft, ttUser, ttPass, ttSki, ttWelcome, ttUserTF, ttPassTF,
+				ttButton);
 		pt.play();
-		
+
 		usernameTF.setFocusTraversable(true);
 		usernameTF.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
@@ -103,7 +102,6 @@ public class AuthenticationController implements Initializable{
 				}
 			}
 		});
-		
 		passwordTF.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
@@ -112,13 +110,11 @@ public class AuthenticationController implements Initializable{
 				}
 			}
 		});
-
-		
 	}
-	
+
 	@FXML
 	public void connectAction() {
-		String jndiName ="/skiworld-ear/skiworld-ejb/MemberEJB!Service.MemberEJBRemote";
+		String jndiName = "/skiworld-ear/skiworld-ejb/MemberEJB!Service.MemberEJBRemote";
 		InitialContext ctx = null;
 		MemberEJBRemote proxy = null;
 		try {
@@ -128,10 +124,9 @@ public class AuthenticationController implements Initializable{
 			e.printStackTrace();
 		}
 		auth = proxy.authentication(usernameTF.getText(), passwordTF.getText());
-		if (auth instanceof Admin || auth instanceof RestaurantOwner || auth instanceof ShopOwner || auth instanceof HotelManager ) {
-			
+		if (auth instanceof Admin || auth instanceof RestaurantOwner || auth instanceof ShopOwner
+				|| auth instanceof HotelManager) {
 			try {
-				
 				MainApp.changeScene("/fxml/MainPage.fxml", "Home Page");
 				MainApp.s.close();
 			} catch (IOException e) {
@@ -144,21 +139,23 @@ public class AuthenticationController implements Initializable{
 			alert.setContentText("Incorrect username / password");
 			alert.show();
 		}
+		Notifications not = Notifications.create().darkStyle().hideAfter(Duration.seconds(5)).title("Welcome")
+				.text("Hello " + auth.getFirstName() + " " + auth.getLastName());
+		not.showConfirm();
 	}
 
 	public static Member getAuth() {
 		return auth;
 	}
-	
+
 	public static void setAuth(Member auth) {
 		AuthenticationController.auth = auth;
 	}
-	
+
 	public void quit() {
-		Notifications nb = Notifications.create().darkStyle().hideAfter(Duration.seconds(5))
-				.title("Logout").text("Are you sure ? Click here to disconnect !").graphic(usernameTF)
-				.position(Pos.CENTER).hideCloseButton()
-				.onAction(new EventHandler<ActionEvent>() {
+		Notifications nb = Notifications.create().darkStyle().hideAfter(Duration.seconds(5)).title("Logout")
+				.text("Are you sure ? Click here to disconnect !").graphic(usernameTF).position(Pos.CENTER)
+				.hideCloseButton().onAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent event) {
 						MainApp.s.close();

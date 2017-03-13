@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.MenuShopController">
+   <children>
+      <JFXDrawer fx:id="PaneDrawer" layoutX="596.0" layoutY="116.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <JFXHamburger fx:id="hamburger" layoutX="470.0" layoutY="24.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+      <JFXDrawer fx:id="SideDrawer" prefHeight="500.0" prefWidth="200.0" stylesheets="@../styles/login.css">
+         <children>
+            <VBox fx:id="MenuVbox" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-width: 0.5; -fx-background-color: #2b579a;">
+               <children>
+                  <JFXButton contentDisplay="RIGHT" graphicTextGap="50.0" onAction="#home" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 0.5;" text="Home" VBox.vgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/send-button.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton onAction="#bills" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 0.5;" text="Bills" />
+                  <JFXButton onAction="#addDiscount" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 0.5;" text="Add Discount" />
+                  <JFXButton onAction="#affectDiscount" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 0.5;" text="Affect Discount" />
+                  <JFXButton onAction="#logout" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 0.5;" text="Logout" />
+               </children>
+            </VBox>
+         </children>
+      </JFXDrawer>
+   </children>
+</AnchorPane>

@@ -13,6 +13,7 @@ import org.controlsfx.control.Notifications;
 
 import Entity.Track;
 import Service.TrackEJBRemote;
+import esprit.skiworld.Business.TrackBusiness;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -82,24 +83,8 @@ public class AddTrackController implements Initializable {
 			track.setPrice(Float.valueOf(newPrice));
 			track.setDescription(DescriptionTF.getText());
 			track.setTitle(TitleTF.getText());
-			InitialContext ctx = null;
-			try {
-				ctx = new InitialContext();
-			} catch (NamingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			TrackEJBRemote proxy;
-			try {
-				proxy = (TrackEJBRemote) ctx.lookup("/skiworld-ejb/TrackEJB!Service.TrackEJBRemote");
-				// ObservableList<Track> champs =
-				// FXCollections.observableArrayList(proxy.findAll());
-
-				proxy.addTrack(track);
-			} catch (NamingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
+			new TrackBusiness().addTrack(track);
 
 			// les alerts
 			Notifications notBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5)).

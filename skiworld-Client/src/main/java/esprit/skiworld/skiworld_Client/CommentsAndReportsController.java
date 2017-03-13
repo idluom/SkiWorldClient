@@ -12,9 +12,13 @@ import org.controlsfx.control.Notifications;
 import Entity.Comment;
 import Entity.Report;
 import esprit.skiworld.Business.CommentBusiness;
+import esprit.skiworld.Business.Loading;
 import esprit.skiworld.Business.ReportBusiness;
+import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,14 +26,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 
 public class CommentsAndReportsController implements Initializable {
@@ -52,15 +59,23 @@ public class CommentsAndReportsController implements Initializable {
 	private TableColumn <Report, String> reportObject;
 	@FXML
 	private TableColumn <Report, Date> reportDate;
-	
+	private Task task;
+	@FXML
+	ImageView loading;
+	@FXML
+	private ProgressBar ProgressLoading;
+	@FXML
+	private TabPane TableTrack;
 	ObservableList<Comment> champs;
 	ObservableList<Report> reports;
 	
 	/**
 	 * This method initializes the controller class, this code will run as soon as the scene is opened.
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		TableTrack.setVisible(false);
 		/**
 		 * Comments Table Filling.
 		 */
@@ -71,7 +86,6 @@ public class CommentsAndReportsController implements Initializable {
 		comments.setCellValueFactory(new PropertyValueFactory<>("comment"));
 		dates.setCellValueFactory(new PropertyValueFactory<>("dateComment"));
 		commentTable.setItems(champs);
-		
 		/**
 		 * Reports Table Filling.
 		 */
@@ -102,6 +116,22 @@ public class CommentsAndReportsController implements Initializable {
 				}
 			}
 		});
+		ProgressLoading.setProgress(0);
+        ProgressLoading.progressProperty().unbind();
+        task= Loading.load();
+        ProgressLoading.progressProperty().bind(task.progressProperty());
+        new Thread(task).start();
+        task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+            	TableTrack.setVisible(true);
+            	TranslateTransition tt = new TranslateTransition(Duration.seconds(2),TableTrack);
+            	tt.setFromY(50);
+            	tt.setToY(0);
+            	tt.play();
+            	loading.setVisible(false);
+            }
+        });
 	}
 	
 	@FXML
