@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="esprit.skiworld.skiworld_Client.UpdateShopController">
+   <children>
+      <Label layoutX="264.0" layoutY="14.0" prefHeight="60.0" prefWidth="146.0" text="Update Equipement" textFill="#da1111" />
+      <Label layoutX="18.0" layoutY="97.0" text="Name" />
+      <Label layoutX="18.0" layoutY="133.0" text="Category" />
+      <Label layoutX="21.0" layoutY="174.0" text="Type" />
+      <Label layoutX="21.0" layoutY="207.0" text="Price" />
+      <Label layoutX="18.0" layoutY="242.0" text="Shop  quantity" />
+      <Label layoutX="18.0" layoutY="276.0" text="Inventory quantity" />
+      <TextField fx:id="name" layoutX="175.0" layoutY="93.0" />
+      <TextField fx:id="category" layoutX="175.0" layoutY="129.0" />
+      <TextField fx:id="type" layoutX="175.0" layoutY="170.0" />
+      <TextField fx:id="price" layoutX="175.0" layoutY="203.0" />
+      <TextField fx:id="sq" layoutX="175.0" layoutY="238.0" />
+      <TextField fx:id="iq" layoutX="175.0" layoutY="272.0" />
+      <Button fx:id="up" layoutX="410.0" layoutY="340.0" mnemonicParsing="false" onAction="#modifier" text="Update" />
+      <Button fx:id="bac" layoutX="41.0" layoutY="32.0" mnemonicParsing="false" onAction="#back" text="Back" />
+   </children>
+</AnchorPane>

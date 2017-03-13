@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane accessibleText="research" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.ShopController">
+   <children>
+      <TabPane layoutX="161.0" layoutY="106.0" prefHeight="200.0" prefWidth="500.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Shop">
+               <content>
+                  <TableView fx:id="TabShop" prefHeight="221.0" prefWidth="700.0">
+                    <columns>
+                      <TableColumn fx:id="name" prefWidth="97.0" text="Name" />
+                      <TableColumn fx:id="Categorie" prefWidth="92.0" text="Categorie" />
+                        <TableColumn fx:id="type" prefWidth="101.0" text="Type" />
+                        <TableColumn fx:id="price" prefWidth="99.0" text="Price" />
+                        <TableColumn fx:id="shopq" prefWidth="111.0" text="shopquantity" />
+                    </columns>
+                  </TableView>
+               </content>
+            </Tab>
+          <Tab text="Inventory">
+               <content>
+                  <TableView fx:id="TabInventory" onMouseClicked="#InventoryUpdate" prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn fx:id="Name1" prefWidth="96.0" text="Name" />
+                      <TableColumn fx:id="categorie1" prefWidth="85.0" text="Categorie" />
+                        <TableColumn fx:id="type1" prefWidth="95.0" text="Type" />
+                        <TableColumn fx:id="price1" prefWidth="98.0" text="Price" />
+                        <TableColumn fx:id="invq1" prefWidth="126.0" text="Inventoryquantity" />
+                    </columns>
+                  </TableView>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <TextField fx:id="text" layoutX="554.0" layoutY="58.0" promptText="research" />
+      <Button fx:id="del" layoutX="149.0" layoutY="384.0" mnemonicParsing="false" onAction="#supprimer" text="Delete Equipement" />
+      <Label layoutX="330.0" layoutY="20.0" prefHeight="39.0" prefWidth="201.0" text="Equipement Management" textFill="#dd2c2c" />
+      <Button fx:id="ad" layoutX="385.0" layoutY="384.0" mnemonicParsing="false" onAction="#ajout" text="Add Equipement" />
+      <Button fx:id="act" layoutX="208.0" layoutY="58.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
+      <Button fx:id="move" layoutX="670.0" layoutY="206.0" mnemonicParsing="false" onAction="#moveToShop" text="Move To Shop" />
+      <TextField fx:id="Tq" layoutX="689.0" layoutY="250.0" prefHeight="25.0" prefWidth="56.0" />
+   </children>
+</AnchorPane>
