@@ -2,14 +2,15 @@ package esprit.skiworld.skiworld_Client;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-
-
+import Entity.Bill;
 import Entity.Equipement;
+import Service.BillEJBRemote;
 import Service.EquipementEJBRemote;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -110,6 +111,7 @@ public class ShopController  implements  Initializable {
 		    shopq.setCellValueFactory(new PropertyValueFactory<>("shopquantity"));
 		    
 		    TabShop.setItems(champs);
+		    
 		    Name1.setCellValueFactory(new PropertyValueFactory<>("name"));
 		    categorie1.setCellValueFactory(new PropertyValueFactory<>("category"));
 		    type1.setCellValueFactory(new PropertyValueFactory<>("type"));
@@ -167,20 +169,27 @@ public class ShopController  implements  Initializable {
        }
        else
        {
+    	   
 	   InitialContext ctx = null;
 		EquipementEJBRemote proxy = null;
+		BillEJBRemote proxy1 = null ;
 		try {
 			ctx = new InitialContext();
 			String jndiName ="/skiworld-ear/skiworld-ejb/EquipementEJB!Service.EquipementEJBRemote";
 			proxy =(EquipementEJBRemote) ctx.lookup(jndiName);
+			String jndiName1 ="/skiworld-ear/skiworld-ejb/BillEJB!Service.BillEJBRemote";
+			proxy1 =(BillEJBRemote) ctx.lookup(jndiName1);
 		    
 		       } catch (NamingException e) {}
 		
 		//Equipement E = new Equipement();
 		Equipement E =TabInventory.getSelectionModel().getSelectedItem() ;
+		List<Bill> l = proxy1.FindByEquipementName(E.getName());
 		proxy.delete(E);
 		TabInventory.refresh();
-	   
+		for(Bill B : l)
+		{ proxy1.delete(B);  }
+		
 	    alert.setTitle(" delete ");
         alert.setHeaderText("delete successful");
         alert.showAndWait();
@@ -235,6 +244,13 @@ public class ShopController  implements  Initializable {
 	   return ;
 		   
 	   }
+	   if (TabInventory.getSelectionModel().getSelectedItem() == null) {
+		   Alert al = new Alert(Alert.AlertType.WARNING);
+		   al.setTitle(" erreur !! ");
+           al.setHeaderText("pick an Equipement from inventory");
+           al.showAndWait();
+           return;
+       }
 	   
 	   InitialContext ctx = null;
 		EquipementEJBRemote proxy = null;
