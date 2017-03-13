@@ -3,19 +3,43 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="900.0"
-	xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="esprit.skiworld.skiworld_Client.AuthenticationController">
+<AnchorPane prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.AuthenticationController">
 	<children>
-		<JFXTextField fx:id="usernameTF" labelFloat="true"
-			layoutX="277.0" layoutY="150.0" promptText="username"
-			AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="150.0" />
-		<JFXPasswordField fx:id="passwordTF" labelFloat="true"
-			layoutX="277.0" layoutY="219.0" promptText="password"
-			AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="220.0" />
-		<JFXButton layoutX="547.0" layoutY="194.0" onAction="#connectAction"
-			text="Connect" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="200.0" />
+		<JFXTextField fx:id="usernameTF" labelFloat="true" layoutX="277.0" layoutY="150.0" promptText="Enter Your Username" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="150.0" />
+		<JFXPasswordField fx:id="passwordTF" labelFloat="true" layoutX="277.0" layoutY="219.0" promptText="Enter Your Password" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="190.0" />
+		<JFXButton layoutX="547.0" layoutY="194.0" onAction="#connectAction" prefWidth="120.0" text="Connect" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="230.0" />
+      <Label layoutX="180.0" layoutY="157.0" text="Username :" textFill="WHITE" AnchorPane.leftAnchor="220.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="180.0" layoutY="197.0" text="Password :" textFill="WHITE" AnchorPane.leftAnchor="220.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Text fill="WHITE" fontSmoothingType="LCD" layoutX="37.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome To">
+         <font>
+            <Font name="Times New Roman Bold" size="50.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="256.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SkiWorld">
+         <font>
+            <Font name="Times New Roman" size="30.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="14.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Copyright © 2017 by DevSquad." AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="320.0" />
+      <JFXButton buttonType="RAISED" layoutX="548.0" layoutY="2.0" onAction="#quit" style="-fx-border-color: transparent;" text="X" />
 	</children>
+   <stylesheets>
+      <URL value="@../styles/login.css" />
+      <URL value="@../styles/menu.css" />
+      <URL value="@../styles/menu_items.css" />
+   </stylesheets>
 </AnchorPane>

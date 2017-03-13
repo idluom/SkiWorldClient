@@ -2,6 +2,8 @@ package esprit.skiworld.skiworld_Client;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -61,7 +63,12 @@ public class TrainingController implements Initializable {
 			@Override
 			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 
-				filterMembreList((String) oldValue, (String) newValue);
+				try {
+					filterMembreList((String) oldValue, (String) newValue);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 
 		});
@@ -95,7 +102,7 @@ public class TrainingController implements Initializable {
 
 	}
 
-	private void filterMembreList(String oldValue, String newValue) {
+	private void filterMembreList(String oldValue, String newValue) throws ParseException {
 		ObservableList<Training> filteredList = FXCollections.observableArrayList();
 
 		if (RechercheTF == null || (newValue.length() < oldValue.length()) || newValue == null) {
@@ -159,6 +166,7 @@ public class TrainingController implements Initializable {
 		try {
 			proxy = (TrainingEJBRemote) ctx.lookup("/skiworld-ejb/TrainingEJB!Service.TrainingEJBRemote");
 			comp = TableTrack.getSelectionModel().getSelectedItem();
+			
 
 			proxy.deleteTraining(comp);
 			int selectedIndex = TableTrack.getSelectionModel().getSelectedIndex();
@@ -184,6 +192,7 @@ public class TrainingController implements Initializable {
 	private void Update() {
 
 		comp = TableTrack.getSelectionModel().getSelectedItem();
+		System.out.println(comp);
 		if (comp == null) {
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			alert.setTitle("SELECTED");

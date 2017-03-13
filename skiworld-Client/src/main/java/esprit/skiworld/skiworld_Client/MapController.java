@@ -48,7 +48,7 @@ public class MapController implements Initializable, MapComponentInitializedList
         MapOptions mapOptions = new MapOptions();
         //coords = latLong.toString();
         
-        mapOptions.center(new LatLong(36.7625546,8.6879178))
+        mapOptions.center(new LatLong(36.7625546,8.6879178)) // Ain Drahem
                 .mapType(MapTypeIdEnum.ROADMAP)
                 .overviewMapControl(false)
                 .panControl(false)
