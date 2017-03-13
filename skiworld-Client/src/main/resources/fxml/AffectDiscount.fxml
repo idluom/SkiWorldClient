@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -8,25 +9,27 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="esprit.skiworld.skiworld_Client.AffectDiscountController">
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.AffectDiscountController">
    <children>
-      <Label layoutX="302.0" layoutY="37.0" text="Affect Discount" />
-      <TableView fx:id="TabShop" layoutX="152.0" layoutY="130.0" prefHeight="240.0" prefWidth="303.0">
+      <Label layoutX="334.0" layoutY="20.0" text="Affect Discount" />
+      <TableView fx:id="TabShop" layoutX="152.0" layoutY="130.0" prefHeight="280.0" prefWidth="434.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="120.0">
         <columns>
-          <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
-          <TableColumn fx:id="category" prefWidth="75.0" text="Category" />
-            <TableColumn fx:id="type" prefWidth="75.0" text="Type" />
-            <TableColumn fx:id="price" prefWidth="75.0" text="Price" />
+          <TableColumn fx:id="name" prefWidth="150.0" resizable="false" text="Name" />
+          <TableColumn fx:id="category" prefWidth="100.0" resizable="false" text="Category" />
+            <TableColumn fx:id="type" prefWidth="100.0" resizable="false" text="Type" />
+            <TableColumn fx:id="price" resizable="false" text="Price" />
         </columns>
       </TableView>
-      <Label layoutX="256.0" layoutY="96.0" text="Shop Equipement" />
-      <ChoiceBox fx:id="choix" layoutX="473.0" layoutY="80.0" prefWidth="150.0" />
-      <Label layoutX="491.0" layoutY="54.0" text="Select Discount" />
-      <Button fx:id="affd" layoutX="513.0" layoutY="147.0" mnemonicParsing="false" onAction="#discount" text="Affect Discount" />
-      <Button fx:id="Bac" layoutX="41.0" layoutY="50.0" mnemonicParsing="false" onAction="#Back" text="Back" />
-      <Button fx:id="ref" layoutX="159.0" layoutY="84.0" mnemonicParsing="false" onAction="#Refrech" text="Refresh" />
-      <Button fx:id="old" layoutX="522.0" layoutY="268.0" mnemonicParsing="false" onAction="#oldPrice" text="Old Price" />
-      <TextField fx:id="T" layoutX="513.0" layoutY="306.0" prefHeight="25.0" prefWidth="82.0" />
+      <Label layoutX="255.0" layoutY="85.0" text="Shop Equipments" />
+      <ChoiceBox fx:id="choix" layoutX="473.0" layoutY="80.0" prefWidth="150.0" styleClass="combo-box" AnchorPane.leftAnchor="550.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="140.0" />
+      <Label layoutX="491.0" layoutY="54.0" text="Select Discount" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="120.0" />
+      <Button fx:id="affd" layoutX="513.0" layoutY="147.0" mnemonicParsing="false" onAction="#discount" styleClass="btn" text="Affect Discount" AnchorPane.leftAnchor="550.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="180.0" />
+      <Button fx:id="ref" layoutX="444.0" layoutY="398.0" mnemonicParsing="false" onAction="#Refrech" styleClass="btn" text="Refresh" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="400.0" />
+      <Button fx:id="old" layoutX="522.0" layoutY="268.0" mnemonicParsing="false" onAction="#oldPrice" styleClass="btn" text="Old Price" AnchorPane.bottomAnchor="160.0" AnchorPane.leftAnchor="550.0" AnchorPane.rightAnchor="100.0" />
+      <TextField fx:id="T" layoutX="513.0" layoutY="306.0" prefHeight="25.0" prefWidth="82.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="550.0" AnchorPane.rightAnchor="100.0" />
    </children>
+   <stylesheets>
+      <URL value="@../styles/menu.css" />
+      <URL value="@../styles/menu_items.css" />
+   </stylesheets>
 </AnchorPane>

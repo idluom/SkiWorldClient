@@ -23,11 +23,14 @@ import Entity.Transport;
 import esprit.skiworld.Business.TransportBusiness;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -46,7 +49,7 @@ public class AddTransportController implements Initializable {
 	@FXML
 	JFXTextField cost;
 	@FXML
-	JFXTextField type;
+	ChoiceBox<String> type;
 	@FXML
 	JFXDatePicker depDate;
 	@FXML
@@ -60,7 +63,8 @@ public class AddTransportController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		
+		ObservableList<String> ls = FXCollections.observableArrayList("Avion","Bus","Taxi","Train");
+		type.setItems(ls);
 	}
 	@FXML
 	public void addAction(ActionEvent event) throws IOException, ParseException    {
@@ -69,7 +73,7 @@ public class AddTransportController implements Initializable {
 		tr.setDeparturePlace(depP.getText());
 		tr.setNumberPlaces(Integer.parseInt(nPlaces.getText()));
 		tr.setPrice(Float.parseFloat(cost.getText()));
-		tr.setType(type.getText());
+		tr.setType(type.getSelectionModel().getSelectedItem());
 		LocalDate dt = depDate.getValue();
 		LocalTime dt2 = depTime.getValue();
 		String s = dt.toString()+" "+dt2.toString();

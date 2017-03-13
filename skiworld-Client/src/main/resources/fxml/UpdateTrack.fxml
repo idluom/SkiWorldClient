@@ -2,18 +2,25 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.UpdateTrackController">
+<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.UpdateTrackController">
    <children>
-      <Label fx:id="difflab" layoutX="83.0" layoutY="200.0" text="Difficulty" />
-      <Label fx:id="lenthlab" layoutX="83.0" layoutY="261.0" text="Length" />
-      <Label fx:id="pricelab" layoutX="83.0" layoutY="331.0" text="Price" />
-      <JFXButton layoutX="209.0" layoutY="462.0" onAction="#Cancel" text="Cancel" />
-      <JFXButton layoutX="374.0" layoutY="462.0" onAction="#Update" text="Update" />
-      <JFXTextField fx:id="diff" layoutX="161.0" layoutY="193.0" />
-      <JFXTextField fx:id="length" layoutX="161.0" layoutY="263.0" />
-      <JFXTextField fx:id="price" layoutX="161.0" layoutY="333.0" />
+      <Label fx:id="difflab" layoutX="60.0" layoutY="141.0" text="Difficulty :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="120.0" />
+      <Label fx:id="lenthlab" layoutX="47.0" layoutY="190.0" text="Length :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="180.0" />
+      <Label fx:id="pricelab" layoutX="53.0" layoutY="256.0" text="Price :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="240.0" />
+      <JFXButton layoutX="405.0" layoutY="116.0" onAction="#Cancel" styleClass="btn" text="Cancel" AnchorPane.topAnchor="120.0" />
+      <JFXButton layoutX="246.0" layoutY="309.0" onAction="#Update" styleClass="btn" text="Update" AnchorPane.rightAnchor="160.0" />
+      <JFXTextField fx:id="diff" layoutX="167.0" layoutY="144.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="120.0" />
+      <JFXTextField fx:id="length" layoutX="167.0" layoutY="185.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="180.0" />
+      <JFXTextField fx:id="price" layoutX="167.0" layoutY="242.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="240.0" />
+      <Text layoutX="211.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Track" />
    </children>
+   <stylesheets>
+      <URL value="@../styles/menu_items.css" />
+      <URL value="@../styles/menu.css" />
+   </stylesheets>
 </AnchorPane>

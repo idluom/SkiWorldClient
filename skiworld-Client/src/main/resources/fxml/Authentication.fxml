@@ -9,27 +9,27 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.AuthenticationController">
+<AnchorPane fx:id="root" prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.AuthenticationController">
 	<children>
 		<JFXTextField fx:id="usernameTF" labelFloat="true" layoutX="277.0" layoutY="150.0" promptText="Enter Your Username" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="150.0" />
 		<JFXPasswordField fx:id="passwordTF" labelFloat="true" layoutX="277.0" layoutY="219.0" promptText="Enter Your Password" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="190.0" />
-		<JFXButton layoutX="547.0" layoutY="194.0" onAction="#connectAction" prefWidth="120.0" text="Connect" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="230.0" />
-      <Label layoutX="180.0" layoutY="157.0" text="Username :" textFill="WHITE" AnchorPane.leftAnchor="220.0">
+		<JFXButton fx:id="connect" layoutX="547.0" layoutY="194.0" onAction="#connectAction" prefWidth="120.0" text="Connect" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="230.0" />
+      <Label fx:id="userLabel" layoutX="180.0" layoutY="157.0" text="Username :" textFill="WHITE" AnchorPane.leftAnchor="220.0">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="180.0" layoutY="197.0" text="Password :" textFill="WHITE" AnchorPane.leftAnchor="220.0">
+      <Label fx:id="passLabel" layoutX="180.0" layoutY="197.0" text="Password :" textFill="WHITE" AnchorPane.leftAnchor="220.0">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Text fill="WHITE" fontSmoothingType="LCD" layoutX="37.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome To">
+      <Text fx:id="welcome" fill="WHITE" fontSmoothingType="LCD" layoutX="37.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome To">
          <font>
             <Font name="Times New Roman Bold" size="50.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="256.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SkiWorld">
+      <Text fx:id="skiworld" fill="WHITE" layoutX="256.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SkiWorld">
          <font>
             <Font name="Times New Roman" size="30.0" />
          </font>

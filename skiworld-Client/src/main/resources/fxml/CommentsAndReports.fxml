@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" stylesheets="@../styles/menu_items.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.CommentsAndReportsController">
    <children>
@@ -34,10 +35,13 @@
                      <children>
                         <TableView fx:id="reportTable" layoutX="7.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                            <TableColumn fx:id="mail" prefWidth="230.0" resizable="false" text="User's Mail" />
-                            <TableColumn fx:id="reportObject" prefWidth="250.0" resizable="false" text="Report's Object" />
-                              <TableColumn fx:id="reportDate" prefWidth="120.0" resizable="false" text="Date" />
+                            <TableColumn fx:id="mail" prefWidth="256.0" resizable="false" text="User's Mail" />
+                            <TableColumn fx:id="reportObject" prefWidth="322.0" resizable="false" text="Report's Object" />
+                              <TableColumn fx:id="reportDate" prefWidth="143.0" resizable="false" text="Date" />
                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
                         </TableView>
                      </children>
                   </AnchorPane>
@@ -49,5 +53,6 @@
          </opaqueInsets>
       </TabPane>
       <JFXButton layoutX="757.0" layoutY="131.0" onAction="#refreshTables" styleClass="btn" text="Refresh" AnchorPane.leftAnchor="790.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="130.0" />
+      <Text layoutX="387.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comments And Reports" AnchorPane.topAnchor="20.0" />
    </children>
 </AnchorPane>

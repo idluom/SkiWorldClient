@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import org.controlsfx.control.Notifications;
-
 import javafx.animation.ParallelTransition;
 import javafx.animation.PathTransition;
 import javafx.event.ActionEvent;
@@ -41,9 +39,6 @@ public class MainPageController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    	Notifications notifBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5))
-				.title("Welcome").text("Welcome "+AuthenticationController.getAuth().getFirstName()+" "+AuthenticationController.getAuth().getLastName());
-		notifBuilder.showConfirm();
 
         pt = new PathTransition();
         Path pl = new Path();
@@ -132,8 +127,8 @@ public class MainPageController implements Initializable {
     }
     
     @FXML
-    private void clickTransport(ActionEvent event) {
-    	System.out.println("lanci lanci");
+    private void clickTransport(ActionEvent event) throws IOException {
+    	MainApp.changeScene("/fxml/Transport.fxml","Transportation");
     	pat.pause();
     }
     

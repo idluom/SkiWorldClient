@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,7 +11,7 @@
 
 <AnchorPane minHeight="500.0" minWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.TransportController">
    <children>
-      <TableView fx:id="transTable" layoutX="54.0" layoutY="78.0" opacity="0.66" prefHeight="345.0" prefWidth="692.0" stylesheets="@../styles/testBilel.css">
+      <TableView fx:id="transTable" layoutX="54.0" layoutY="78.0" opacity="0.66" prefHeight="345.0" prefWidth="692.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="90.0">
         <columns>
           <TableColumn fx:id="depPlaceColumn" prefWidth="96.0" text="Departure Place" />
           <TableColumn fx:id="depDateColumn" prefWidth="110.0" text="Departure Date" />
@@ -21,8 +22,8 @@
             <TableColumn fx:id="typeColumn" minWidth="6.0" text="Type" />
         </columns>
       </TableView>
-      <JFXButton fx:id="addButton" buttonType="RAISED" layoutX="278.0" layoutY="444.0" onAction="#addTrans" ripplerFill="#ff6b9a" text="Add" textAlignment="CENTER" textFill="#6200ff" />
-      <JFXButton fx:id="modifyButton" layoutX="384.0" layoutY="444.0" onAction="#modifyTrans" ripplerFill="#0fb9fc" text="Modify">
+      <JFXButton fx:id="addButton" buttonType="RAISED" layoutX="798.0" layoutY="127.0" onAction="#addTrans" ripplerFill="#ff6b9a" styleClass="btn" text="Add" textAlignment="CENTER" textFill="#6200ff" AnchorPane.leftAnchor="780.0" AnchorPane.rightAnchor="40.0" />
+      <JFXButton fx:id="modifyButton" buttonType="RAISED" layoutX="798.0" layoutY="184.0" onAction="#modifyTrans" ripplerFill="#0fb9fc" styleClass="btn" text="Modify" AnchorPane.leftAnchor="780.0" AnchorPane.rightAnchor="40.0">
          <textFill>
             <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0">
                <stops>
@@ -36,7 +37,7 @@
             </LinearGradient>
          </textFill>
       </JFXButton>
-      <JFXButton fx:id="deleteButton" layoutX="482.0" layoutY="444.0" onAction="#deleteTrans" ripplerFill="#0dbf27" text="Delete">
+      <JFXButton fx:id="deleteButton" buttonType="RAISED" layoutX="806.0" layoutY="236.0" onAction="#deleteTrans" ripplerFill="#0dbf27" styleClass="btn" text="Delete" AnchorPane.leftAnchor="780.0" AnchorPane.rightAnchor="40.0">
          <textFill>
             <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0">
                <stops>
@@ -50,6 +51,10 @@
             </LinearGradient>
          </textFill>
       </JFXButton>
-      <JFXTextField fx:id="searchTF" layoutX="601.0" layoutY="53.0" promptText="search" />
+      <JFXTextField fx:id="searchTF" labelFloat="true" layoutX="601.0" layoutY="53.0" promptText="Search..." AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="50.0" />
    </children>
+   <stylesheets>
+      <URL value="@../styles/menu_items.css" />
+      <URL value="@../styles/menu.css" />
+   </stylesheets>
 </AnchorPane>

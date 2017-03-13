@@ -17,9 +17,12 @@ import com.jfoenix.controls.JFXTimePicker;
 
 import Entity.Transport;
 import esprit.skiworld.Business.TransportBusiness;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 
 public class UpdateTransportController implements Initializable{
 	@FXML
@@ -31,7 +34,7 @@ public class UpdateTransportController implements Initializable{
 	@FXML
 	JFXTextField cost;
 	@FXML
-	JFXTextField type;
+	ChoiceBox<String> type;
 	@FXML
 	JFXDatePicker depDate;
 	@FXML
@@ -44,10 +47,13 @@ public class UpdateTransportController implements Initializable{
 	JFXButton addButton;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		ObservableList<String> ls = FXCollections.observableArrayList("Avoin","Bus","Taxi","Train");
+		type.setItems(ls);
+		
 		depP.setText(TransportController.upTrans.getDeparturePlace().toString());
 		arrPlace.setText(TransportController.upTrans.getArrivalPlace().toString());
 		cost.setText(TransportController.upTrans.getPrice().toString());
-		type.setText(TransportController.upTrans.getType().toString());
+		type.setValue(TransportController.upTrans.getType().toString());
 		nPlaces.setText(TransportController.upTrans.getNumberPlaces().toString());
 		arrDate.setValue(LocalDate.now());
 		arrTime.setValue(LocalTime.now());
@@ -60,7 +66,7 @@ public class UpdateTransportController implements Initializable{
 		TransportController.upTrans.setDeparturePlace(depP.getText());
 		TransportController.upTrans.setNumberPlaces(Integer.parseInt(nPlaces.getText()));
 		TransportController.upTrans.setPrice(Float.parseFloat(cost.getText()));
-		TransportController.upTrans.setType(type.getText());
+		TransportController.upTrans.setType(type.getSelectionModel().getSelectedItem());
 		LocalDate dt = depDate.getValue();
 		LocalTime dt2 = depTime.getValue();
 		String s = dt.toString()+" "+dt2.toString();

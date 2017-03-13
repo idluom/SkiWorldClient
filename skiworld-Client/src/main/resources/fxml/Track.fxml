@@ -2,22 +2,29 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.TrackController">
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.TrackController">
    <children>
-      <TableView fx:id="TableTrack" layoutX="61.0" layoutY="171.0" prefHeight="320.0" prefWidth="382.0">
+      <TableView fx:id="TableTrack" layoutX="61.0" layoutY="171.0" prefHeight="365.0" prefWidth="500.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="100.0">
         <columns>
-          <TableColumn fx:id="lengthCol" prefWidth="124.0" text="Length" />
-          <TableColumn fx:id="diffCol" prefWidth="117.0" text="Difficulty" />
-            <TableColumn fx:id="priceCol" prefWidth="140.0" text="Price" />
+          <TableColumn fx:id="lengthCol" prefWidth="192.0" text="Length" />
+          <TableColumn fx:id="diffCol" prefWidth="168.0" text="Difficulty" />
+            <TableColumn fx:id="priceCol" prefWidth="136.0" text="Price" />
         </columns>
       </TableView>
-      <JFXTextField fx:id="RechercheTF" layoutX="46.0" layoutY="77.0" promptText="Search" />
-      <JFXButton layoutX="557.0" layoutY="275.0" onAction="#DeleteTrack" text="Delete Track" />
-      <JFXButton layoutX="572.0" layoutY="319.0" onAction="#Add" text="Add Track" />
-      <JFXButton layoutX="572.0" layoutY="375.0" onAction="#Edit" text="Edit Track" />
+      <JFXTextField fx:id="RechercheTF" layoutX="46.0" layoutY="77.0" promptText="Search..." AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="60.0" />
+      <JFXButton layoutX="671.0" layoutY="160.0" onAction="#DeleteTrack" styleClass="btn" text="Delete Track" AnchorPane.leftAnchor="680.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="140.0" />
+      <JFXButton layoutX="686.0" layoutY="204.0" onAction="#Add" styleClass="btn" text="Add Track" AnchorPane.leftAnchor="680.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="180.0" />
+      <JFXButton layoutX="686.0" layoutY="260.0" onAction="#Edit" styleClass="btn" text="Edit Track" AnchorPane.leftAnchor="680.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="220.0" />
+      <Text layoutX="422.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tracks' List" AnchorPane.topAnchor="20.0" />
    </children>
+   <stylesheets>
+      <URL value="@../styles/menu_items.css" />
+      <URL value="@../styles/menu.css" />
+   </stylesheets>
 </AnchorPane>

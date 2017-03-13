@@ -2,13 +2,15 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.TrainingController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.TrainingController">
 	<children>
-		<TableView fx:id="TableTrack" layoutX="43.0" layoutY="200.0" prefHeight="295.0" prefWidth="595.0">
+		<TableView fx:id="TableTrack" layoutX="43.0" layoutY="200.0" prefHeight="295.0" prefWidth="595.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0">
 			<columns>
 				<TableColumn fx:id="BDCol" prefWidth="153.0" text="Begining Date" />
 				<TableColumn fx:id="EDCol" minWidth="5.0" prefWidth="147.0" text="End Date" />
@@ -17,11 +19,16 @@
 				<TableColumn fx:id="priceCol" prefWidth="100.0" text="Price" />
 			</columns>
 		</TableView>
-      <JFXTextField fx:id="RechercheTF" layoutX="34.0" layoutY="87.0" promptText="Search..." />
-      <JFXButton layoutX="679.0" layoutY="233.0" onAction="#Add" text="Add Training" />
-      <JFXButton layoutX="682.0" layoutY="307.0" onAction="#Delete" text="Delete Training" />
-      <JFXButton layoutX="679.0" layoutY="374.0" onAction="#Update" text="Update Training" />
+      <JFXTextField fx:id="RechercheTF" layoutX="34.0" layoutY="87.0" promptText="Search..." AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="60.0" />
+      <JFXButton layoutX="679.0" layoutY="233.0" onAction="#Add" styleClass="btn" text="Add Training" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="100.0" />
+      <JFXButton layoutX="682.0" layoutY="307.0" onAction="#Delete" styleClass="btn" text="Delete Training" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="150.0" />
+      <JFXButton layoutX="679.0" layoutY="374.0" onAction="#Update" styleClass="btn" text="Update Training" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="200.0" />
+      <Text layoutX="426.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trainings" AnchorPane.topAnchor="20.0" />
     
 		
 	</children>
+   <stylesheets>
+      <URL value="@../styles/menu_items.css" />
+      <URL value="@../styles/menu.css" />
+   </stylesheets>
 </AnchorPane>

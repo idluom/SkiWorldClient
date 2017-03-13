@@ -4,70 +4,77 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTimePicker?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane minHeight="500.0" minWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="esprit.skiworld.skiworld_Client.AddTransportController">
+<AnchorPane minHeight="500.0" minWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.AddTransportController">
    <children>
-      <Separator layoutY="376.0" prefHeight="11.0" prefWidth="904.0" />
-      <Label layoutX="60.0" layoutY="140.0" prefHeight="27.0" prefWidth="108.0" text="Departure Place ">
+      <Separator layoutY="376.0" prefHeight="11.0" prefWidth="904.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Label layoutX="60.0" layoutY="140.0" prefHeight="27.0" text="Departure Place  :" AnchorPane.topAnchor="120.0">
          <padding>
             <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
          </padding>
       </Label>
-      <Label layoutX="60.0" layoutY="170.0" prefHeight="27.0" prefWidth="108.0" text="Departure Date">
+      <Label layoutX="60.0" layoutY="170.0" prefHeight="27.0" text="Departure Date :" AnchorPane.topAnchor="170.0">
          <padding>
             <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
          </padding>
       </Label>
-      <Label layoutX="60.0" layoutY="200.0" prefHeight="27.0" prefWidth="108.0" text="Departure Time">
+      <Label layoutX="60.0" layoutY="200.0" prefHeight="27.0" text="Departure Time :" AnchorPane.topAnchor="220.0">
          <padding>
             <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
          </padding>
       </Label>
-      <Label layoutX="500.0" layoutY="140.0" prefHeight="27.0" prefWidth="108.0" text="Arrival Place ">
+      <Label layoutX="500.0" layoutY="140.0" prefHeight="27.0" text="Arrival Place  :" AnchorPane.leftAnchor="510.0" AnchorPane.topAnchor="120.0">
          <padding>
             <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
          </padding>
       </Label>
-      <Label layoutX="500.0" layoutY="170.0" prefHeight="27.0" prefWidth="108.0" text="Arrival Date ">
+      <Label layoutX="500.0" layoutY="170.0" prefHeight="27.0" text="Arrival Date  :" AnchorPane.leftAnchor="510.0" AnchorPane.topAnchor="170.0">
          <padding>
             <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
          </padding>
       </Label>
-      <Label layoutX="500.0" layoutY="200.0" prefHeight="27.0" prefWidth="108.0" text="Arrival Time">
+      <Label layoutX="500.0" layoutY="200.0" prefHeight="27.0" text="Arrival Time :" AnchorPane.leftAnchor="510.0" AnchorPane.topAnchor="220.0">
          <padding>
             <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
          </padding>
       </Label>
-      <Label layoutX="60.0" layoutY="230.0" prefHeight="27.0" prefWidth="108.0" text="Number Of Places">
+      <Label layoutX="60.0" layoutY="230.0" prefHeight="27.0" text="Number Of Places :" AnchorPane.topAnchor="270.0">
          <padding>
             <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
          </padding>
       </Label>
-      <Label layoutX="500.0" layoutY="230.0" prefHeight="27.0" prefWidth="108.0" text="Cost PER Person">
+      <Label layoutX="500.0" layoutY="230.0" prefHeight="27.0" text="Cost Per Person :" AnchorPane.leftAnchor="510.0" AnchorPane.topAnchor="270.0">
          <padding>
             <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
          </padding>
       </Label>
-      <Label layoutX="450.0" layoutY="300.0" prefHeight="27.0" prefWidth="108.0" text="Type">
+      <Label layoutX="450.0" layoutY="300.0" prefHeight="27.0" prefWidth="108.0" text="Type :" AnchorPane.leftAnchor="510.0" AnchorPane.topAnchor="320.0">
          <padding>
             <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
          </padding>
       </Label>
-      <Separator layoutX="10.0" layoutY="80.0" prefHeight="11.0" prefWidth="904.0" />
-      <JFXTextField fx:id="depP" layoutX="180.0" layoutY="140.0" />
-      <JFXTextField fx:id="nPlaces" layoutX="180.0" layoutY="230.0" />
-      <JFXTextField fx:id="cost" layoutX="630.0" layoutY="230.0" />
-      <JFXTextField fx:id="type" layoutX="519.0" layoutY="301.0" />
-      <JFXDatePicker fx:id="depDate" layoutX="180.0" layoutY="170.0" />
-      <JFXDatePicker fx:id="arrDate" layoutX="630.0" layoutY="170.0" />
-      <JFXTimePicker fx:id="depTime" layoutX="180.0" layoutY="200.0" />
-      <JFXTimePicker fx:id="arrTime" layoutX="630.0" layoutY="200.0" />
-      <JFXTextField fx:id="arrPlace" layoutX="630.0" layoutY="140.0" />
-      <JFXButton fx:id="addButton" layoutX="433.0" layoutY="382.0" onAction="#addAction" text="Add" />
+      <Separator layoutX="10.0" layoutY="80.0" prefHeight="11.0" prefWidth="904.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
+      <JFXTextField fx:id="depP" labelFloat="true" layoutX="180.0" layoutY="140.0" promptText="Departure" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="120.0" />
+      <JFXTextField fx:id="nPlaces" labelFloat="true" layoutX="180.0" layoutY="230.0" promptText="Number Of Places" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="270.0" />
+      <JFXTextField fx:id="cost" labelFloat="true" layoutX="630.0" layoutY="230.0" promptText="Cost / Person" AnchorPane.leftAnchor="620.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="270.0" />
+      <JFXDatePicker fx:id="depDate" layoutX="180.0" layoutY="170.0" promptText="01/01/2017" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="170.0" />
+      <JFXDatePicker fx:id="arrDate" layoutX="630.0" layoutY="170.0" promptText="01/01/2017" AnchorPane.leftAnchor="620.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="170.0" />
+      <JFXTimePicker fx:id="depTime" layoutX="180.0" layoutY="200.0" promptText="00 : 00" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="220.0" />
+      <JFXTimePicker fx:id="arrTime" layoutX="630.0" layoutY="200.0" promptText="00 : 00" AnchorPane.leftAnchor="620.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="220.0" />
+      <JFXTextField fx:id="arrPlace" labelFloat="true" layoutX="630.0" layoutY="140.0" promptText="Arrival" AnchorPane.leftAnchor="620.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="120.0" />
+      <JFXButton fx:id="addButton" layoutX="429.0" layoutY="404.0" onAction="#addAction" styleClass="btn" text="Add" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="408.0" AnchorPane.rightAnchor="408.0" />
+      <ChoiceBox layoutX="618.0" layoutY="321.0" prefWidth="150.0" styleClass="combo-box" AnchorPane.leftAnchor="620.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="320.0" />
+      <Text layoutX="395.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add A New Transport" AnchorPane.topAnchor="20.0" />
    </children>
+   <stylesheets>
+      <URL value="@../styles/menu_items.css" />
+      <URL value="@../styles/menu.css" />
+   </stylesheets>
 </AnchorPane>

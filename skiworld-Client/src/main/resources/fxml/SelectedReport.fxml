@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
@@ -21,6 +22,10 @@
       <Text layoutX="166.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Report" AnchorPane.leftAnchor="166.0" AnchorPane.rightAnchor="498.22265625" AnchorPane.topAnchor="10.0" />
       <Text layoutX="509.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Response" AnchorPane.topAnchor="10.0" />
       <TextArea fx:id="response" layoutX="422.0" layoutY="39.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="40.0" />
-      <JFXButton layoutX="601.0" layoutY="305.0" onAction="#respondToReport" prefWidth="100.0" text="Respond" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="47.0" />
+      <JFXButton layoutX="601.0" layoutY="305.0" onAction="#respondToReport" prefWidth="100.0" styleClass="btn" text="Respond" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="47.0" />
    </children>
+   <stylesheets>
+      <URL value="@../styles/menu_items.css" />
+      <URL value="@../styles/menu.css" />
+   </stylesheets>
 </AnchorPane>

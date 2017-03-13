@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
 
 public class MainApp extends Application {
@@ -16,9 +15,11 @@ public class MainApp extends Application {
     }
     public static Stage s1 = new Stage(StageStyle.DECORATED);
     public static Stage s = new Stage();
+    
 	@SuppressWarnings("static-access")
 	@Override
 	public void start(Stage primaryStage) {
+		
 		s = new Stage(s.getStyle().UNDECORATED);
 		try {
 			Parent root = FXMLLoader.load(MainApp.class.getResource("/fxml/Authentication.fxml"));

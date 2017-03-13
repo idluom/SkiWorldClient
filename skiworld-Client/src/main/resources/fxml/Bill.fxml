@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="esprit.skiworld.skiworld_Client.BillController">
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.BillController">
    <children>
-      <Label layoutX="269.0" layoutY="63.0" text="Bill List" textFill="#dd0505" />
-      <TableView fx:id="TabBill" layoutX="188.0" layoutY="116.0" prefHeight="200.0" prefWidth="280.0">
+      <TableView fx:id="TabBill" layoutX="188.0" layoutY="116.0" prefHeight="200.0" prefWidth="280.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="120.0">
         <columns>
           <TableColumn fx:id="date" prefWidth="103.0" text="Date" />
-          <TableColumn fx:id="cost" prefWidth="66.0" text="Cost" />
-            <TableColumn fx:id="eq" prefWidth="110.0" text="Equipement" />
+          <TableColumn fx:id="cost" prefWidth="87.0" text="Cost" />
+            <TableColumn fx:id="eq" prefWidth="187.0" text="Equipement" />
         </columns>
       </TableView>
-      <Button fx:id="ref" layoutX="149.0" layoutY="68.0" mnemonicParsing="false" onAction="#Refresh" text="Refresh" />
-      <Button fx:id="bac" layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#Back" text="Back" />
-      <TextField fx:id="T" layoutX="450.0" layoutY="68.0" promptText="Research" />
+      <Button fx:id="ref" layoutX="424.0" layoutY="76.0" mnemonicParsing="false" onAction="#Refresh" prefHeight="30.0" styleClass="btn" text="Refresh" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="70.0" />
+      <TextField fx:id="T" layoutX="120.0" layoutY="74.0" promptText="Search..." AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="70.0" />
+      <Text layoutX="395.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bills And Statistiques" AnchorPane.topAnchor="20.0" />
    </children>
+   <stylesheets>
+      <URL value="@../styles/menu_items.css" />
+      <URL value="@../styles/menu.css" />
+   </stylesheets>
 </AnchorPane>

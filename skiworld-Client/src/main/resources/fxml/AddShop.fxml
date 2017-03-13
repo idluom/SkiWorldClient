@@ -1,34 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.AddShopController">
    <children>
-      <Label layoutX="327.0" layoutY="35.0" prefHeight="50.0" prefWidth="228.0" text="Equipement ADD" textFill="#cd0e0e" />
-      <Label layoutX="5.0" layoutY="102.0" prefHeight="26.0" prefWidth="106.0" text="Equipement name" />
-      <TextField fx:id="name" layoutX="208.0" layoutY="103.0" />
-      <Label layoutX="5.0" layoutY="142.0" prefHeight="26.0" prefWidth="139.0" text="Equipement Categorie" />
-      <TextField fx:id="categorie" layoutX="208.0" layoutY="143.0" />
-      <Label layoutX="6.0" layoutY="185.0" prefHeight="17.0" prefWidth="123.0" text="type" />
-      <TextField fx:id="type" layoutX="208.0" layoutY="181.0" />
-      <Label layoutX="6.0" layoutY="221.0" prefHeight="25.0" prefWidth="87.0" text="price" />
-      <TextField fx:id="price" layoutX="208.0" layoutY="221.0" />
-      <Label layoutX="1.0" layoutY="310.0" text="Inventory quantity" />
-      <Label layoutX="6.0" layoutY="267.0" prefHeight="17.0" prefWidth="106.0" text="Shop quantity" />
-      <TextField fx:id="sq" layoutX="208.0" layoutY="263.0" />
-      <TextField fx:id="tq" layoutX="208.0" layoutY="306.0" />
-      <Button fx:id="add" layoutX="151.0" layoutY="411.0" mnemonicParsing="false" onAction="#addeEquipement" prefHeight="25.0" prefWidth="71.0" text="Add" />
-      <ImageView fx:id="imgEquipement" fitHeight="239.0" fitWidth="228.0" layoutX="510.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../../Desktop/images.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="select" layoutX="555.0" layoutY="276.0" mnemonicParsing="false" onAction="#clickImage" prefHeight="25.0" prefWidth="139.0" text="Select file" />
-      <Button fx:id="bac" layoutX="32.0" layoutY="23.0" mnemonicParsing="false" onAction="#Back" text="Back" />
+      <Label layoutX="5.0" layoutY="102.0" prefHeight="26.0" prefWidth="106.0" text="Equipement name :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="100.0" />
+      <TextField fx:id="name" layoutX="208.0" layoutY="103.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="100.0" />
+      <Label layoutX="5.0" layoutY="142.0" prefHeight="26.0" prefWidth="139.0" text="Equipement Category :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="140.0" />
+      <TextField fx:id="categorie" layoutX="208.0" layoutY="143.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="140.0" />
+      <Label layoutX="6.0" layoutY="185.0" prefHeight="17.0" prefWidth="123.0" text="Type :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="180.0" />
+      <TextField fx:id="type" layoutX="208.0" layoutY="181.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="180.0" />
+      <Label layoutX="6.0" layoutY="221.0" prefHeight="25.0" prefWidth="87.0" text="Price :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="220.0" />
+      <TextField fx:id="price" layoutX="208.0" layoutY="221.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="220.0" />
+      <Label layoutX="1.0" layoutY="310.0" text="Inventory quantity :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="300.0" />
+      <Label layoutX="6.0" layoutY="267.0" prefHeight="17.0" prefWidth="106.0" text="Shop quantity :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="260.0" />
+      <TextField fx:id="sq" layoutX="208.0" layoutY="263.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="260.0" />
+      <TextField fx:id="tq" layoutX="208.0" layoutY="306.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="300.0" />
+      <Button fx:id="add" layoutX="320.0" layoutY="355.0" mnemonicParsing="false" onAction="#addeEquipement" prefHeight="30.0" prefWidth="71.0" styleClass="btn" text="Add" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="500.0" />
+      <Pane layoutX="510.0" layoutY="27.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="520.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <ImageView fx:id="imgEquipement" fitHeight="239.0" fitWidth="228.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+      <Button fx:id="select" layoutX="544.0" layoutY="341.0" mnemonicParsing="false" onAction="#clickImage" prefHeight="30.0" prefWidth="228.0" styleClass="btn" text="Select file" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="520.0" AnchorPane.rightAnchor="150.0" />
+      <Text layoutX="409.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Equipment" AnchorPane.topAnchor="20.0" />
    </children>
+   <stylesheets>
+      <URL value="@../styles/menu.css" />
+      <URL value="@../styles/menu_items.css" />
+   </stylesheets>
 </AnchorPane>

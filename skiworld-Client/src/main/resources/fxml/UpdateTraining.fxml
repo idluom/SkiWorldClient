@@ -4,24 +4,31 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTimePicker?>
+<?import java.net.URL?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.UpdateTrainingController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.UpdateTrainingController">
    <children>
-      <Label fx:id="Bdlab" layoutX="59.0" layoutY="167.0" text="Begining Date" />
-      <Label fx:id="Edlab" layoutX="59.0" layoutY="229.0" text="End Date" />
-      <Label fx:id="Levellab" layoutX="70.0" layoutY="292.0" text="Level" />
-      <Label fx:id="Numberlab" layoutX="62.0" layoutY="355.0" text="Number" />
-      <Label fx:id="PriceLab" layoutX="71.0" layoutY="426.0" text="Price" />
-      <JFXDatePicker fx:id="BdTF" layoutX="156.0" layoutY="151.0" />
-      <JFXDatePicker fx:id="EdTF" layoutX="156.0" layoutY="218.0" />
-      <ChoiceBox fx:id="LevelTF" layoutX="156.0" layoutY="288.0" prefWidth="150.0" styleClass="combo-box" />
-      <JFXTextField fx:id="NumberTF" layoutX="156.0" layoutY="348.0" maxWidth="68.0" minWidth="68.0" prefHeight="31.0" prefWidth="68.0" />
-      <JFXTextField fx:id="PriceTF" layoutX="156.0" layoutY="419.0" maxWidth="68.0" minWidth="68.0" prefHeight="31.0" prefWidth="68.0" />
-      <JFXButton layoutX="574.0" layoutY="237.0" onAction="#Update" styleClass="btn" text="Update" />
-      <JFXButton layoutX="576.0" layoutY="309.0" onAction="#Cancel" styleClass="buttonCircleBlack" text="Cancel" />
-      <JFXTimePicker fx:id="BdTTF" layoutX="354.0" layoutY="151.0" prefHeight="28.0" prefWidth="102.0" />
+      <Label fx:id="Bdlab" layoutX="59.0" layoutY="167.0" text="Begining Date :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="150.0" />
+      <Label fx:id="Edlab" layoutX="59.0" layoutY="229.0" text="End Date :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="200.0" />
+      <Label fx:id="Levellab" layoutX="70.0" layoutY="292.0" text="Level :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="250.0" />
+      <Label fx:id="Numberlab" layoutX="62.0" layoutY="355.0" text="Number :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="300.0" />
+      <Label fx:id="PriceLab" layoutX="71.0" layoutY="426.0" text="Price :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="350.0" />
+      <JFXDatePicker fx:id="BdTF" layoutX="156.0" layoutY="151.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="150.0" />
+      <JFXDatePicker fx:id="EdTF" layoutX="156.0" layoutY="218.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="200.0" />
+      <ChoiceBox fx:id="LevelTF" layoutX="156.0" layoutY="288.0" prefWidth="150.0" styleClass="combo-box" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="250.0" />
+      <JFXTextField fx:id="NumberTF" layoutX="156.0" layoutY="348.0" maxWidth="68.0" minWidth="68.0" prefHeight="31.0" prefWidth="68.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="300.0" />
+      <JFXTextField fx:id="PriceTF" layoutX="156.0" layoutY="419.0" maxWidth="68.0" minWidth="68.0" prefHeight="31.0" prefWidth="68.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="350.0" />
+      <JFXButton layoutX="574.0" layoutY="237.0" onAction="#Update" styleClass="btn" text="Update" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="150.0" />
+      <JFXButton layoutX="576.0" layoutY="309.0" onAction="#Cancel" styleClass="btn" text="Cancel" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="250.0" />
+      <JFXTimePicker fx:id="BdTTF" layoutX="354.0" layoutY="151.0" prefHeight="28.0" prefWidth="102.0" AnchorPane.leftAnchor="360.0" AnchorPane.topAnchor="150.0" />
+      <Text layoutX="307.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Training" AnchorPane.topAnchor="20.0" />
    </children>
+   <stylesheets>
+      <URL value="@../styles/menu_items.css" />
+      <URL value="@../styles/menu.css" />
+   </stylesheets>
 </AnchorPane>
