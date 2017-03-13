@@ -6,24 +6,42 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.UpdateTrackController">
    <children>
-      <Label fx:id="difflab" layoutX="70.0" layoutY="255.0" text="Difficulty :" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="255.0" />
-      <Label fx:id="lenthlab" layoutX="75.0" layoutY="290.0" text="Length :" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="290.0" />
-      <Label fx:id="pricelab" layoutX="80.0" layoutY="326.0" text="Price :" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="326.0" />
-      <JFXButton layoutX="405.0" layoutY="116.0" onAction="#Cancel" styleClass="btn" text="Cancel" AnchorPane.topAnchor="120.0" />
-      <JFXButton layoutX="256.0" layoutY="359.0" onAction="#Update" styleClass="btn" text="Update" AnchorPane.rightAnchor="160.0" />
-      <JFXTextField fx:id="length" layoutX="140.0" layoutY="284.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="284.0" />
-      <JFXTextField fx:id="price" layoutX="140.0" layoutY="320.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="320.0" />
-      <Text layoutX="211.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Track" />
-      <Label layoutX="66.0" layoutY="60.0" text="Title :" />
-      <Label layoutX="61.0" layoutY="96.0" text="Description :" />
-      <JFXTextArea fx:id="DescriptionTF" layoutX="140.0" layoutY="96.0" prefHeight="141.0" prefWidth="245.0" promptText="..." />
-      <JFXTextField fx:id="TitleTF" layoutX="144.0" layoutY="56.0" prefHeight="28.0" prefWidth="200.0" promptText="Title" />
-      <ChoiceBox fx:id="diff" layoutX="144.0" layoutY="251.0" prefHeight="25.0" prefWidth="193.0" />
+      <AnchorPane fx:id="TableTrack" layoutX="61.0" layoutY="56.0">
+         <children>
+            <Label fx:id="difflab" layoutX="9.0" layoutY="199.0" text="Difficulty :" />
+            <Label fx:id="lengthlab" layoutX="14.0" layoutY="234.0" text="Length :" />
+            <Label fx:id="pricelab" layoutX="19.0" layoutY="270.0" text="Price :" />
+            <JFXButton layoutX="344.0" layoutY="64.0" onAction="#Cancel" styleClass="btn" text="Cancel" />
+            <JFXButton layoutX="195.0" layoutY="303.0" onAction="#Update" styleClass="btn" text="Update" />
+            <JFXTextField fx:id="length" layoutX="79.0" layoutY="228.0" />
+            <JFXTextField fx:id="price" layoutX="79.0" layoutY="264.0" />
+            <Label layoutX="5.0" layoutY="4.0" text="Title :" />
+            <Label layoutY="40.0" text="Description :" />
+            <JFXTextArea fx:id="DescriptionTF" layoutX="79.0" layoutY="40.0" prefHeight="141.0" prefWidth="245.0" promptText="..." />
+            <JFXTextField fx:id="TitleTF" layoutX="83.0" prefHeight="28.0" prefWidth="200.0" promptText="Title" />
+            <ChoiceBox fx:id="diff" layoutX="83.0" layoutY="195.0" prefHeight="25.0" prefWidth="193.0" styleClass="combo-box" />
+         </children>
+      </AnchorPane>
+      <Text fill="#2b579a" layoutX="36.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Training' List">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="loading" fitHeight="27.0" fitWidth="30.0" layoutX="203.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/loading.GIF" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="ProgressLoading" layoutX="5.0" layoutY="32.0" prefHeight="14.0" prefWidth="490.0" progress="0.0" />
    </children>
    <stylesheets>
       <URL value="@../styles/menu_items.css" />

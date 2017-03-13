@@ -64,43 +64,32 @@ public class TrackController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		TableTrack.setVisible(false);
-		InitialContext ctx = null;
-		try {
-			ctx = new InitialContext();
-		} catch (NamingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 		TableTrack.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		lengthCol.setCellValueFactory(new PropertyValueFactory<>("length"));
 		Title.setCellValueFactory(new PropertyValueFactory<>("title"));
 		priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 		diffCol.setCellValueFactory(new PropertyValueFactory<>("difficulty"));
 		ProgressLoading.setProgress(0);
-        ProgressLoading.progressProperty().unbind();
-        task= Loading.load();
-        ProgressLoading.progressProperty().bind(task.progressProperty());
-        new Thread(task).start();
-        task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-            @Override
-            public void handle(WorkerStateEvent event) {
-            	TableTrack.setVisible(true);
-            	TranslateTransition tt = new TranslateTransition(Duration.seconds(2),TableTrack);
-            	tt.setFromY(50);
-            	tt.setToY(0);
-            	tt.play();
-            	loading.setVisible(false);
-            }
-        });
-        TrackEJBRemote proxy;
-		try {
-			proxy = (TrackEJBRemote) ctx.lookup("/skiworld-ejb/TrackEJB!Service.TrackEJBRemote");
-			ObservableList<Track> champs = FXCollections.observableArrayList(proxy.findAll());
+		ProgressLoading.progressProperty().unbind();
+		task = Loading.load();
+		ProgressLoading.progressProperty().bind(task.progressProperty());
+		new Thread(task).start();
+		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			@Override
+			public void handle(WorkerStateEvent event) {
+				TableTrack.setVisible(true);
+				TranslateTransition tt = new TranslateTransition(Duration.seconds(2), TableTrack);
+				tt.setFromY(50);
+				tt.setToY(0);
+				tt.play();
+				loading.setVisible(false);
+			}
+		});
+		
+			
+			ObservableList<Track> champs = FXCollections.observableArrayList(new TrackBusiness().findAll());
 			TableTrack.setItems(champs);
-		} catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 
 		RechercheTF.textProperty().addListener(new ChangeListener<Object>() {
 
@@ -111,7 +100,6 @@ public class TrackController implements Initializable {
 			}
 
 		});
-		
 
 	}
 
@@ -124,15 +112,13 @@ public class TrackController implements Initializable {
 			alert.setHeaderText("No Track Selected");
 			alert.showAndWait();
 		}
-		
-			comp = TableTrack.getSelectionModel().getSelectedItem();
 
-			new TrackBusiness().deleteTrack(comp);
-			int selectedIndex = TableTrack.getSelectionModel().getSelectedIndex();
-			TableTrack.getItems().remove(selectedIndex);
+		comp = TableTrack.getSelectionModel().getSelectedItem();
 
-		
-		
+		new TrackBusiness().deleteTrack(comp);
+		int selectedIndex = TableTrack.getSelectionModel().getSelectedIndex();
+		TableTrack.getItems().remove(selectedIndex);
+
 		Notifications notBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5))
 				.title("Action Completed").text("The Track was successfuly Deleted");
 		notBuilder.showConfirm();
@@ -148,26 +134,11 @@ public class TrackController implements Initializable {
 			s.setScene(scene);
 			s.showAndWait();
 		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
-		InitialContext ctx = null;
-		try {
-			ctx = new InitialContext();
-		} catch (NamingException e) {
 
 			e.printStackTrace();
 		}
-		TrackEJBRemote proxy;
-		try {
-			proxy = (TrackEJBRemote) ctx.lookup("/skiworld-ejb/TrackEJB!Service.TrackEJBRemote");
-			champs = FXCollections.observableArrayList(proxy.findAll());
-			TableTrack.setItems(champs);
-
-		} catch (NamingException e) {
-
-			e.printStackTrace();
-		}
+		champs = FXCollections.observableArrayList(new TrackBusiness().findAll());
+		TableTrack.setItems(champs);
 	}
 
 	@FXML
@@ -180,58 +151,26 @@ public class TrackController implements Initializable {
 			alert.setHeaderText("No Track Selected");
 			alert.showAndWait();
 		}
-		
+
 		try {
 			Parent root = FXMLLoader.load(MainApp.class.getResource("/fxml/UpdateTrack.fxml"));
 			Scene scene = new Scene(root);
 			s.setScene(scene);
 			s.showAndWait();
 		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
-		InitialContext ctx = null;
-		try {
-			ctx = new InitialContext();
-		} catch (NamingException e) {
 
 			e.printStackTrace();
 		}
-		TrackEJBRemote proxy;
-		try {
-			proxy = (TrackEJBRemote) ctx.lookup("/skiworld-ejb/TrackEJB!Service.TrackEJBRemote");
-			champs = FXCollections.observableArrayList(proxy.findAll());
-			TableTrack.setItems(champs);
-
-		} catch (NamingException e) {
-
-			e.printStackTrace();
-		}
-		
+		champs = FXCollections.observableArrayList(new TrackBusiness().findAll());
+		TableTrack.setItems(champs);
 	}
 
 	private void filterMembreList(String oldValue, String newValue) {
 		ObservableList<Track> filteredList = FXCollections.observableArrayList();
 
 		if (RechercheTF == null || (newValue.length() < oldValue.length()) || newValue == null) {
-			InitialContext ctx = null;
-			try {
-				ctx = new InitialContext();
-			} catch (NamingException e) {
-
-				e.printStackTrace();
-			}
-			TrackEJBRemote proxy;
-			try {
-				proxy = (TrackEJBRemote) ctx.lookup("/skiworld-ejb/TrackEJB!Service.TrackEJBRemote");
-				ObservableList<Track> champs = FXCollections.observableArrayList(proxy.findAll());
+				ObservableList<Track> champs = FXCollections.observableArrayList(new TrackBusiness().findAll());
 				TableTrack.setItems(champs);
-
-			} catch (NamingException e) {
-
-				e.printStackTrace();
-			}
-
 		} else {
 
 			newValue = newValue.toUpperCase();
@@ -252,5 +191,5 @@ public class TrackController implements Initializable {
 			TableTrack.setItems(filteredList);
 		}
 	}
-	
+
 }

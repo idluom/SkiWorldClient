@@ -13,21 +13,35 @@ import org.controlsfx.control.Notifications;
 
 import Entity.Track;
 import Service.TrackEJBRemote;
+import esprit.skiworld.Business.Loading;
 import esprit.skiworld.Business.TrackBusiness;
+import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class AddTrackController implements Initializable {
-
+	private Task<?> task;
+	@FXML
+	private ProgressBar ProgressLoading;
+	@FXML
+	ImageView loading;
+	@FXML 
+	private AnchorPane TableTrack;
 	@FXML
 	private ChoiceBox<String> diff;
 	ObservableList<String> comboList = FXCollections.observableArrayList("Easy", "Amateur", "Average", "Hard",
@@ -49,8 +63,25 @@ public class AddTrackController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		TableTrack.setVisible(false);
 		diff.setValue("Hard");
 		diff.setItems(comboList);
+		ProgressLoading.setProgress(0);
+		ProgressLoading.progressProperty().unbind();
+		task = Loading.load();
+		ProgressLoading.progressProperty().bind(task.progressProperty());
+		new Thread(task).start();
+		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			@Override
+			public void handle(WorkerStateEvent event) {
+				TableTrack.setVisible(true);
+				TranslateTransition tt = new TranslateTransition(Duration.seconds(1), TableTrack);
+				tt.setFromY(50);
+				tt.setToY(0);
+				tt.play();
+				loading.setVisible(false);
+			}
+		});
 	}
 
 	@FXML
@@ -87,12 +118,15 @@ public class AddTrackController implements Initializable {
 			new TrackBusiness().addTrack(track);
 
 			// les alerts
+			TrackController.s.close();
+			if(ok==0){
 			Notifications notBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5)).
 					title("Action Completed").text("The Track was successfuly Added");
 			notBuilder.showConfirm();
+			}
 			
 		}
-		TrackController.s.close();
+		
 	}
 
 	@FXML

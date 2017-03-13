@@ -20,8 +20,14 @@ import com.jfoenix.controls.JFXTimePicker;
 import Entity.Training;
 
 import Service.TrainingEJBRemote;
+import esprit.skiworld.Business.Loading;
+import esprit.skiworld.Business.TrainingBusiness;
+import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -29,11 +35,21 @@ import javafx.scene.control.ChoiceBox;
 
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 public class AddTrainingController implements Initializable,Comparable<LocalDate> {
+	private Task<?> task;
+	@FXML
+	private ProgressBar ProgressLoading;
+	@FXML
+	ImageView loading;
+	@FXML 
+	private AnchorPane TableTrack;
 	@FXML
 	private JFXTimePicker BdTTF;
 	
@@ -68,8 +84,25 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		TableTrack.setVisible(false);
 		LevelTF.setValue("Hard");
 		LevelTF.setItems(comboList);
+		ProgressLoading.setProgress(0);
+		ProgressLoading.progressProperty().unbind();
+		task = Loading.load();
+		ProgressLoading.progressProperty().bind(task.progressProperty());
+		new Thread(task).start();
+		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			@Override
+			public void handle(WorkerStateEvent event) {
+				TableTrack.setVisible(true);
+				TranslateTransition tt = new TranslateTransition(Duration.seconds(1), TableTrack);
+				tt.setFromY(50);
+				tt.setToY(0);
+				tt.play();
+				loading.setVisible(false);
+			}
+		});
 	}
 
 	@FXML
@@ -143,20 +176,6 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 			float price = Float.valueOf(PriceTF.getText());
 			int number = Integer.valueOf(NumberTF.getText());
 			String level = (String) LevelTF.getValue();
-//			LocalDate dateB = BdTF.getValue();
-//			LocalDate dateE = EdTF.getValue();
-			InitialContext ctx = null;
-			try {
-				ctx = new InitialContext();
-			} catch (NamingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			TrainingEJBRemote proxy;
-			try {
-				proxy = (TrainingEJBRemote) ctx.lookup("/skiworld-ejb/TrainingEJB!Service.TrainingEJBRemote");
-				// ObservableList<Track> champs =
-				// FXCollections.observableArrayList(proxy.findAll());
 				String DD = java.sql.Date.valueOf(dateB)+" "+(java.sql.Time.valueOf(dateBT));
 				Date DDD = java.sql.Date.valueOf(dateB);
 				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -170,7 +189,7 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 					String b = BdTF.getValue().toString();
 					da = df.parse(DD);
 					Df = dff.parse(b);
-					if(proxy.findAllTrainingByLevel(level,Df).size()==0){
+					if(new TrainingBusiness().findAllTrainingByLevel(level,Df).size()==0){
 						training.setBegeningDate(da);
 						training.setDescription(DescriptionTF.getText());
 						training.setTitle(TitleTF.getText());
@@ -189,33 +208,20 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 						ok=1;
 					}
 					if(ok==0){
-						proxy.addTraining(training);
-						// les alerts
+						new  TrainingBusiness().addTraining(training);
 						Notifications notBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5)).
 								title("Action Completed").text("The Training was successfuly Added");
 						notBuilder.showConfirm();
-//						try {
-//							MainApp.changeScene("/fxml/Training.fxml", "Ski School");
-//						} catch (IOException e) {
-//							e.printStackTrace();
-//						}
 					}
 					
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
-				
-			} catch (NamingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		
-			
 		}
+		
 		TrainingController.s.close();
+		
 	}
 
 	@FXML

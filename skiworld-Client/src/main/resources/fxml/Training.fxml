@@ -3,9 +3,13 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.net.URL?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.TrainingController">
@@ -20,11 +24,21 @@
 				<TableColumn fx:id="priceCol" prefWidth="100.0" text="Price" />
 			</columns>
 		</TableView>
-      <JFXTextField fx:id="RechercheTF" layoutX="34.0" layoutY="87.0" promptText="Search..." AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="60.0" />
+      <JFXTextField fx:id="RechercheTF" layoutX="50.0" layoutY="61.0" promptText="Search..." AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="61.0" />
       <JFXButton layoutX="679.0" layoutY="233.0" onAction="#Add" styleClass="btn" text="Add Training" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="100.0" />
       <JFXButton layoutX="682.0" layoutY="307.0" onAction="#Delete" styleClass="btn" text="Delete Training" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="150.0" />
       <JFXButton layoutX="679.0" layoutY="374.0" onAction="#Update" styleClass="btn" text="Update Training" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="200.0" />
-      <Text layoutX="426.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trainings" AnchorPane.topAnchor="20.0" />
+      <Text fill="#2b579a" layoutX="110.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Training' List">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+      <ProgressBar fx:id="ProgressLoading" layoutX="-3.0" layoutY="39.0" prefHeight="14.0" prefWidth="900.0" progress="0.0" />
+      <ImageView fx:id="loading" fitHeight="30.0" fitWidth="30.0" layoutX="283.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/loading.GIF" />
+         </image>
+      </ImageView>
     
 		
 	</children>

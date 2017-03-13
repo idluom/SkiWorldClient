@@ -10,18 +10,34 @@ import org.controlsfx.control.Notifications;
 
 import Entity.Track;
 import Service.TrackEJBRemote;
+import esprit.skiworld.Business.Loading;
+import esprit.skiworld.Business.TrackBusiness;
+import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 public class UpdateTrackController implements Initializable {
+	private Task<?> task;
+	@FXML
+	private ProgressBar ProgressLoading;
+	@FXML
+	ImageView loading;
+	@FXML 
+	private AnchorPane TableTrack;
 	@FXML 
 	private TextField TitleTF;
 	@FXML 
@@ -43,12 +59,29 @@ public class UpdateTrackController implements Initializable {
 	ObservableList<Track> champs;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		TableTrack.setVisible(false);
 		TitleTF.setText(TrackController.comp.getTitle());
 		DescriptionTF.setText(TrackController.comp.getDescription());
 		diff.setValue("Hard");
 		diff.setItems(comboList);
 		price.setText(Float.valueOf(TrackController.comp.getPrice()).toString());
 		length.setText(Float.valueOf(TrackController.comp.getLength()).toString());
+		ProgressLoading.setProgress(0);
+		ProgressLoading.progressProperty().unbind();
+		task = Loading.load();
+		ProgressLoading.progressProperty().bind(task.progressProperty());
+		new Thread(task).start();
+		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			@Override
+			public void handle(WorkerStateEvent event) {
+				TableTrack.setVisible(true);
+				TranslateTransition tt = new TranslateTransition(Duration.seconds(1), TableTrack);
+				tt.setFromY(50);
+				tt.setToY(0);
+				tt.play();
+				loading.setVisible(false);
+			}
+		});
 	}
 
 	@FXML
@@ -78,31 +111,14 @@ public class UpdateTrackController implements Initializable {
 			ok = 1;
 		}
 		if (ok == 0) {
-			InitialContext ctx = null;
-			try {
-				ctx = new InitialContext();
-			} catch (NamingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			TrackEJBRemote proxy;
-			try {
-				proxy = (TrackEJBRemote) ctx.lookup("/skiworld-ejb/TrackEJB!Service.TrackEJBRemote");
-				//champs = FXCollections.observableArrayList(proxy.findAll());
 				
-				Track track = new Track();
-
-				track = proxy.findTrackById(TrackController.comp.getIdTrack());
-				track.setDifficulty(diff.getValue());
-				track.setDescription(DescriptionTF.getText());
-				track.setTitle(TitleTF.getText());
-				track.setLength(Float.valueOf(length.getText()));
-				track.setPrice(Float.valueOf(price.getText()));
-				proxy.updateTrack(track);
-			} catch (NamingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				TrackController.comp.setDifficulty(diff.getValue());
+				TrackController.comp.setDescription(DescriptionTF.getText());
+				TrackController.comp.setTitle(TitleTF.getText());
+				TrackController.comp.setLength(Float.valueOf(length.getText()));
+				TrackController.comp.setPrice(Float.valueOf(price.getText()));
+				new TrackBusiness().updateTrack(TrackController.comp);
+			
 			
 			TrackController.s.close();
 			

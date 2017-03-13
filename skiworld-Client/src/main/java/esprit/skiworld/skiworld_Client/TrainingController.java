@@ -18,10 +18,16 @@ import Entity.Track;
 import Entity.Training;
 
 import Service.TrainingEJBRemote;
+import esprit.skiworld.Business.Loading;
+import esprit.skiworld.Business.TrainingBusiness;
+import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,17 +35,23 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class TrainingController implements Initializable {
 	public static Stage s = new Stage();
+	private Task<?> task;
+	@FXML
+	private ProgressBar ProgressLoading;
+	@FXML
+	ImageView loading;
 	@FXML
 	private TableColumn<Training, String> BDCol;
 	@FXML
@@ -66,9 +78,12 @@ public class TrainingController implements Initializable {
 	ObservableList<Training> champs;
 	List<Track> clubs = new ArrayList<>();
 	public static Training comp;
+	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		TableTrack.setVisible(false);
 		RechercheTF.textProperty().addListener(new ChangeListener() {
 
 			@Override
@@ -84,23 +99,7 @@ public class TrainingController implements Initializable {
 
 		});
 
-		InitialContext ctx = null;
-
-		try {
-			ctx = new InitialContext();
-		} catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		TrainingEJBRemote proxy = null;
-		try {
-			proxy = (TrainingEJBRemote) ctx.lookup("/skiworld-ejb/TrainingEJB!Service.TrainingEJBRemote");
-		} catch (NamingException e) {
-
-			e.printStackTrace();
-		}
-		champs = FXCollections.observableArrayList(proxy.findAllTraining());
+		champs = FXCollections.observableArrayList(new TrainingBusiness().findAllTraining());
 		System.out.println(champs);
 
 		TableTrack.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -111,6 +110,22 @@ public class TrainingController implements Initializable {
 		NumberCol.setCellValueFactory(new PropertyValueFactory<>("number"));
 		priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 		TableTrack.setItems(champs);
+		ProgressLoading.setProgress(0);
+		ProgressLoading.progressProperty().unbind();
+		task = Loading.load();
+		ProgressLoading.progressProperty().bind(task.progressProperty());
+		new Thread(task).start();
+		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			@Override
+			public void handle(WorkerStateEvent event) {
+				TableTrack.setVisible(true);
+				TranslateTransition tt = new TranslateTransition(Duration.seconds(1), TableTrack);
+				tt.setFromY(50);
+				tt.setToY(0);
+				tt.play();
+				loading.setVisible(false);
+			}
+		});
 
 	}
 
@@ -118,23 +133,10 @@ public class TrainingController implements Initializable {
 		ObservableList<Training> filteredList = FXCollections.observableArrayList();
 
 		if (RechercheTF == null || (newValue.length() < oldValue.length()) || newValue == null) {
-			InitialContext ctx = null;
-			try {
-				ctx = new InitialContext();
-			} catch (NamingException e) {
 
-				e.printStackTrace();
-			}
-			TrainingEJBRemote proxy;
-			try {
-				proxy = (TrainingEJBRemote) ctx.lookup("/skiworld-ejb/TrainingEJB!Service.TrainingEJBRemote");
-				ObservableList<Training> champs = FXCollections.observableArrayList(proxy.findAllTraining());
-				TableTrack.setItems(champs);
-
-			} catch (NamingException e) {
-
-				e.printStackTrace();
-			}
+			ObservableList<Training> champs = FXCollections
+					.observableArrayList(new TrainingBusiness().findAllTraining());
+			TableTrack.setItems(champs);
 
 		} else {
 
@@ -157,7 +159,7 @@ public class TrainingController implements Initializable {
 			System.out.println("fff");
 		}
 	}
-	
+
 	@FXML
 	private void Delete() {
 		comp = TableTrack.getSelectionModel().getSelectedItem();
@@ -167,65 +169,37 @@ public class TrainingController implements Initializable {
 			alert.setHeaderText("No Training Selected");
 			alert.showAndWait();
 		}
-		InitialContext ctx = null;
-		try {
-			ctx = new InitialContext();
-		} catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		TrainingEJBRemote proxy;
-		try {
-			proxy = (TrainingEJBRemote) ctx.lookup("/skiworld-ejb/TrainingEJB!Service.TrainingEJBRemote");
-			comp = TableTrack.getSelectionModel().getSelectedItem();
-			
 
-			proxy.deleteTraining(comp);
-			int selectedIndex = TableTrack.getSelectionModel().getSelectedIndex();
-			TableTrack.getItems().remove(selectedIndex);
+		comp = TableTrack.getSelectionModel().getSelectedItem();
 
-		} catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Notifications notBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5)).
-				title("Action Completed").text("The Training was successfuly Deleted");
+		new TrainingBusiness().deleteTraining(comp);
+		int selectedIndex = TableTrack.getSelectionModel().getSelectedIndex();
+		TableTrack.getItems().remove(selectedIndex);
+
+		Notifications notBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5))
+				.title("Action Completed").text("The Training was successfuly Deleted");
 		notBuilder.showConfirm();
 	}
 
 	@FXML
 	private void Add() {
 		try {
-			
+
 			Parent root = FXMLLoader.load(MainApp.class.getResource("/fxml/AjoutTraining.fxml"));
-	        Scene scene = new Scene(root);
-	        s.setScene(scene);
-	        s.showAndWait();
+			Scene scene = new Scene(root);
+			s.setScene(scene);
+			s.showAndWait();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		InitialContext ctx = null;
-		try {
-			ctx = new InitialContext();
-		} catch (NamingException e) {
-
-			e.printStackTrace();
-		}
-		TrainingEJBRemote proxy;
-		try {
-			proxy = (TrainingEJBRemote) ctx.lookup("/skiworld-ejb/TrainingEJB!Service.TrainingEJBRemote");
-			champs = FXCollections.observableArrayList(proxy.findAllTraining());
-			TableTrack.setItems(champs);
-
-		} catch (NamingException e) {
-
-			e.printStackTrace();
-		}
+		champs = FXCollections.observableArrayList(new TrainingBusiness().findAllTraining());
+		TableTrack.setItems(champs);
 	}
+
 	@FXML
 	private void Update() {
-		
+
 		comp = TableTrack.getSelectionModel().getSelectedItem();
 		System.out.println(comp);
 		if (comp == null) {
@@ -234,35 +208,19 @@ public class TrainingController implements Initializable {
 			alert.setHeaderText("No Training Selected");
 			alert.showAndWait();
 		}
-		
+
 		try {
-			
+
 			Parent root = FXMLLoader.load(MainApp.class.getResource("/fxml/UpdateTraining.fxml"));
-		    Scene scene = new Scene(root);
-		    s.setScene(scene);
-		    s.showAndWait();
+			Scene scene = new Scene(root);
+			s.setScene(scene);
+			s.showAndWait();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		InitialContext ctx = null;
-		try {
-			ctx = new InitialContext();
-		} catch (NamingException e) {
-
-			e.printStackTrace();
-		}
-		TrainingEJBRemote proxy;
-		try {
-			proxy = (TrainingEJBRemote) ctx.lookup("/skiworld-ejb/TrainingEJB!Service.TrainingEJBRemote");
-			ObservableList<Training> champs = FXCollections.observableArrayList(proxy.findAllTraining());
-			TableTrack.setItems(champs);
-
-		} catch (NamingException e) {
-
-			e.printStackTrace();
-		}
+		ObservableList<Training> champs = FXCollections.observableArrayList(new TrainingBusiness().findAllTraining());
+		TableTrack.setItems(champs);
 	}
-	
 
 }
