@@ -5,7 +5,6 @@ import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -15,7 +14,6 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 
-import Entity.Transport;
 import esprit.skiworld.Business.TransportBusiness;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -81,4 +79,4 @@ public class UpdateTransportController implements Initializable{
 		new TransportBusiness().updateTransport(TransportController.upTrans);
 		MainApp.changeScene("/fxml/Transport.fxml", "Transport");
 	}
-}
+}	

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="300.0" minWidth="700.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.UpdateProductController">
+   <children>
+      <Label layoutX="63.0" layoutY="66.0" text="Product Name" />
+      <Label layoutX="63.0" layoutY="142.0" text="Product Category" />
+      <Label layoutX="387.0" layoutY="66.0" text="Product Type" />
+      <Label layoutX="387.0" layoutY="142.0" text="Product Price" />
+      <JFXTextField fx:id="name" layoutX="174.0" layoutY="62.0" />
+      <JFXTextField fx:id="category" layoutX="174.0" layoutY="138.0" />
+      <JFXTextField fx:id="type" layoutX="491.0" layoutY="62.0" />
+      <JFXTextField fx:id="price" layoutX="491.0" layoutY="138.0" />
+      <JFXButton fx:id="updateButton" layoutX="324.0" layoutY="223.0" onAction="#UpdateProduct" text="Update Product" />
+   </children>
+</AnchorPane>
