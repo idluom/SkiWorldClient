@@ -20,6 +20,7 @@ import javafx.scene.control.TextArea;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -30,6 +31,7 @@ import com.jfoenix.controls.JFXTimePicker;
 
 import Entity.Events;
 import esprit.skiworld.Business.EventsBusiness;
+import esprit.skiworld.Business.HotelBusiness;
 import esprit.skiworld.Business.Loading;
 
 public class AddEventsController implements Initializable {
@@ -72,6 +74,8 @@ public class AddEventsController implements Initializable {
 				event1.setNbrPlaces(Integer.parseInt(numberPTF.getText()));
 				event1.setDate(date1);
 				event1.setDescription(descTA.getText());
+				Long l=new Long(1);
+				event1.setHotel(new HotelBusiness().findHotelById(l));
 				new EventsBusiness().addEvent(event1);
 				EventsListController.s.close();
 				Notifications notifBuilder = Notifications.create().darkStyle().hideAfter(Duration.seconds(5))
@@ -145,27 +149,43 @@ public class AddEventsController implements Initializable {
 		
 		if (dateP.getValue() != null && timeP.getValue() != null) {
 			String date0 = dateP.getValue() + " " + timeP.getValue();
-			String date1=dateP.getValue()+" 08:00";
-			String date2=dateP.getValue()+" 12:00";
-			String date3=dateP.getValue()+" 14:00";
-			String date4=dateP.getValue()+" 20:00";
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			Date date;
 			try {
-				Date date = sdf.parse(date0);
-				Date date01 = sdf.parse(date1);
-				Date date02 = sdf.parse(date2);
-				Date date03 = sdf.parse(date3);
-				Date date04 = sdf.parse(date4);
-				if (date.before(date01)||date.before(date03)&&date.after(date02)||date.after(date04)){
-					errorMessage+="Event time should be between 8h00-12h00 and 14h00-20h00 \n";
+				date = sdf.parse(date0);
+				Date dateN=new Date();
+				if(date.before(dateN)){
+					errorMessage+="Wrong date !!! \n";
+				}else
+				{
+					
+					String date1=dateP.getValue()+" 08:00";
+					String date2=dateP.getValue()+" 12:00";
+					String date3=dateP.getValue()+" 14:00";
+					String date4=dateP.getValue()+" 20:00";
+					
+					try {
+						
+						Date date01 = sdf.parse(date1);
+						Date date02 = sdf.parse(date2);
+						Date date03 = sdf.parse(date3);
+						Date date04 = sdf.parse(date4);
+						if (date.before(date01)||date.before(date03)&&date.after(date02)||date.after(date04)){
+							errorMessage+="Event time should be between 8h00-12h00 and 14h00-20h00 \n";
+						}
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					
+					
 				}
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
 			
 			
-			
 		}
+		
 
 		if (numberPTF.getText().length() != 0) {
 			try {

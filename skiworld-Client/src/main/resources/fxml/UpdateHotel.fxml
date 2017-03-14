@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane id="AnchorPane" minHeight="500.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.UpdateHotelController">
+   <children>
+      <Label layoutX="103.0" layoutY="104.0" text="Name" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="100.0" />
+      <Label layoutX="103.0" layoutY="159.0" text="Stars" AnchorPane.leftAnchor="103.0" AnchorPane.topAnchor="159.0" />
+      <Label layoutX="102.0" layoutY="296.0" text="Description :" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="250.0" />
+      <TextField fx:id="nameTF" layoutX="237.0" layoutY="96.0" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="100.0" />
+      <Button layoutX="237.0" layoutY="428.0" mnemonicParsing="false" onAction="#updateHotel" styleClass="btn" text="Update" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="180.0" />
+      <Button layoutX="389.0" layoutY="428.0" mnemonicParsing="false" onAction="#handleCancel" styleClass="btn" text="Cancel" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="150.0" />
+      <TextArea fx:id="descTA" layoutX="237.0" layoutY="296.0" prefHeight="131.0" prefWidth="221.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="250.0" />
+      <Text layoutX="263.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Hotel" AnchorPane.topAnchor="20.0" />
+      <Rating fx:id="starRate" layoutX="181.0" layoutY="152.0" />
+   </children>
+   <stylesheets>
+      <URL value="@../styles/menu_items.css" />
+      <URL value="@../styles/menu.css" />
+   </stylesheets>
+</AnchorPane>

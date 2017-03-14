@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.EventSkierListController">
+   <children>
+      <AnchorPane fx:id="Conteneur" layoutY="60.0">
+         <children>
+            <TableView fx:id="tableSkiers" layoutX="60.0" layoutY="20.0" prefHeight="400.0" prefWidth="557.0">
+               <columns>
+                  <TableColumn fx:id="name" prefWidth="186.0" text="Name" />
+                  <TableColumn fx:id="lname" prefWidth="164.0" text="Last Name" />
+                  <TableColumn fx:id="pin" minWidth="0.0" prefWidth="205.0" text="Pin" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <Text fill="#2b579a" layoutX="75.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Skiers List" wrappingWidth="150.00000447034836">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+   </children>
+   <stylesheets>
+      <URL value="@../styles/menu_items.css" />
+      <URL value="@../styles/menu.css" />
+   </stylesheets>
+</AnchorPane>
