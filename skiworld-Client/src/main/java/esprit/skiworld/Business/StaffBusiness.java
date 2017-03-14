@@ -81,4 +81,18 @@ public class StaffBusiness {
 		proxy = (AdminEJBRemote) ctx.lookup(jndiNameAdmin);
 		return proxy.displayAll();
 	}
+	
+
+	public boolean fetchUsername (String username) {
+		
+		try {
+			ctx = new InitialContext();
+			proxy = (AdminEJBRemote) ctx.lookup(jndiNameAdmin);
+			proxy.fetchUsername(username);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+		
+	}
 }

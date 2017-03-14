@@ -25,6 +25,7 @@ import Entity.Member;
 import Entity.RestaurantOwner;
 import Service.AdminEJBRemote;
 import esprit.skiworld.Business.AdminBusiness;
+import esprit.skiworld.Business.StaffBusiness;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -191,14 +192,19 @@ public class AdminController implements Initializable {
 				ErrorMsg += "Login Invalid \n";
 				isOk = 1;
 			}
-			if (NumTelId.getText().length() < 9) {
+			if (NumTelId.getText().length() < 8) {
 				ErrorMsg += "Phone Number to short \n";
 				isOk = 1;
 			}
 			if (PwdId.getText().length() < 3) {
-				ErrorMsg = "Password to short \n";
+				ErrorMsg += "Password to short \n";
 				isOk = 1;
 			}
+			if (new StaffBusiness().fetchUsername(LoginId.getText())) {
+				ErrorMsg += "Invalid Username";
+				isOk = 1;
+			}
+			
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			LocalDate localDate = LocalDate.parse("2000-01-01", formatter);
 			if (BirthdayId.getValue() == null) {
@@ -214,7 +220,7 @@ public class AdminController implements Initializable {
 			boolean p = false;
 			int s = 0;
 			int c = 0;
-			if (MailId.getText().length() > 5) {
+			if (MailId.getText().length() > 5 && MailId.getText().contains("@gmail.com")) {
 				String m = MailId.getText();
 
 				for (int i = 0; i < m.length(); i++) {
@@ -233,7 +239,7 @@ public class AdminController implements Initializable {
 
 			}
 			if (s < 2) {
-				ErrorMsg += "Wrong expression of MAil \n";
+				ErrorMsg += "Wrong expression of Mail \n";
 				isOk = 1;
 			}
 			if (isOk == 1) {
@@ -277,13 +283,14 @@ public class AdminController implements Initializable {
 	void checkPwd(KeyEvent event) {
 		if (PwdId.getText() != null) {
 			if (PwdId.getText().length() < 5) {
-
-				PwdId.setPromptText("Low Pwd");
-
+				PwdId.focusColorProperty().set(Paint.valueOf("red"));
+				PwdId.setPromptText("Low Password");
 			} else if (PwdId.getText().length() < 8) {
-				PwdId.setPromptText("Average Pwd");
-			} else if (PwdId.getText().length() > 10) {
-				PwdId.setPromptText("Secure Pwd");
+				PwdId.focusColorProperty().set(Paint.valueOf("orange"));
+				PwdId.setPromptText("Average Password");
+			} else if (PwdId.getText().length() > 8) {
+				PwdId.focusColorProperty().set(Paint.valueOf("green"));
+				PwdId.setPromptText("Secure Password");
 			}
 		}
 

@@ -104,7 +104,7 @@ public class MenuAdminController implements Initializable {
 	@FXML
 	public void skiTrips(ActionEvent event) {
 		try {
-			rootPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/fxml/MainPage.fxml"));
+			rootPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/fxml/Trips.fxml"));
 			PaneDrawer.setContent(rootPane);
 			PaneDrawer.setDefaultDrawerSize(0);
 			PaneDrawer.toFront();
@@ -132,7 +132,7 @@ public class MenuAdminController implements Initializable {
 	@FXML
 	public void users(ActionEvent event) {
 		try {
-			rootPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/fxml/MainPage.fxml"));
+			rootPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/fxml/SelectAdmin.fxml"));
 			PaneDrawer.setContent(rootPane);
 			PaneDrawer.setDefaultDrawerSize(0);
 			PaneDrawer.toFront();

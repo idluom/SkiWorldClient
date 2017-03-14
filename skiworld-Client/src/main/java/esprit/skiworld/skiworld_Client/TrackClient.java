@@ -19,6 +19,8 @@ public class TrackClient {
 		TrackEJBRemote proxy = (TrackEJBRemote) ctx.lookup("/skiworld-ejb/TrackEJB!Service.TrackEJBRemote");
 		Track t = new Track("hard",100,500);
 		Track t2 ;
+		
+		//t2=proxy.findTrackById(3);
 		//proxy.addTrack(t);
 		//t.setDifficulty("hard");
 		//proxy.addTrack(t);

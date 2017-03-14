@@ -84,6 +84,7 @@ public class TripsController implements Initializable {
 
 	ObservableList<Trip> champs;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -131,7 +132,7 @@ public class TripsController implements Initializable {
 		if (event.getClickCount() == 1) {
 			Trip t = new Trip();
 			t = TableTrip.getSelectionModel().getSelectedItem();
-			if (t.getVideo() == null) {
+			if (t.getVideo().length() == 0) {
 				WatchId.setDisable(true);
 			} else {
 				WatchId.setDisable(false);

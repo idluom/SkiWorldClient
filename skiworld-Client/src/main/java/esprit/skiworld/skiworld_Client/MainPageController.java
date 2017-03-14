@@ -156,7 +156,7 @@ public class MainPageController implements Initializable {
 	@FXML
 	private void clickSkiTrips(ActionEvent event) throws IOException {
 		if (AuthenticationController.getAuth() instanceof Admin) {
-			resource = "/fxml/Track.fxml";
+			resource = "/fxml/Trips.fxml";
 			MainApp.changeScene("/fxml/MenuAdmin.fxml", "Comments And Reports");
 			pat.pause();
 		}

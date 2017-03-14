@@ -43,7 +43,7 @@ public class SelectedReportController implements Initializable{
 	public void respondToReport(ActionEvent event) throws Throwable {
 		Mail.setUSER_NAME((String) /*AuthenticationController.getAuth().getMail()*/"m.bouden1993" );
         Mail.setPASSWORD(/*(String) PwTF.getText()*/"bouden93");
-        Mail.setRECIPIENT(/*(String) ToTF.getText()*/"mahmoud.bouden@esprit.tn");
+        Mail.setRECIPIENT(/*(String) ToTF.getText()*/"bilel.nebli@esprit.tn");
         
         Mail.setSsubject((String) CommentsAndReportsController.selected.getMailObject());
         String Texte=response.getText();
