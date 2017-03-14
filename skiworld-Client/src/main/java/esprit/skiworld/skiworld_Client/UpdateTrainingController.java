@@ -13,6 +13,8 @@ import Entity.Training;
 import esprit.skiworld.Business.Loading;
 import esprit.skiworld.Business.TrainingBusiness;
 import javafx.animation.TranslateTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -72,6 +74,29 @@ public class UpdateTrainingController implements Initializable, Comparable<Local
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		NumberTF.textProperty().addListener(new ChangeListener<String>() {
+		    @Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (newValue.matches("\\d*")) {
+		            NumberTF.setText(newValue);
+		        } else {
+		            NumberTF.setText(oldValue);
+		        }
+		    }
+		});
+		
+		PriceTF.textProperty().addListener(new ChangeListener<String>() {
+		    @Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (newValue.matches("\\d*")) {
+					PriceTF.setText(newValue);
+		        } else {
+		        	PriceTF.setText(oldValue);
+		        }
+		    }
+		});
+		
 		TableTrack.setVisible(false);
 		TitleTF.setText(TrainingController.comp.getTitle());
 		DescriptionTF.setText(TrainingController.comp.getDescription());

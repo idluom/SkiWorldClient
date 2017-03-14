@@ -23,6 +23,8 @@ import Service.TrainingEJBRemote;
 import esprit.skiworld.Business.Loading;
 import esprit.skiworld.Business.TrainingBusiness;
 import javafx.animation.TranslateTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -84,6 +86,29 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		// you can only tape {1;2.....9}
+		NumberTF.textProperty().addListener(new ChangeListener<String>() {
+		    @Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (newValue.matches("\\d*")) {
+		            NumberTF.setText(newValue);
+		        } else {
+		            NumberTF.setText(oldValue);
+		        }
+		    }
+		});
+		PriceTF.textProperty().addListener(new ChangeListener<String>() {
+		    @Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (newValue.matches("\\d*")) {
+					PriceTF.setText(newValue);
+		        } else {
+		        	PriceTF.setText(oldValue);
+		        }
+		    }
+		});
+		
 		TableTrack.setVisible(false);
 		LevelTF.setValue("Hard");
 		LevelTF.setItems(comboList);
@@ -111,6 +136,7 @@ public class AddTrainingController implements Initializable,Comparable<LocalDate
 		Training training = new Training();
 
 		int ok = 0;
+		
 		if (BdTF.getValue()== null) {
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			alert.setTitle("SELECTED");

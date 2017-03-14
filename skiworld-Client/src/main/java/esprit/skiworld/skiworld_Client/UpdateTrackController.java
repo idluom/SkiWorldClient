@@ -13,6 +13,8 @@ import Service.TrackEJBRemote;
 import esprit.skiworld.Business.Loading;
 import esprit.skiworld.Business.TrackBusiness;
 import javafx.animation.TranslateTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -59,6 +61,46 @@ public class UpdateTrackController implements Initializable {
 	ObservableList<Track> champs;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		length.textProperty().addListener(new ChangeListener<String>() {
+		    @Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (newValue.matches("\\d*")) {
+					length.setText(newValue);
+		        } else {
+		        	length.setText(oldValue);
+		        }
+		    }
+		});
+		price.textProperty().addListener(new ChangeListener<String>() {
+		    @Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (newValue.matches("\\d*")) {
+					price.setText(newValue);
+		        } else {
+		        	price.setText(oldValue);
+		        }
+		    }
+		});
+		length.textProperty().addListener(new ChangeListener<String>() {
+		    @Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (newValue.matches("\\d*")) {
+					length.setText(newValue);
+		        } else {
+		        	length.setText(oldValue);
+		        }
+		    }
+		});
+		price.textProperty().addListener(new ChangeListener<String>() {
+		    @Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (newValue.matches("\\d*")) {
+					price.setText(newValue);
+		        } else {
+		        	price.setText(oldValue);
+		        }
+		    }
+		});
 		TableTrack.setVisible(false);
 		TitleTF.setText(TrackController.comp.getTitle());
 		DescriptionTF.setText(TrackController.comp.getDescription());
