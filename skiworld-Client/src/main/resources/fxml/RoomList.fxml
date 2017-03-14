@@ -2,29 +2,42 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.RoomListController">
+<AnchorPane prefHeight="500.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.RoomListController">
    <children>
-      <TableView fx:id="tableRooms" layoutX="64.0" layoutY="118.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="80.0">
-         <columns>
-            <TableColumn fx:id="sbed" prefWidth="117.0" text="Simple bed" />
-            <TableColumn fx:id="dbed" prefWidth="109.0" text="Double bed" />
-            <TableColumn fx:id="price" minWidth="0.0" prefWidth="101.0" text="Price" />
-            <TableColumn fx:id="description" prefWidth="217.0" text="Description" />
-         </columns>
-      </TableView>
-      <Button fx:id="addRoom" layoutX="653.0" layoutY="247.0" mnemonicParsing="false" onAction="#addRoom" prefHeight="30.0" styleClass="btn" text="Ajouter" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="140.0" />
-      <Button fx:id="deleteRoom" layoutX="653.0" layoutY="318.0" mnemonicParsing="false" onAction="#deleteRoom" prefHeight="30.0" styleClass="btn" text="Supprimer" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="140.0" />
-      <Separator layoutY="93.0" prefHeight="2.0" prefWidth="801.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" />
-      <TextField fx:id="filterInput" layoutX="644.0" layoutY="118.0" prefHeight="25.0" prefWidth="90.0" promptText="Simple bed" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="115.0" />
-      <TextField fx:id="filterInput1" layoutX="644.0" layoutY="156.0" prefHeight="25.0" prefWidth="90.0" promptText="Double bed" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="160.0" />
-      <Text layoutX="421.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rooms List" AnchorPane.topAnchor="20.0" />
+      <AnchorPane fx:id="Conteneur" layoutY="60.0">
+         <children>
+            <TableView fx:id="tableRooms" layoutX="60.0" layoutY="20.0">
+               <columns>
+                  <TableColumn fx:id="sbed" prefWidth="117.0" text="Simple bed" />
+                  <TableColumn fx:id="dbed" prefWidth="109.0" text="Double bed" />
+                  <TableColumn fx:id="price" minWidth="0.0" prefWidth="101.0" text="Price" />
+                  <TableColumn fx:id="description" prefWidth="217.0" text="Description" />
+               </columns>
+            </TableView>
+            <Button fx:id="addRoom" layoutX="650.0" layoutY="187.0" mnemonicParsing="false" onAction="#addRoom" prefHeight="30.0" prefWidth="102.0" styleClass="btn" text="Ajouter" />
+            <Button fx:id="deleteRoom" layoutX="650.0" layoutY="258.0" mnemonicParsing="false" onAction="#deleteRoom" prefHeight="30.0" styleClass="btn" text="Supprimer" />
+         </children>
+      </AnchorPane>
+      <Text fill="#2b579a" layoutX="75.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rooms List" wrappingWidth="150.00000447034836">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+      <ProgressBar fx:id="ProgressLoading" layoutY="38.0" prefHeight="14.0" prefWidth="801.0" progress="0.0" />
+      <ImageView fx:id="loading" fitHeight="27.0" fitWidth="30.0" layoutX="240.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/loading.GIF" />
+         </image>
+      </ImageView>
    </children>
    <stylesheets>
       <URL value="@../styles/menu_items.css" />
