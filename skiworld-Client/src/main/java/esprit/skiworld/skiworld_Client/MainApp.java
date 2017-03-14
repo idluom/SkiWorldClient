@@ -19,15 +19,13 @@ public class MainApp extends Application {
 	@SuppressWarnings("static-access")
 	@Override
 	public void start(Stage primaryStage) {
-		
+		s1.setResizable(false);
 		s = new Stage(s.getStyle().UNDECORATED);
 		try {
 			Parent root = FXMLLoader.load(MainApp.class.getResource("/fxml/Authentication.fxml"));
 	        Scene scene = new Scene(root);
 	        MainApp.s.setScene(scene);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		} catch (IOException e) {}
         MainApp.s.show();
 	}
     
@@ -39,6 +37,5 @@ public class MainApp extends Application {
         MainApp.s1.setTitle(StageTitle);
         MainApp.s1.show();
     }
-    
     
 }

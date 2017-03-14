@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import javax.naming.NamingException;
 
 import org.controlsfx.control.Notifications;
+import org.controlsfx.control.PopOver;
 
 import Entity.Comment;
 import Entity.Report;
@@ -28,11 +29,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.SelectionMode;
@@ -114,6 +118,10 @@ public class CommentsAndReportsController implements Initializable {
 						alert.show();
 					}
 				}
+				if (event.isSecondaryButtonDown() && event.getClickCount() == 1) {
+					PopOver pop = createPopover(reportTable.getSelectionModel().getSelectedItem().getMailBody());
+					pop.show(reportTable);
+				}
 			}
 		});
 		ProgressLoading.setProgress(0);
@@ -134,9 +142,22 @@ public class CommentsAndReportsController implements Initializable {
         });
 	}
 	
+	@SuppressWarnings("unchecked")
 	@FXML
     public void refreshTables(ActionEvent event) throws NamingException {
-		
+		loading.setVisible(true);
+
+        ProgressLoading.progressProperty().unbind();
+		ProgressLoading.setProgress(0);
+        task= Loading.load();
+        ProgressLoading.progressProperty().bind(task.progressProperty());
+        new Thread(task).start();
+        task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+            	loading.setVisible(false);
+            }
+        });
 		champs = FXCollections.observableArrayList(new CommentBusiness().getAllComments());
 		reports = FXCollections.observableArrayList(new ReportBusiness().getAllReports());
 		reportTable.setItems(reports);
@@ -166,4 +187,23 @@ public class CommentsAndReportsController implements Initializable {
 		s.show();
 	}
 
+	public PopOver createPopover(String text) {
+		PopOver popover = new PopOver();
+		popover.setDetachable(true);
+		popover.setDetached(false);
+		popover.setArrowIndent(10);
+		popover.setArrowSize(10);
+		popover.setContentNode(createForm(text));
+		popover.setTitle("Hello");
+		popover.setOpacity(.9);
+		
+		return popover;
+	}
+	
+	public Node createForm(String text) {
+		Pane root= new Pane();
+		Label label = new Label(text);
+		root.getChildren().add(label);
+		return root;
+	}
 }

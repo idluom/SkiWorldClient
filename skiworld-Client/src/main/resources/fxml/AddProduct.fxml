@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.Image?>
@@ -12,6 +13,11 @@
 
 <AnchorPane minHeight="300.0" minWidth="700.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.AddProductController">
    <children>
+      <ImageView fitHeight="300.0" fitWidth="700.0" layoutX="10.0" layoutY="10.0" opacity="0.7" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../images/flatsnow.jpg" />
+         </image>
+      </ImageView>
       <AnchorPane fx:id="Conteneur" layoutX="66.0" layoutY="80.0">
          <children>
             <Label layoutY="4.0" text="Product Name" />
@@ -22,7 +28,7 @@
             <JFXTextField fx:id="category" layoutX="111.0" layoutY="76.0" />
             <JFXTextField fx:id="type" layoutX="428.0" />
             <JFXTextField fx:id="price" layoutX="428.0" layoutY="76.0" />
-            <JFXButton fx:id="AddButton" layoutX="261.0" layoutY="161.0" onAction="#AddProduct" text="Add Product" />
+            <JFXButton fx:id="AddButton" layoutX="261.0" layoutY="161.0" onAction="#AddProduct" styleClass="btn" text="Add Product" />
          </children>
       </AnchorPane>
       <Text fill="#2b579a" layoutX="78.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add A New Product" wrappingWidth="240.99999552965164">
@@ -30,11 +36,15 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Text>
-      <ProgressBar fx:id="ProgressLoading" layoutX="-3.0" layoutY="41.0" prefHeight="18.0" prefWidth="700.0" progress="0.0" />
+      <ProgressBar fx:id="ProgressLoading" layoutX="-3.0" layoutY="41.0" prefHeight="18.0" prefWidth="700.0" progress="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <ImageView fx:id="loading" fitHeight="27.0" fitWidth="30.0" layoutX="337.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/loading.GIF" />
          </image>
       </ImageView>
    </children>
+   <stylesheets>
+      <URL value="@../styles/menu_items.css" />
+      <URL value="@../styles/menu.css" />
+   </stylesheets>
 </AnchorPane>

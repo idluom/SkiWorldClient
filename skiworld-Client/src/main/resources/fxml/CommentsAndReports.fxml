@@ -16,6 +16,11 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.CommentsAndReportsController">
    <children>
+      <ImageView fitHeight="500.0" fitWidth="900.0" opacity="0.7" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../images/flatsnow.jpg" />
+         </image>
+      </ImageView>
    
       <TabPane fx:id="TableTrack" layoutX="94.0" layoutY="101.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0" tabMinHeight="10.0" tabMinWidth="10.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="100.0">
         <tabs>
@@ -30,7 +35,7 @@
                               <TableColumn fx:id="dates" prefWidth="120.0" resizable="false" text="Date" />
                           </columns>
                         </TableView>
-                        <JFXButton layoutX="607.0" layoutY="39.0" onAction="#removeComment" text="Remove" AnchorPane.leftAnchor="630.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="25.0" />
+                        <JFXButton layoutX="607.0" layoutY="39.0" onAction="#removeComment" styleClass="btn" text="Remove" AnchorPane.leftAnchor="620.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="25.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -58,7 +63,7 @@
             <Insets />
          </opaqueInsets>
       </TabPane>
-      <JFXButton layoutX="757.0" layoutY="131.0" onAction="#refreshTables" styleClass="btn" text="Refresh" AnchorPane.leftAnchor="790.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="130.0" />
+      <JFXButton layoutX="757.0" layoutY="131.0" onAction="#refreshTables" styleClass="btn" text="Refresh" AnchorPane.leftAnchor="790.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="130.0" />
       <Text fill="#2b579a" layoutX="110.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comments/Reports">
          <font>
             <Font name="System Bold" size="25.0" />

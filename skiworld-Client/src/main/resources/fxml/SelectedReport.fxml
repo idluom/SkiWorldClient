@@ -5,11 +5,18 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="350.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.SelectedReportController">
    <children>
+      <ImageView fitHeight="350.0" fitWidth="700.0" layoutX="20.0" layoutY="20.0" opacity="0.7" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../images/flatsnow.jpg" />
+         </image>
+      </ImageView>
       <Label layoutX="22.0" layoutY="39.0" text="User's Email :" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="40.0" />
       <Label layoutX="22.0" layoutY="73.0" text="Report's Object :" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="70.0" />
       <Label layoutX="18.0" layoutY="118.0" text="Report's Date :" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="100.0" />

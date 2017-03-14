@@ -141,8 +141,8 @@ public class MainPageController implements Initializable {
 	@FXML
 	private void clickHotel(ActionEvent event) throws IOException {
 		if (AuthenticationController.getAuth() instanceof HotelManager) {
-			resource = "/fxml/....fxml";
-			MainApp.changeScene("/fxml/MenuHotel.fxml", "Comments And Reports");
+			resource = "/fxml/HotelPage.fxml";
+			MainApp.changeScene("/fxml/MenuHotel.fxml", "SkiWorld Hotel");
 			pat.pause();
 		}
 		else {

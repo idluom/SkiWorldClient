@@ -4,15 +4,23 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTimePicker?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.UpdateTripsController">
+<AnchorPane prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.UpdateTripsController">
    <children>
-      <SplitPane dividerPositions="0.33534743202416917" layoutX="116.0" layoutY="103.0" prefHeight="309.0" prefWidth="333.0">
+      <ImageView fitHeight="400.0" fitWidth="500.0" opacity="0.7" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../images/flatsnow.jpg" />
+         </image>
+      </ImageView>
+      <SplitPane dividerPositions="0.33534743202416917" layoutX="116.0" layoutY="103.0" prefHeight="309.0" prefWidth="333.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="30.0">
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
@@ -56,9 +64,13 @@
             </AnchorPane>
          </items>
       </SplitPane>
-      <JFXButton fx:id="SaveId" buttonType="RAISED" layoutX="249.0" layoutY="430.0" onAction="#SaveAction" prefHeight="26.0" prefWidth="53.0" ripplerFill="BLACK" style="-fx-background-color: #4447fe;" text="Save" textFill="WHITE">
+      <JFXButton fx:id="SaveId" buttonType="RAISED" layoutX="249.0" layoutY="430.0" onAction="#SaveAction" ripplerFill="BLACK" styleClass="btn" text="Save" textFill="WHITE" AnchorPane.bottomAnchor="20.0">
          <font>
             <Font name="Comic Sans MS" size="12.0" />
          </font></JFXButton>
    </children>
+   <stylesheets>
+      <URL value="@../styles/menu_items.css" />
+      <URL value="@../styles/menu.css" />
+   </stylesheets>
 </AnchorPane>

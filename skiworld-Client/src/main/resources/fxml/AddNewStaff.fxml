@@ -18,6 +18,11 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.AddNewStaffController">
    <children>
+      <ImageView fitHeight="500.0" fitWidth="900.0" layoutX="10.0" layoutY="10.0" opacity="0.7" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../images/flatsnow.jpg" />
+         </image>
+      </ImageView>
       <AnchorPane fx:id="Conteneur" layoutY="70.0">
          <children>
             <Label layoutX="60.0" layoutY="20.0" text="First Name :" />
@@ -28,7 +33,7 @@
             <Label layoutX="520.0" layoutY="70.0" text="Password :" />
             <Label layoutX="520.0" layoutY="120.0" text="Confirmation :" />
             <Label layoutX="520.0" layoutY="170.0" text="Phone Number :" />
-            <Separator layoutX="447.0" orientation="VERTICAL" prefHeight="200.0" />
+            <Separator layoutX="447.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="63.0" AnchorPane.topAnchor="0.0" />
             <Label layoutX="60.0" layoutY="220.0" text="Address :" />
             <Label layoutX="520.0" layoutY="220.0" text="Email :" />
             <JFXTextField fx:id="first" labelFloat="true" layoutX="150.0" layoutY="15.0" prefWidth="200.0" promptText="First Name" />
@@ -47,8 +52,8 @@
             <JFXTextField fx:id="mail" layoutX="640.0" layoutY="215.0" prefWidth="200.0" promptText="Gmail Account" />
             <ChoiceBox fx:id="role" layoutX="150.0" layoutY="265.0" prefWidth="200.0" styleClass="combo-box" />
             <Label layoutX="60.0" layoutY="270.0" text="Role :" />
-            <Separator layoutY="317.0" prefWidth="200.0" />
-            <Separator prefWidth="200.0" />
+            <Separator layoutY="317.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Separator prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
             <JFXButton layoutX="400.0" layoutY="355.0" onAction="#confirm" styleClass="btn" text="Confirm" />
          </children>
       </AnchorPane>
@@ -57,7 +62,7 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Text>
-      <ProgressBar fx:id="ProgressLoading" layoutX="-4.0" layoutY="40.0" prefHeight="14.0" prefWidth="900.0" progress="0.0" />
+      <ProgressBar fx:id="ProgressLoading" layoutX="-4.0" layoutY="40.0" prefHeight="14.0" prefWidth="900.0" progress="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
       <ImageView fx:id="loading" fitHeight="27.0" fitWidth="30.0" layoutX="316.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/loading.GIF" />

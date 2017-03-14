@@ -5,11 +5,18 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" minHeight="500.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.UpdateRoomController">
    <children>
+      <ImageView fitHeight="500.0" fitWidth="600.0" layoutX="90.0" layoutY="90.0" opacity="0.7" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../images/flatsnow.jpg" />
+         </image>
+      </ImageView>
       <Label layoutX="103.0" layoutY="104.0" text="Simple bed :" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="100.0" />
       <Label layoutX="102.0" layoutY="163.0" text="Double bed :" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="150.0" />
       <Label layoutX="102.0" layoutY="296.0" text="Description :" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="250.0" />

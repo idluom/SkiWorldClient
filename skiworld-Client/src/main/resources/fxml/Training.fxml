@@ -14,6 +14,11 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.TrainingController">
 	<children>
+      <ImageView fitHeight="500.0" fitWidth="900.0" layoutX="10.0" layoutY="10.0" opacity="0.7" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../images/flatsnow.jpg" />
+         </image>
+      </ImageView>
 		<TableView fx:id="TableTrack" layoutX="43.0" layoutY="200.0" prefHeight="295.0" prefWidth="613.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0">
 			<columns>
             <TableColumn fx:id="Title" prefWidth="75.0" text="Title" />
@@ -33,7 +38,7 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Text>
-      <ProgressBar fx:id="ProgressLoading" layoutX="-3.0" layoutY="39.0" prefHeight="14.0" prefWidth="900.0" progress="0.0" />
+      <ProgressBar fx:id="ProgressLoading" layoutX="-3.0" layoutY="39.0" prefHeight="14.0" prefWidth="900.0" progress="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
       <ImageView fx:id="loading" fitHeight="30.0" fitWidth="30.0" layoutX="283.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/loading.GIF" />

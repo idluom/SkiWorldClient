@@ -16,6 +16,11 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.AffectDiscountController">
    <children>
+      <ImageView fitHeight="500.0" fitWidth="750.0" layoutX="60.0" layoutY="60.0" opacity="0.7" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../images/flatsnow.jpg" />
+         </image>
+      </ImageView>
       <AnchorPane fx:id="elements" layoutX="80.0" layoutY="85.0">
          <children>
             <TableView fx:id="TabShop" layoutY="35.0" prefHeight="280.0" prefWidth="434.0">
