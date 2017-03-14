@@ -90,13 +90,15 @@ public class AddTransportController implements Initializable {
 		System.out.println("dt " + dt);
 		System.out.println("dt2 " + dt2);
 
-		System.out.println("tr" + tr.getDepartureDate());
+		System.out.println(validationSupport.getValidationResult().getErrors().toString());
 		if (validationSupport.getValidationResult().getErrors().isEmpty()
 				&& validationSupport2.getValidationResult().getErrors().isEmpty()) {
 			new TransportBusiness().addMeanTransport(tr);
 			MainApp.changeScene("/fxml/Transport.fxml", "Transport");
 			MainApp.s.close();
-		} else
-			new Alert(AlertType.ERROR).show();
+		} else {
+			if (validationSupport.getValidationResult().getErrors().isEmpty())
+			new Alert(AlertType.ERROR, "Missing Departure Place" + s1).show();
+		}
 	}
 }

@@ -48,5 +48,6 @@
          </textFill>
       </JFXButton>
       <JFXTextField fx:id="searchTF" layoutX="601.0" layoutY="53.0" promptText="search" />
+      <JFXButton fx:id="checkButton" layoutX="630.0" layoutY="444.0" onAction="#checkAction" text="Check Day Menu" />
    </children>
 </AnchorPane>

@@ -43,7 +43,7 @@ public class AddDayMenuController implements Initializable {
 	@FXML
 	private TableColumn<Product, Float> priceProdColumn;
 	@FXML
-	private JFXButton addButton;
+	private JFXButton AddMenu;
 	@FXML
 	private Label MenuLabel;
 	ObservableList<Product> prodOList;
@@ -64,7 +64,7 @@ public class AddDayMenuController implements Initializable {
 	}
 
 	@FXML
-	public void addProd(ActionEvent event) throws IOException {
+	public void addMenuAction(ActionEvent event) throws IOException {
 		List <Product> mp = new ArrayList<>();
 		for (Product product : prodTable.getSelectionModel().getSelectedItems()) {
 			mp.add(product);
