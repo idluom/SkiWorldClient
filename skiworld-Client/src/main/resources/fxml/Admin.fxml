@@ -39,7 +39,7 @@
                         <JFXTextField fx:id="LastNameId" labelFloat="true" layoutX="21.0" layoutY="142.0" AnchorPane.topAnchor="100.0" />
                         <JFXTextField fx:id="AddressId" labelFloat="true" layoutX="28.0" layoutY="186.0" AnchorPane.topAnchor="140.0" />
                         <JFXTextField fx:id="NumTelId" labelFloat="true" layoutX="21.0" layoutY="197.0" AnchorPane.topAnchor="180.0" />
-                        <JFXTextField fx:id="LoginId" labelFloat="true" layoutX="28.0" layoutY="265.0" AnchorPane.topAnchor="260.0" />
+                        <JFXTextField fx:id="LoginId" labelFloat="true" layoutX="28.0" layoutY="265.0" onKeyReleased="#TestLogin" AnchorPane.topAnchor="260.0" />
                         <JFXPasswordField fx:id="PwdId" labelFloat="true" layoutX="21.0" layoutY="301.0" onKeyReleased="#checkPwd" AnchorPane.topAnchor="301.0" />
                         <JFXDatePicker fx:id="BirthdayId" layoutX="14.0" layoutY="232.0" AnchorPane.topAnchor="220.0" />
                         <JFXTextField fx:id="MailId" labelFloat="true" layoutX="21.0" layoutY="342.0" />

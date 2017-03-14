@@ -55,5 +55,17 @@ public class TripBusiness {
 		return proxy.DisplayAll();
 		
 	}
+	public Long Nbrskier(int id){
+		try {
+			ctx = new InitialContext();
+			proxy = (TripEJBRemote) ctx.lookup(jndiName);
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+		
+		return proxy.nbrSkier(id);
+		
+	}
+	
 
 }

@@ -21,23 +21,28 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import javafx.util.Duration;
 
 public class AuthenticationController implements Initializable {
 
 	private static Member auth;
-
+	public static Stage stage = new Stage();
 	@FXML
 	Label userLabel;
 	@FXML
@@ -54,6 +59,11 @@ public class AuthenticationController implements Initializable {
 	AnchorPane root;
 	@FXML
 	TextField passwordTF;
+	 @FXML
+	    private Hyperlink FPwdId;
+
+	    
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -163,4 +173,12 @@ public class AuthenticationController implements Initializable {
 				});
 		nb.showConfirm();
 	}
+	
+	@FXML
+    void ForgotPwdAction(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(PasswordController.class.getResource("/fxml/Password.fxml"));
+		stage.setScene(new Scene(root));
+		stage.showAndWait();
+    }
+	
 }

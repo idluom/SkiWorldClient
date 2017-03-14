@@ -1,5 +1,7 @@
 package esprit.skiworld.Business;
 
+import java.util.List;
+
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
@@ -45,4 +47,29 @@ public class AdminBusiness {
 		proxy.deleteAdmin(a);
 		
 	}
+
+public void fetchUserName(String n) {
+	try {
+		ctx = new InitialContext();
+		proxy = (AdminEJBRemote) ctx.lookup(jndiName);
+	} catch (NamingException e) {
+		e.printStackTrace();
+	}
+	proxy.fetchUsername(n);
+	
 }
+public List<Member> DisplayAllMember(){
+	try {
+		ctx = new InitialContext();
+		proxy = (AdminEJBRemote) ctx.lookup(jndiName);
+	} catch (NamingException e) {
+		e.printStackTrace();
+	}
+	
+	return proxy.displayAll();
+	
+}
+
+
+}
+

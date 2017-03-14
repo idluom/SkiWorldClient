@@ -2,6 +2,9 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -15,7 +18,7 @@
    <children>
       <AnchorPane fx:id="Conteneur" layoutX="21.0" layoutY="102.0">
          <children>
-            <TableView fx:id="TableTrip" layoutX="177.0" layoutY="24.0" onMouseClicked="#ClickChangeTrip" prefHeight="285.0" prefWidth="356.0">
+            <TableView fx:id="TableTrip" layoutX="23.0" layoutY="46.0" onMouseClicked="#ClickChangeTrip" prefHeight="285.0" prefWidth="356.0">
               <columns>
                 <TableColumn fx:id="DescriptionCol" prefWidth="75.0" text="Description" />
                 <TableColumn fx:id="PriceCol" prefWidth="75.0" text="Price" />
@@ -33,12 +36,20 @@
                   <Font name="Comic Sans MS Italic" size="12.0" />
                </font>
             </JFXButton>
-            <JFXTextField fx:id="searchId" labelFloat="true" layoutY="12.0" promptText="What I'am looking for !" />
-            <JFXButton fx:id="WatchId" buttonType="RAISED" layoutX="682.0" layoutY="12.0" onAction="#WatchAction" ripplerFill="#2a2af5" text="Watch">
+            <JFXButton fx:id="WatchId" buttonType="RAISED" layoutX="682.0" layoutY="1.0" onAction="#WatchAction" ripplerFill="#2a2af5" text="Watch">
                <font>
                   <Font name="Comic Sans MS Italic" size="12.0" />
                </font>
             </JFXButton>
+            <JFXTextField fx:id="searchId" labelFloat="true" layoutX="23.0" layoutY="6.0" promptText="What I'am looking for !" />
+            <BarChart fx:id="barChart" layoutX="387.0" layoutY="40.0" prefHeight="360.0" prefWidth="391.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </BarChart>
          </children>
       </AnchorPane>
       <Text fill="#2b579a" layoutX="111.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trips List" wrappingWidth="125.00000447034836">

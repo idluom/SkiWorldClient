@@ -38,6 +38,8 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
@@ -96,7 +98,8 @@ public class TripsController implements Initializable {
 	private TableView<Trip> TableTrip = new TableView<Trip>();
 
 	ObservableList<Trip> champs;
-
+	@FXML
+    private BarChart<String, Long> barChart;
 	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -162,23 +165,35 @@ Conteneur.setVisible(false);
 	void ClickChangeTrip(MouseEvent event) throws IOException {
 		if (event.getClickCount() == 1) {
 			Trip t = new Trip();
+			Trip tt=new Trip();
 			t = TableTrip.getSelectionModel().getSelectedItem();
-			if (t.getVideo().length() == 0) {
+			
+			if (t.getVideo().length()==0) {
 				WatchId.setDisable(true);
+				Long nbr= new TripBusiness().Nbrskier(t.getId());
 			} else {
 				WatchId.setDisable(false);
+				Long nr= new TripBusiness().Nbrskier(t.getId());
 			}
+			XYChart.Series<String, Long> series = new XYChart.Series<>();
+	        series.getData().add(new XYChart.Data<>(t.getDescription(),new TripBusiness().Nbrskier
+
+(t.getId())));
+	        barChart.getData().add(series);
+			//System.out.println(nbr);
 		}
 		if (event.getClickCount() == 2) {
 
 			TripsController.setTrip(TableTrip.getSelectionModel().getSelectedItem());
 
-			Parent root = FXMLLoader.load(UpdateTripsController.class.getResource("/fxml/UpdateTrips.fxml"));
+			Parent root = FXMLLoader.load(UpdateTripsController.class.getResource
+
+("/fxml/UpdateTrips.fxml"));
 			stage.setScene(new Scene(root));
 			stage.showAndWait();
 			TableTrip.refresh();
 
-		}
+		}	
 
 	}
 
@@ -225,40 +240,46 @@ Conteneur.setVisible(false);
 
 		if (searchId == null || (newValue.length() < oldValue.length()) || newValue == null) {
 
-			ObservableList<Trip> champs = FXCollections.observableArrayList(new TripBusiness().DisplayAllTrips());
+			ObservableList<Trip> champs = FXCollections.observableArrayList(new TripBusiness
+
+().DisplayAllTrips());
 			TableTrip.setItems(champs);
 
 		} else {
+			ObservableList<Trip> champs = FXCollections.observableArrayList(new TripBusiness
+
+().DisplayAllTrips());
+			TableTrip.setItems(champs);
 
 			newValue = newValue.toUpperCase();
-
-			for (Trip trip : TableTrip.getItems()) {
-
-				String filterDescription = trip.getDescription();
-
-				if (filterDescription.toUpperCase().contains(newValue)) {
-
-					filteredList.add(trip);
-
-				}
-			/*	if(searchId.getText().contains("0123456789"));
-				{			
-					String t=trip.getPrice()+"";
-					if (t.contains(newValue)) {
-						{System.out.println(Float.parseFloat(t)+"      AAAAAAAAAAAAA");
-						System.out.println(Float.parseFloat(searchId.getText())+"        ZZZZZZZZZzz");
-						if(Float.parseFloat(t)<=Float.parseFloat(newValue))
-							
+			if (newValue.matches("\\d*")) {
+	
+				Float val = Float.parseFloat(newValue);
+				Float p;
+				for (Trip trip : TableTrip.getItems()) {
+					 p = trip.getPrice();
+					if (p <= val) {
 						filteredList.add(trip);
 					}
-					}
-				}*/
+				}
+				TableTrip.setItems(filteredList);
+				TableTrip.refresh();
+			} else {
+				for (Trip trip : TableTrip.getItems()) {
 
+					String filterDescription = trip.getDescription();
+
+					if (filterDescription.toUpperCase().contains(newValue)) {
+
+						filteredList.add(trip);
+
+					}
+
+				}
 			}
 			TableTrip.setItems(filteredList);
 		}
 	}
-
 	// **************************listee
 
 	public static Trip getTrip() {

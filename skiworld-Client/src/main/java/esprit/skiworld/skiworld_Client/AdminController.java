@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javax.naming.InitialContext;
@@ -326,6 +327,27 @@ public class AdminController implements Initializable {
 		}
 
 	}
+	
+	@FXML
+	void TestLogin(KeyEvent event) {
+		int t=0 ;
+		 LoginId.setPromptText("");
+		 LoginId.focusColorProperty().set(Paint.valueOf("#4059a9"));
+		 List<Member> lm = new AdminBusiness().DisplayAllMember();
+		 for (Member member : lm) {
+			 if (LoginId.getText().equals(member.getLogin()))
+				{
+				 t=1;
+				}		 
+	}
+		 if(t==1)
+		 {
+			 LoginId.focusColorProperty().set(Paint.valueOf("red"));
+			 LoginId.setPromptText("Login Exist !");
+		 }
+		
+	}
+	
 	 @FXML
 	    void BackAction(ActionEvent event) {
 		 SelectAdminController.stage.close();
