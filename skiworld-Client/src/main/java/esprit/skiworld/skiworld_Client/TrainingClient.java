@@ -21,17 +21,19 @@ public class TrainingClient {
 		Training t = new Training();
 		//t.setLevel("okkk");
 		SimpleDateFormat formater =null;
-		formater=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		formater=new SimpleDateFormat("yyyy-MM-dd");
 		Date now = new Date();
-		String d1 = "2017-03-23 12:59:00";
+		String d1 = "2017-03-23 15:17:00";
+		
 		Date d = null;
+		
 		try {
 			d=formater.parse(d1);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
-		
+		System.out.println("fff: "+d);
 		//System.out.println(d);
 		//t.setBegeningDate(d);
 		//proxy.addTraining(t);
@@ -44,9 +46,10 @@ public class TrainingClient {
 		//System.out.println(t2);
 		//t2.setNumber(10);
 		//proxy.updateTraing(t2);
-		List <Training> liste = proxy.findAllTrainingByLevel("Hard",d);
+		List <Training> liste = proxy.findAllTrainingByLevel("Hard", d);
 		for (Training training : liste) {
-			System.out.println(training);		
+			//System.out.println("dd");
+			System.out.println(training.getBegeningDate());		
 		}
 		
 	}
