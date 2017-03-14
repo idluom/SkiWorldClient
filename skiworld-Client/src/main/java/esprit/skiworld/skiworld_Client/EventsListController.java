@@ -14,6 +14,8 @@ import org.controlsfx.control.Notifications;
 
 import Entity.Events;
 import esprit.skiworld.Business.EventsBusiness;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,6 +30,7 @@ import javafx.util.Duration;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.input.MouseEvent;
 
@@ -53,6 +56,8 @@ public class EventsListController implements Initializable {
 	private Button deleteEvent;
 	@FXML
 	ObservableList<Events> champs;
+	@FXML
+	CheckBox checkbox;
 	
 	public static Stage s = new Stage();
 	public static Events event;
@@ -76,19 +81,18 @@ public class EventsListController implements Initializable {
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String s="2017-03-27";
-		try {
-			Date date1=sdf.parse(s);
-			Boolean b=new EventsBusiness().findEventByDate(date1);
-			System.out.println(b);
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		checkbox.setOnAction((event) -> {
+			champs.removeAll(champs);
+		    if(checkbox.isSelected()){
+		    	
+		    	champs = FXCollections.observableArrayList(new EventsBusiness().findAllEventNotStarted());
+		    	tableEvents.setItems(champs);
+		    }else
+		    champs = FXCollections.observableArrayList(new EventsBusiness().findAllEvent());
+		    tableEvents.setItems(champs);
+		});
 		
-		
-		
+	
 		champs = FXCollections.observableArrayList(new EventsBusiness().findAllEvent());
 		
 		name.setCellValueFactory(new PropertyValueFactory<Events, String>("name"));

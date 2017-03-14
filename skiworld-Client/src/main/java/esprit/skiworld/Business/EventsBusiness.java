@@ -75,4 +75,13 @@ public class EventsBusiness {
 		
 		return proxy.findEventByDate(date);
 	}
+	public List<Events> findAllEventNotStarted(){
+		try {
+			ctx = new InitialContext();
+			proxy = (EventEJBRemote) ctx.lookup(jndiName);
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+		return proxy.findAllEventNotStarted();
+	}
 }
