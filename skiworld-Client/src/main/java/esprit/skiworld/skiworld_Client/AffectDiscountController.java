@@ -11,20 +11,36 @@ import Entity.Equipement;
 
 import Service.DiscountEJBRemote;
 import Service.EquipementEJBRemote;
+import esprit.skiworld.Business.Loading;
+import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 public class AffectDiscountController implements Initializable {
+	@FXML
+	ImageView loading;
+	private Task<?> task;
+	@FXML
+	private ProgressBar ProgressLoading;
+	@FXML
+	AnchorPane elements;
 
 	@FXML
 	private TableView<Equipement> TabShop;
@@ -78,6 +94,23 @@ public class AffectDiscountController implements Initializable {
 		} catch (NamingException e) {
 		}
 
+		elements.setVisible(false);
+		ProgressLoading.setProgress(0);
+		ProgressLoading.progressProperty().unbind();
+		task = Loading.load();
+		ProgressLoading.progressProperty().bind(task.progressProperty());
+		new Thread(task).start();
+		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			@Override
+			public void handle(WorkerStateEvent event) {
+				elements.setVisible(true);
+				TranslateTransition tt = new TranslateTransition(Duration.seconds(2), elements);
+				tt.setFromY(50);
+				tt.setToY(0);
+				tt.play();
+				loading.setVisible(false);
+			}
+		});
 		name.setCellValueFactory(new PropertyValueFactory<>("name"));
 		category.setCellValueFactory(new PropertyValueFactory<>("category"));
 		type.setCellValueFactory(new PropertyValueFactory<>("type"));

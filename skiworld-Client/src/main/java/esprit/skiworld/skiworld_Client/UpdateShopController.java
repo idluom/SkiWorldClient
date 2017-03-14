@@ -1,6 +1,5 @@
 package esprit.skiworld.skiworld_Client;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -12,6 +11,8 @@ import Entity.Bill;
 import Entity.Equipement;
 import Service.BillEJBRemote;
 import Service.EquipementEJBRemote;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -47,6 +48,36 @@ public class UpdateShopController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		price.textProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if(newValue.matches("\\d*")) {
+					price.setText(newValue);
+				}
+				else price.setText(oldValue);
+			}
+		});
+		
+		sq.textProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if(newValue.matches("\\d*")) {
+					sq.setText(newValue);
+				}
+				else sq.setText(oldValue);
+			}
+		});
+		
+		iq.textProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if(newValue.matches("\\d*")) {
+					iq.setText(newValue);
+				}
+				else iq.setText(oldValue);
+			}
+		});
+		
 		name.setText(ShopController.getE().getName());
 		category.setText(ShopController.getE().getCategory());
 		type.setText(ShopController.getE().getType());
@@ -101,6 +132,7 @@ public class UpdateShopController implements Initializable {
 		alert.setTitle(" update");
 		alert.setHeaderText("update successful");
 		alert.showAndWait();
+		ShopController.stage.close();
 
 	}
 

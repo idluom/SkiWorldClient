@@ -4,31 +4,49 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.BillController">
    <children>
-      <TableView fx:id="TabBill" layoutX="131.0" layoutY="116.0" prefHeight="219.0" prefWidth="639.0" AnchorPane.bottomAnchor="161.0" AnchorPane.leftAnchor="131.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="120.0">
-        <columns>
-          <TableColumn fx:id="date" prefWidth="103.0" text="Date" />
-          <TableColumn fx:id="cost" prefWidth="87.0" text="Cost" />
-            <TableColumn fx:id="eq" prefWidth="187.0" text="Equipement" />
-        </columns>
-      </TableView>
-      <Button fx:id="ref" layoutX="424.0" layoutY="76.0" mnemonicParsing="false" onAction="#Refresh" prefHeight="30.0" styleClass="btn" text="Refresh" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="70.0" />
-      <TextField fx:id="T" layoutX="120.0" layoutY="74.0" promptText="Search..." AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="70.0" />
-      <Text layoutX="395.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bills And Statistiques" AnchorPane.topAnchor="20.0" />
-      <DatePicker fx:id="rech" layoutX="383.0" layoutY="70.0" onAction="#choice" promptText="Select Date" />
-      <TextField fx:id="total" layoutX="415.0" layoutY="431.0" prefHeight="30.0" prefWidth="119.0" />
-      <TextField fx:id="profit" layoutX="246.0" layoutY="431.0" prefHeight="30.0" prefWidth="119.0" />
-      <Label layoutX="430.0" layoutY="400.0" text="Total Cost" />
-      <Label layoutX="233.0" layoutY="391.0" prefHeight="30.0" prefWidth="110.0" text="Profits hor Discount" />
-      <TextField fx:id="pad" layoutX="112.0" layoutY="431.0" prefHeight="30.0" prefWidth="100.0" />
-      <Label layoutX="94.0" layoutY="400.0" prefHeight="17.0" prefWidth="119.0" text="Profits after Discount" />
+      <AnchorPane fx:id="elements" layoutX="94.0" layoutY="70.0">
+         <children>
+            <TableView fx:id="TabBill" layoutX="37.0" layoutY="50.0" prefHeight="219.0" prefWidth="639.0">
+              <columns>
+                <TableColumn fx:id="date" prefWidth="103.0" text="Date" />
+                <TableColumn fx:id="cost" prefWidth="87.0" text="Cost" />
+                  <TableColumn fx:id="eq" prefWidth="187.0" text="Equipement" />
+              </columns>
+            </TableView>
+            <Button fx:id="ref" layoutX="591.0" mnemonicParsing="false" onAction="#Refresh" prefHeight="30.0" styleClass="btn" text="Refresh" />
+            <TextField fx:id="T" layoutX="26.0" promptText="Search..." />
+            <DatePicker fx:id="rech" layoutX="289.0" onAction="#choice" promptText="Select Date" />
+            <TextField fx:id="total" layoutX="321.0" layoutY="361.0" prefHeight="30.0" prefWidth="119.0" />
+            <TextField fx:id="profit" layoutX="152.0" layoutY="361.0" prefHeight="30.0" prefWidth="119.0" />
+            <Label layoutX="336.0" layoutY="330.0" text="Total Cost" />
+            <Label layoutX="139.0" layoutY="321.0" prefHeight="30.0" prefWidth="110.0" text="Profits hor Discount" />
+            <TextField fx:id="pad" layoutX="18.0" layoutY="361.0" prefHeight="30.0" prefWidth="100.0" />
+            <Label layoutY="330.0" prefHeight="17.0" prefWidth="119.0" text="Profits after Discount" />
+         </children>
+      </AnchorPane>
+      <Text fill="#2b579a" layoutX="110.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bills">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+      <ProgressBar fx:id="ProgressLoading" layoutX="10.0" layoutY="46.0" prefWidth="200.0" progress="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <ImageView fx:id="loading" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="180.0">
+         <image>
+            <Image url="@../images/loading.GIF" />
+         </image>
+      </ImageView>
    </children>
    <stylesheets>
       <URL value="@../styles/menu_items.css" />
