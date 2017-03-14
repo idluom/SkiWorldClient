@@ -90,7 +90,7 @@ public class TrainingController implements Initializable {
 			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 
 				try {
-					filterMembreList((String) oldValue, (String) newValue);
+					filterTrainingList((String) oldValue, (String) newValue);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -129,7 +129,7 @@ public class TrainingController implements Initializable {
 
 	}
 
-	private void filterMembreList(String oldValue, String newValue) throws ParseException {
+	private void filterTrainingList(String oldValue, String newValue) throws ParseException {
 		ObservableList<Training> filteredList = FXCollections.observableArrayList();
 
 		if (RechercheTF == null || (newValue.length() < oldValue.length()) || newValue == null) {

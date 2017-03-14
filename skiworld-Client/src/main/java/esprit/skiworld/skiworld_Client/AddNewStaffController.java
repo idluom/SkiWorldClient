@@ -10,23 +10,37 @@ import javax.naming.NamingException;
 import org.controlsfx.control.Notifications;
 
 import Entity.Member;
+import esprit.skiworld.Business.Loading;
 import esprit.skiworld.Business.StaffBusiness;
+import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 
 public class AddNewStaffController implements Initializable {
-	
+	private Task<?> task;
+	@FXML
+	private ProgressBar ProgressLoading;
+	@FXML
+	ImageView loading;
+	@FXML 
+	private AnchorPane Conteneur;
 	@FXML
 	private TextField first;
 	@FXML
@@ -52,6 +66,23 @@ public class AddNewStaffController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Conteneur.setVisible(false);
+		ProgressLoading.setProgress(0);
+		ProgressLoading.progressProperty().unbind();
+		task = Loading.load();
+		ProgressLoading.progressProperty().bind(task.progressProperty());
+		new Thread(task).start();
+		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			@Override
+			public void handle(WorkerStateEvent event) {
+				Conteneur.setVisible(true);
+				TranslateTransition tt = new TranslateTransition(Duration.seconds(1), Conteneur);
+				tt.setFromY(50);
+				tt.setToY(0);
+				tt.play();
+				loading.setVisible(false);
+			}
+		});
 		role.setDisable(true);
 		if (SelectAdminController.type == 0) {
 			role.setValue("Admin");

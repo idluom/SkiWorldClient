@@ -4,10 +4,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.animation.TranslateTransition;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 
 import java.net.URL;
@@ -23,8 +30,16 @@ import com.jfoenix.controls.JFXTimePicker;
 
 import Entity.Events;
 import esprit.skiworld.Business.EventsBusiness;
+import esprit.skiworld.Business.Loading;
 
 public class AddEventsController implements Initializable {
+	private Task<?> task;
+	@FXML
+	private ProgressBar ProgressLoading;
+	@FXML
+	ImageView loading;
+	@FXML 
+	private AnchorPane Conteneur;
 	@FXML
 	private TextField nameTF;
 	@FXML
@@ -44,6 +59,7 @@ public class AddEventsController implements Initializable {
 	// Event Listener on Button.onAction
 	@FXML
 	public void addEvent(ActionEvent event) throws ParseException {
+		
 		if (isInputValid()) {
 			String date = dateP.getValue() + " " + timeP.getValue();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -81,8 +97,26 @@ public class AddEventsController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Conteneur.setVisible(false);
 		descTA.setScrollLeft(1000);
 		descTA.setWrapText(true);
+		ProgressLoading.setProgress(0);
+		ProgressLoading.progressProperty().unbind();
+		task = Loading.load();
+		ProgressLoading.progressProperty().bind(task.progressProperty());
+		new Thread(task).start();
+		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			@Override
+			public void handle(WorkerStateEvent event) {
+				Conteneur.setVisible(true);
+				TranslateTransition tt = new TranslateTransition(Duration.seconds(1), Conteneur);
+				tt.setFromY(50);
+				tt.setToY(0);
+				tt.play();
+				loading.setVisible(false);
+			}
+		});
+		
 
 	}
 

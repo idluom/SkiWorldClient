@@ -14,18 +14,22 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.TrackController">
    <children>
-      <TableView fx:id="TableTrack" layoutX="61.0" layoutY="171.0" prefHeight="365.0" prefWidth="500.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="100.0">
-        <columns>
-            <TableColumn fx:id="Title" prefWidth="75.0" text="Title" />
-          <TableColumn fx:id="lengthCol" prefWidth="192.0" text="Length" />
-          <TableColumn fx:id="diffCol" prefWidth="168.0" text="Difficulty" />
-            <TableColumn fx:id="priceCol" prefWidth="136.0" text="Price" />
-        </columns>
-      </TableView>
-      <JFXTextField fx:id="RechercheTF" layoutX="46.0" layoutY="77.0" promptText="Search..." AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="60.0" />
-      <JFXButton layoutX="671.0" layoutY="160.0" onAction="#DeleteTrack" styleClass="btn" text="Delete Track" AnchorPane.leftAnchor="680.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="140.0" />
-      <JFXButton layoutX="686.0" layoutY="204.0" onAction="#Add" styleClass="btn" text="Add Track" AnchorPane.leftAnchor="680.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="180.0" />
-      <JFXButton layoutX="686.0" layoutY="260.0" onAction="#Edit" styleClass="btn" text="Edit Track" AnchorPane.leftAnchor="680.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="220.0" />
+      <AnchorPane fx:id="Conteneur" layoutX="100.0" layoutY="60.0">
+         <children>
+            <TableView fx:id="TableTrack" layoutY="40.0" prefHeight="365.0" prefWidth="500.0">
+              <columns>
+                  <TableColumn fx:id="Title" prefWidth="75.0" text="Title" />
+                <TableColumn fx:id="lengthCol" prefWidth="192.0" text="Length" />
+                <TableColumn fx:id="diffCol" prefWidth="168.0" text="Difficulty" />
+                  <TableColumn fx:id="priceCol" prefWidth="136.0" text="Price" />
+              </columns>
+            </TableView>
+            <JFXTextField fx:id="RechercheTF" promptText="Search..." />
+            <JFXButton layoutX="580.0" layoutY="80.0" onAction="#DeleteTrack" styleClass="btn" text="Delete Track" />
+            <JFXButton layoutX="580.0" layoutY="120.0" onAction="#Add" styleClass="btn" text="Add Track" />
+            <JFXButton layoutX="580.0" layoutY="160.0" onAction="#Edit" styleClass="btn" text="Edit Track" />
+         </children>
+      </AnchorPane>
       <Text fill="#2b579a" layoutX="100.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tracks' List" AnchorPane.topAnchor="0.0">
          <font>
             <Font name="System Bold" size="25.0" />

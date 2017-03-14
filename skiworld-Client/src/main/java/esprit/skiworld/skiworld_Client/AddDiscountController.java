@@ -9,17 +9,33 @@ import javax.naming.NamingException;
 
 import Entity.Discount;
 import Service.DiscountEJBRemote;
+import esprit.skiworld.Business.Loading;
+import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 public class AddDiscountController implements Initializable {
+	private Task<?> task;
+	@FXML
+	private ProgressBar ProgressLoading;
+	@FXML
+	ImageView loading;
+	@FXML 
+	private AnchorPane Conteneur;
 	@FXML
 	private DatePicker debut;
 
@@ -40,8 +56,25 @@ public class AddDiscountController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Conteneur.setVisible(false);
 		percentage.setValue("0");
 		percentage.setItems(percent);
+		ProgressLoading.setProgress(0);
+		ProgressLoading.progressProperty().unbind();
+		task = Loading.load();
+		ProgressLoading.progressProperty().bind(task.progressProperty());
+		new Thread(task).start();
+		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			@Override
+			public void handle(WorkerStateEvent event) {
+				Conteneur.setVisible(true);
+				TranslateTransition tt = new TranslateTransition(Duration.seconds(1), Conteneur);
+				tt.setFromY(50);
+				tt.setToY(0);
+				tt.play();
+				loading.setVisible(false);
+			}
+		});
 
 	}
 
@@ -76,7 +109,7 @@ public class AddDiscountController implements Initializable {
 			System.out.println(date);
 			return;
 		}
-
+		
 		proxy.addDiscount(D);
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle(" Add ");

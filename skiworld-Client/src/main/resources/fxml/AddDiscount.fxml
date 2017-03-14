@@ -5,18 +5,37 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxWidth="500.0" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.AddDiscountController">
    <children>
-      <Label layoutX="42.0" layoutY="98.0" text="Starting Date :" AnchorPane.leftAnchor="100.0" />
-      <Label layoutX="42.0" layoutY="168.0" text="Ending Date :" AnchorPane.leftAnchor="100.0" />
-      <Label layoutX="42.0" layoutY="233.0" text="Percentage :" AnchorPane.leftAnchor="100.0" />
-      <DatePicker fx:id="debut" layoutX="167.0" layoutY="94.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="100.0" />
-      <DatePicker fx:id="fin" layoutX="167.0" layoutY="164.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="100.0" />
-      <Button fx:id="add" layoutX="257.0" layoutY="329.0" mnemonicParsing="false" onAction="#addDiscount" prefHeight="27.0" prefWidth="112.0" styleClass="btn" text="Add " AnchorPane.leftAnchor="200.0" />
-      <Label layoutX="291.0" layoutY="17.0" prefHeight="27.0" prefWidth="156.0" text="Discount Add" textFill="#e81919" />
-      <ChoiceBox fx:id="percentage" layoutX="169.0" layoutY="229.0" prefHeight="27.0" prefWidth="202.0" styleClass="combo-box" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="100.0" />
+      <AnchorPane fx:id="Conteneur" layoutX="100.0" layoutY="94.0">
+         <children>
+            <Label layoutY="4.0" text="Starting Date :" />
+            <Label layoutY="74.0" text="Ending Date :" />
+            <Label layoutY="139.0" text="Percentage :" />
+            <DatePicker fx:id="debut" layoutX="100.0" />
+            <DatePicker fx:id="fin" layoutX="100.0" layoutY="70.0" />
+            <Button fx:id="add" layoutX="100.0" layoutY="235.0" mnemonicParsing="false" onAction="#addDiscount" prefHeight="27.0" prefWidth="112.0" styleClass="btn" text="Add " />
+            <ChoiceBox fx:id="percentage" layoutX="100.0" layoutY="135.0" prefHeight="27.0" prefWidth="202.0" styleClass="combo-box" />
+         </children>
+      </AnchorPane>
+      <Text fill="#2b579a" layoutX="-80.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discount Add">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+      <ProgressBar fx:id="ProgressLoading" layoutX="-108.0" layoutY="46.0" prefHeight="14.0" prefWidth="658.0" progress="0.0" />
+      <ImageView fx:id="loading" fitHeight="30.0" fitWidth="30.0" layoutX="109.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/loading.GIF" />
+         </image>
+      </ImageView>
    </children>
    <stylesheets>
       <URL value="@../styles/menu_items.css" />

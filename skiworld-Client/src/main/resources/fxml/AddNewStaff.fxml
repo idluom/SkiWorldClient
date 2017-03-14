@@ -8,43 +8,61 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.AddNewStaffController">
    <children>
-      <Label layoutX="61.0" layoutY="89.0" text="First Name :" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="80.0" />
-      <Label layoutX="61.0" layoutY="131.0" text="Last Name :" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="130.0" />
-      <Label layoutX="61.0" layoutY="171.0" text="Date of Birth :" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="180.0" />
-      <Label layoutX="61.0" layoutY="209.0" text="ID number : " AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="230.0" />
-      <Label layoutX="520.0" layoutY="89.0" text="Username :" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="80.0" />
-      <Label layoutX="520.0" layoutY="138.0" text="Password :" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="130.0" />
-      <Label layoutX="520.0" layoutY="188.0" text="Confirmation :" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="180.0" />
-      <Label layoutX="520.0" layoutY="233.0" text="Phone Number :" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="230.0" />
-      <Separator layoutX="447.0" layoutY="6.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="447.0" AnchorPane.rightAnchor="447.0" AnchorPane.topAnchor="60.0" />
-      <Label layoutX="60.0" layoutY="275.0" text="Address :" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="280.0" />
-      <Label layoutX="520.0" layoutY="275.0" text="Email :" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="280.0" />
-      <JFXTextField fx:id="first" labelFloat="true" layoutX="151.0" layoutY="76.0" prefWidth="200.0" promptText="First Name" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="550.0" AnchorPane.topAnchor="75.0" />
-      <JFXTextField fx:id="last" labelFloat="true" layoutX="161.0" layoutY="86.0" prefWidth="200.0" promptText="Last Name" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="550.0" AnchorPane.topAnchor="125.0" />
-      <JFXDrawer layoutX="163.0" layoutY="180.0" prefHeight="28.0" prefWidth="238.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="510.0" AnchorPane.topAnchor="175.0">
+      <AnchorPane fx:id="Conteneur" layoutY="70.0">
          <children>
-            <JFXDatePicker fx:id="date" prefWidth="240.0" promptText="31/12/1999" />
+            <Label layoutX="60.0" layoutY="20.0" text="First Name :" />
+            <Label layoutX="60.0" layoutY="70.0" text="Last Name :" />
+            <Label layoutX="60.0" layoutY="120.0" text="Date of Birth :" />
+            <Label layoutX="60.0" layoutY="170.0" text="ID number : " />
+            <Label layoutX="520.0" layoutY="20.0" text="Username :" />
+            <Label layoutX="520.0" layoutY="70.0" text="Password :" />
+            <Label layoutX="520.0" layoutY="120.0" text="Confirmation :" />
+            <Label layoutX="520.0" layoutY="170.0" text="Phone Number :" />
+            <Separator layoutX="447.0" orientation="VERTICAL" prefHeight="200.0" />
+            <Label layoutX="60.0" layoutY="220.0" text="Address :" />
+            <Label layoutX="520.0" layoutY="220.0" text="Email :" />
+            <JFXTextField fx:id="first" labelFloat="true" layoutX="150.0" layoutY="15.0" prefWidth="200.0" promptText="First Name" />
+            <JFXTextField fx:id="last" labelFloat="true" layoutX="150.0" layoutY="65.0" prefWidth="200.0" promptText="Last Name" />
+            <JFXDrawer layoutX="150.0" layoutY="115.0" prefHeight="28.0" prefWidth="238.0">
+               <children>
+                  <JFXDatePicker fx:id="date" prefWidth="240.0" promptText="31/12/1999" />
+               </children>
+            </JFXDrawer>
+            <JFXTextField fx:id="id" layoutX="150.0" layoutY="165.0" prefWidth="200.0" promptText="National ID" />
+            <JFXTextField fx:id="address" layoutX="150.0" layoutY="215.0" prefWidth="200.0" promptText="Address" />
+            <JFXTextField fx:id="username" layoutX="640.0" layoutY="15.0" prefWidth="200.0" promptText="Username" />
+            <JFXPasswordField fx:id="password" layoutX="640.0" layoutY="65.0" prefWidth="200.0" promptText="Password" />
+            <JFXPasswordField fx:id="confirmation" layoutX="640.0" layoutY="115.0" prefWidth="200.0" promptText="Password Confirmation" />
+            <JFXTextField fx:id="phone" layoutX="640.0" layoutY="165.0" prefWidth="200.0" promptText="Phone Number" />
+            <JFXTextField fx:id="mail" layoutX="640.0" layoutY="215.0" prefWidth="200.0" promptText="Gmail Account" />
+            <ChoiceBox fx:id="role" layoutX="150.0" layoutY="265.0" prefWidth="200.0" styleClass="combo-box" />
+            <Label layoutX="60.0" layoutY="270.0" text="Role :" />
+            <Separator layoutY="317.0" prefWidth="200.0" />
+            <Separator prefWidth="200.0" />
+            <JFXButton layoutX="400.0" layoutY="355.0" onAction="#confirm" styleClass="btn" text="Confirm" />
          </children>
-      </JFXDrawer>
-      <JFXTextField fx:id="id" layoutX="161.0" layoutY="86.0" prefWidth="200.0" promptText="National ID" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="550.0" AnchorPane.topAnchor="225.0" />
-      <JFXTextField fx:id="address" layoutX="161.0" layoutY="86.0" prefWidth="200.0" promptText="Address" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="550.0" AnchorPane.topAnchor="275.0" />
-      <JFXTextField fx:id="username" layoutX="161.0" layoutY="86.0" prefWidth="200.0" promptText="Username" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="75.0" />
-      <JFXPasswordField fx:id="password" layoutX="161.0" layoutY="86.0" prefWidth="200.0" promptText="Password" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="125.0" />
-      <JFXPasswordField fx:id="confirmation" layoutX="161.0" layoutY="86.0" prefWidth="200.0" promptText="Password Confirmation" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="175.0" />
-      <JFXTextField fx:id="phone" layoutX="161.0" layoutY="86.0" prefWidth="200.0" promptText="Phone Number" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="225.0" />
-      <JFXTextField fx:id="mail" layoutX="161.0" layoutY="86.0" prefWidth="200.0" promptText="Gmail Account" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="275.0" />
-      <ChoiceBox fx:id="role" layoutX="150.0" layoutY="334.0" prefWidth="200.0" styleClass="combo-box" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="550.0" AnchorPane.topAnchor="325.0" />
-      <Label layoutX="57.0" layoutY="338.0" text="Role :" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="330.0" />
-      <Separator layoutX="350.0" layoutY="387.0" prefWidth="200.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Separator layoutX="347.0" layoutY="59.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" />
-      <JFXButton layoutX="424.0" layoutY="415.0" onAction="#confirm" styleClass="btn" text="Confirm" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0" />
-      <Text layoutX="415.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Staff" AnchorPane.topAnchor="15.0" />
+      </AnchorPane>
+      <Text fill="#2b579a" layoutX="116.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Staff" wrappingWidth="205.99999552965164">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+      <ProgressBar fx:id="ProgressLoading" layoutX="-4.0" layoutY="40.0" prefHeight="14.0" prefWidth="900.0" progress="0.0" />
+      <ImageView fx:id="loading" fitHeight="27.0" fitWidth="30.0" layoutX="316.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/loading.GIF" />
+         </image>
+      </ImageView>
    </children>
    <stylesheets>
       <URL value="@../styles/menu.css" />

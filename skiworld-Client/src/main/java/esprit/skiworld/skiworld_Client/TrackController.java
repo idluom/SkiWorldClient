@@ -96,7 +96,7 @@ public class TrackController implements Initializable {
 			@Override
 			public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
 
-				filterMembreList((String) oldValue, (String) newValue);
+				filterTrackList((String) oldValue, (String) newValue);
 			}
 
 		});
@@ -165,7 +165,7 @@ public class TrackController implements Initializable {
 		TableTrack.setItems(champs);
 	}
 
-	private void filterMembreList(String oldValue, String newValue) {
+	private void filterTrackList(String oldValue, String newValue) {
 		ObservableList<Track> filteredList = FXCollections.observableArrayList();
 
 		if (RechercheTF == null || (newValue.length() < oldValue.length()) || newValue == null) {
@@ -177,11 +177,11 @@ public class TrackController implements Initializable {
 
 			for (Track tracks : TableTrack.getItems()) {
 
-				String filterFirstName = tracks.getDifficulty();
+				String filterDiff = tracks.getDifficulty();
 
-				// String filterLastName = clubss.getPrice();
+				 Float filterPrice = (tracks.getPrice());
 
-				if (filterFirstName.toUpperCase().contains(newValue)) {
+				if (filterDiff.toUpperCase().contains(newValue) || filterPrice.toString().contains(newValue)  ) {
 
 					filteredList.add(tracks);
 

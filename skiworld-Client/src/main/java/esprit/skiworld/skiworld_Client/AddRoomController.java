@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.Optional;
@@ -15,15 +16,30 @@ import javax.naming.NamingException;
 import Entity.Hotel;
 import Entity.Room;
 import Service.HotelEJBRemote;
+import esprit.skiworld.Business.Loading;
 import esprit.skiworld.Business.RoomBusiness;
+import javafx.animation.TranslateTransition;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 
 public class AddRoomController implements Initializable {
+	private Task<?> task;
+	@FXML
+	private ProgressBar ProgressLoading;
+	@FXML
+	ImageView loading;
+	@FXML 
+	private AnchorPane Conteneur;
 	@FXML
 	private TextField sbedTF;
 	@FXML
@@ -37,8 +53,26 @@ public class AddRoomController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		Conteneur.setVisible(false);
 		descTA.setScrollLeft(1000);
 		descTA.setWrapText(true);
+		ProgressLoading.setProgress(0);
+		ProgressLoading.progressProperty().unbind();
+		task = Loading.load();
+		ProgressLoading.progressProperty().bind(task.progressProperty());
+		new Thread(task).start();
+		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			@Override
+			public void handle(WorkerStateEvent event) {
+				Conteneur.setVisible(true);
+				TranslateTransition tt = new TranslateTransition(Duration.seconds(1), Conteneur);
+				tt.setFromY(50);
+				tt.setToY(0);
+				tt.play();
+				loading.setVisible(false);
+			}
+		});
+		
 	}
 
 	public void setDialogStage(Stage dialogStage) {

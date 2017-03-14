@@ -5,29 +5,47 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" minHeight="500.0" minWidth="600.0" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.AddEventsController">
    <children>
-      <Label layoutX="100.0" layoutY="34.0" text="Name :" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="60.0" />
-      <Label layoutX="101.0" layoutY="76.0" text="Place :" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="110.0" />
-      <Label layoutX="98.0" layoutY="312.0" text="Description :" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="320.0" />
-      <TextField fx:id="nameTF" layoutX="237.0" layoutY="26.0" promptText="Name" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="60.0" />
-      <TextField fx:id="placeTF" layoutX="237.0" layoutY="68.0" promptText="Place" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="110.0" />
-      <Button layoutX="220.0" layoutY="442.0" mnemonicParsing="false" onAction="#addEvent" styleClass="btn" text="Add" AnchorPane.bottomAnchor="10.0" />
-      <Label layoutX="103.0" layoutY="229.0" text="Date :" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="260.0" />
-      <Button layoutX="370.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleCancel" styleClass="btn" text="Cancel" AnchorPane.bottomAnchor="10.0" />
-      <TextArea fx:id="descTA" layoutX="237.0" layoutY="305.0" prefHeight="131.0" prefWidth="221.0" promptText="..." AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="320.0" />
-      <TextField fx:id="priceTF" layoutX="237.0" layoutY="109.0" promptText="Price" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="160.0" />
-      <Label layoutX="102.0" layoutY="117.0" text="Price :" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="160.0" />
-      <Label layoutX="102.0" layoutY="160.0" text="Number places :" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="210.0" />
-      <TextField fx:id="numberPTF" layoutX="237.0" layoutY="152.0" promptText="Number of Places" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="210.0" />
-      <JFXDatePicker fx:id="dateP" layoutX="237.0" layoutY="210.0" prefHeight="39.0" prefWidth="220.0" promptText="01/01/2017" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="260.0" />
-      <JFXTimePicker fx:id="timeP" layoutX="450.0" layoutY="210.0" prefHeight="39.0" prefWidth="142.0" promptText="00:00" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="260.0" />
-      <Text layoutX="304.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add A New Event" AnchorPane.leftAnchor="304.0" AnchorPane.rightAnchor="304.0" />
+      <AnchorPane fx:id="Conteneur" layoutX="130.0" layoutY="60.0">
+         <children>
+            <Label text="Name :" />
+            <Label layoutY="50.0" text="Place :" />
+            <Label layoutY="260.0" text="Description :" />
+            <TextField fx:id="nameTF" layoutX="90.0" promptText="Name" />
+            <TextField fx:id="placeTF" layoutX="90.0" layoutY="50.0" promptText="Place" />
+            <Button layoutX="90.0" layoutY="403.0" mnemonicParsing="false" onAction="#addEvent" styleClass="btn" text="Add" />
+            <Label layoutY="200.0" text="Date :" />
+            <Button layoutX="240.0" layoutY="403.0" mnemonicParsing="false" onAction="#handleCancel" styleClass="btn" text="Cancel" />
+            <TextArea fx:id="descTA" layoutX="90.0" layoutY="260.0" prefHeight="131.0" prefWidth="221.0" promptText="..." />
+            <TextField fx:id="priceTF" layoutX="90.0" layoutY="100.0" promptText="Price" />
+            <Label layoutY="100.0" text="Price :" />
+            <Label layoutY="150.0" text="Number places :" />
+            <TextField fx:id="numberPTF" layoutX="90.0" layoutY="150.0" promptText="Number of Places" />
+            <JFXDatePicker fx:id="dateP" layoutX="90.0" layoutY="200.0" prefHeight="39.0" prefWidth="220.0" promptText="01/01/2017" />
+            <JFXTimePicker fx:id="timeP" layoutX="320.0" layoutY="200.0" prefHeight="39.0" prefWidth="142.0" promptText="00:00" />
+         </children>
+      </AnchorPane>
+      <Text fill="#2b579a" layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add A New Event" wrappingWidth="205.99999552965164">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+      <ProgressBar fx:id="ProgressLoading" layoutX="14.0" layoutY="46.0" prefHeight="14.0" prefWidth="685.0" progress="0.0" />
+      <ImageView fx:id="loading" fitHeight="27.0" fitWidth="30.0" layoutX="233.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/loading.GIF" />
+         </image>
+      </ImageView>
    </children>
    <stylesheets>
       <URL value="@../styles/menu_items.css" />
