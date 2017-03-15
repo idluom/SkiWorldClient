@@ -85,6 +85,7 @@ public class UpdateTransportController extends ControlsFXSample implements Initi
 //		TransportController.upTrans.setArrivalDate(d1);
 //		new TransportBusiness().updateTransport(TransportController.upTrans);
 //		MainApp.changeScene("/fxml/Transport.fxml", "Transport");
+	
 		popOver = createPopOver();
 		popOver.setContentNode(createForm());
 		popOver.show(updateButton);
@@ -111,7 +112,7 @@ public class UpdateTransportController extends ControlsFXSample implements Initi
         popOver.arrowSizeProperty().set(12);;
         popOver.arrowIndentProperty().set(12);
         popOver.arrowLocationProperty().set(ArrowLocation.LEFT_CENTER);
-        popOver.cornerRadiusProperty().set(6);
+        popOver.cornerRadiusProperty().set(30);
         popOver.headerAlwaysVisibleProperty().set(true);
         popOver.setAnimated(true);
         popOver.setTitle("ADD");

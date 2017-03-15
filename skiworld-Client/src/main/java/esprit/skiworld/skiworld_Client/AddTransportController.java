@@ -8,16 +8,19 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.ResourceBundle;
-
+import javafx.scene.control.Control;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 import org.controlsfx.validation.Validator;
 import org.controlsfx.validation.ValidationMessage;
+import org.controlsfx.validation.ValidationResult;
 import org.controlsfx.validation.ValidationSupport;
 import Entity.Transport;
 import esprit.skiworld.Business.TransportBusiness;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,6 +29,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 
 public class AddTransportController implements Initializable {
@@ -49,19 +53,50 @@ public class AddTransportController implements Initializable {
 	JFXTimePicker arrTime;
 	@FXML
 	JFXButton addButton;
+	DatePicker arrDate2;
 	ValidationSupport validationSupport;
 	ListView<ValidationMessage> messageList;
 	private ValidationSupport validationSupport2;
+	private ValidationSupport validationSupport3;
+	private ValidationSupport validationSupport4;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		validationSupport = new ValidationSupport();
 		validationSupport2 = new ValidationSupport();
-		validationSupport.registerValidator(depP, Validator.createEmptyValidator("Text is required"));
-		validationSupport2.registerValidator(arrPlace, Validator.createEmptyValidator("Text"));
-
+		validationSupport3 = new ValidationSupport();
+		validationSupport4 = new ValidationSupport();
+		depDate.setValue(LocalDate.now());
+		arrDate.setValue(LocalDate.now());
+		validationSupport.registerValidator(depP, Validator.createEmptyValidator("Departure place is required"));
+		validationSupport2.registerValidator(arrPlace, Validator.createEmptyValidator("Arrival place is required"));
+		validationSupport3.registerValidator(arrDate, false, (Control c, LocalDate newValue) -> 
+        ValidationResult.fromWarningIf(arrDate, "The date should be in the future", newValue.isBefore(LocalDate.now())));
+		validationSupport4.registerValidator(depDate, false, (Control c, LocalDate newValue) -> 
+        ValidationResult.fromWarningIf(depDate, "Departure Date should be before arrival date", newValue.isAfter(arrDate.getValue())||
+        		newValue.isBefore(LocalDate.now())));
 		ObservableList<String> ls = FXCollections.observableArrayList("Avion", "Bus", "Taxi", "Train");
 		type.setItems(ls);
+		cost.textProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (newValue.matches("\\d*")) {
+					cost.setText(newValue);
+				} else {
+					cost.setText(oldValue);
+				}
+			}
+		});
+		nPlaces.textProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (newValue.matches("\\d*")) {
+					nPlaces.setText(newValue);
+				} else {
+					nPlaces.setText(oldValue);
+				}
+			}
+		});
 	}
 
 	@FXML
@@ -90,15 +125,23 @@ public class AddTransportController implements Initializable {
 		System.out.println("dt " + dt);
 		System.out.println("dt2 " + dt2);
 
-		System.out.println(validationSupport.getValidationResult().getErrors().toString());
-		if (validationSupport.getValidationResult().getErrors().isEmpty()
-				&& validationSupport2.getValidationResult().getErrors().isEmpty()) {
+		System.out.println(validationSupport3.getValidationResult().getErrors().toString());
+		if (validationSupport.getValidationResult().getErrors().isEmpty()&& 
+				validationSupport2.getValidationResult().getErrors().isEmpty() && 
+				validationSupport3.getValidationResult().getWarnings().isEmpty()
+				&& validationSupport4.getValidationResult().getWarnings().isEmpty()) {
 			new TransportBusiness().addMeanTransport(tr);
 			MainApp.changeScene("/fxml/Transport.fxml", "Transport");
 			MainApp.s.close();
 		} else {
-			if (validationSupport.getValidationResult().getErrors().isEmpty())
-			new Alert(AlertType.ERROR, "Missing Departure Place" + s1).show();
+			Alert a = new Alert(AlertType.WARNING);
+			a.setHeaderText("Missing Fileds");
+			a.setContentText(validationSupport.getValidationResult().getErrors().toString()+
+					"\n"+validationSupport2.getValidationResult().getErrors().toString()+
+					"\n"+ validationSupport3.getValidationResult().getWarnings().toString()
+					+"\n"+ validationSupport4.getValidationResult().getWarnings().toString());
+			a.show();
+			
 		}
 	}
 }

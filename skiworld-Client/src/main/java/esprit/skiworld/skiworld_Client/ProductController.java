@@ -91,7 +91,6 @@ public class ProductController implements Initializable {
 		priceProdColumn.setCellValueFactory(new PropertyValueFactory<>("productPrice"));
 		typeProdColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
 		prodTable.setItems(prodOList);
-
 	}
 
 	@FXML
