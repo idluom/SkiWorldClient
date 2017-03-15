@@ -126,8 +126,8 @@ public class MainPageController implements Initializable {
 	@FXML
 	private void clickRestau(ActionEvent event) throws IOException {
 		if (AuthenticationController.getAuth() instanceof RestaurantOwner) {
-			resource = "/fxml/CommentsAndReports.fxml";
-			MainApp.changeScene("/fxml/MenuRestaurant.fxml", "Comments And Reports");
+			resource = "/fxml/Product.fxml";
+			MainApp.changeScene("/fxml/MenuRestaurant.fxml", "Principal Menu");
 			pat.pause();
 		}
 		else {

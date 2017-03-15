@@ -76,6 +76,7 @@ public class TransportController implements Initializable{
 	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(URL location, ResourceBundle resources){
+		transportOList = FXCollections.observableArrayList();
 		searchTF.textProperty().addListener(new ChangeListener() {
 			@Override
 			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
@@ -138,7 +139,7 @@ public class TransportController implements Initializable{
 		Transport tr = new Transport();
 		tr = transTable.getSelectionModel().getSelectedItem();
 		new TransportBusiness().deleteMeanTransport(tr);
-
+		initialize(null, null);
 	}
 	private void filterTransport(String oldValue, String newValue) {
 		ObservableList<Transport> filteredList = FXCollections.observableArrayList();
