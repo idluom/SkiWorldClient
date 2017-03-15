@@ -13,17 +13,14 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import org.controlsfx.control.Notifications;
+import org.controlsfx.control.PopOver;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
-import Entity.Admin;
-import Entity.HotelManager;
-import Entity.Mail;
 import Entity.Member;
-import Entity.RestaurantOwner;
 import Service.AdminEJBRemote;
 import esprit.skiworld.Business.AdminBusiness;
 import esprit.skiworld.Business.Loading;
@@ -39,22 +36,24 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class AdminController implements Initializable {
+	static PopOver pop = new PopOver();
+	String nom = "";
 	private Task<?> task;
 	@FXML
 	private ProgressBar ProgressLoading;
 	@FXML
 	ImageView loading;
-	@FXML 
+	@FXML
 	private AnchorPane Conteneur;
 	@FXML
 	private JFXTextField CinId;
@@ -107,7 +106,7 @@ public class AdminController implements Initializable {
 				loading.setVisible(false);
 			}
 		});
-		
+
 		int x = SelectAdminController.getType();
 		int ok = 0;
 		InitialContext ctx;
@@ -164,16 +163,17 @@ public class AdminController implements Initializable {
 			AddressId.setText(a.getAddress());
 			LastNameId.setText(a.getLastName());
 			LoginId.setText(a.getLogin());
+			nom = a.getLogin();
 			NumTelId.setText(a.getNumTel() + "");
 			// BirthdayId.setPromptText(a.getBirthDate()+"");
 			PwdId.setText(a.getPassword());
-			String s = a.getBirthDate()+"";
-			if(s.length()>5){
-				
-			String t =s.substring(0,10);
-			 DateTimeFormatter formatter =DateTimeFormatter.ofPattern("yyyy-MM-dd");
-			 LocalDate localDate = LocalDate.parse(t, formatter);
-			 BirthdayId.setValue(localDate);
+			String s = a.getBirthDate() + "";
+			if (s.length() > 5) {
+
+				String t = s.substring(0, 10);
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+				LocalDate localDate = LocalDate.parse(t, formatter);
+				BirthdayId.setValue(localDate);
 			}
 			if (a.getMail() != null) {
 				MailId.setText(a.getMail());
@@ -236,7 +236,7 @@ public class AdminController implements Initializable {
 				ErrorMsg += "Invalid Username";
 				isOk = 1;
 			}
-			
+
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			LocalDate localDate = LocalDate.parse("2000-01-01", formatter);
 			if (BirthdayId.getValue() == null) {
@@ -294,12 +294,12 @@ public class AdminController implements Initializable {
 				a.setBirthDate(da);
 				a.setPassword(PwdId.getText());
 				a.setMail(MailId.getText());
-				//admin.updateAdmin(a);
+				// admin.updateAdmin(a);
 				new AdminBusiness().updateAdmin(a);
 				SelectAdminController.stage.close();
 				Notifications nb = Notifications.create().darkStyle().hideAfter(Duration.seconds(5)).title("Update")
-						.text(FirstNameId.getText() + " Updated !").graphic(FirstNameId).position(Pos.CENTER).hideCloseButton()
-						.onAction(new EventHandler<ActionEvent>() {
+						.text(FirstNameId.getText() + " Updated !").graphic(FirstNameId).position(Pos.CENTER)
+						.hideCloseButton().onAction(new EventHandler<ActionEvent>() {
 							@Override
 							public void handle(ActionEvent event) {
 								MainApp.s.close();
@@ -308,51 +308,68 @@ public class AdminController implements Initializable {
 				nb.showConfirm();
 			}
 		}
-		
+
 	}
 
 	@FXML
 	void checkPwd(KeyEvent event) {
+		pop.setArrowSize(10);
+		pop.setDetachable(true);
+		pop.setDetached(false);
+		Label label = new Label();
+		pop.setContentNode(label);
+		pop.hide();
 		if (PwdId.getText() != null) {
 			if (PwdId.getText().length() < 5) {
 				PwdId.focusColorProperty().set(Paint.valueOf("red"));
 				PwdId.setPromptText("Low Password");
+				label.setText("Week Password");
+				pop.show(PwdId);
 			} else if (PwdId.getText().length() < 8) {
 				PwdId.focusColorProperty().set(Paint.valueOf("orange"));
 				PwdId.setPromptText("Average Password");
+				label.setText("Average Password");
+				pop.show(PwdId);
 			} else if (PwdId.getText().length() > 8) {
 				PwdId.focusColorProperty().set(Paint.valueOf("green"));
 				PwdId.setPromptText("Secure Password");
+				label.setText("Strong Password");
+				pop.show(PwdId);
 			}
 		}
-
 	}
-	
+
 	@FXML
 	void TestLogin(KeyEvent event) {
-		int t=0 ;
-		 LoginId.setPromptText("");
-		 LoginId.focusColorProperty().set(Paint.valueOf("#4059a9"));
-		 List<Member> lm = new AdminBusiness().DisplayAllMember();
-		 for (Member member : lm) {
-			 if (LoginId.getText().equals(member.getLogin()))
-				{
-				 t=1;
-				}		 
-	}
-		 if(t==1)
-		 {
-			 LoginId.focusColorProperty().set(Paint.valueOf("red"));
-			 LoginId.setPromptText("Login Exist !");
-		 }
 		
+		pop.setArrowSize(10);
+		pop.setDetachable(true);
+		pop.setDetached(false);
+		pop.hide();
+		int t = 0;
+		LoginId.setPromptText("");
+		LoginId.focusColorProperty().set(Paint.valueOf("#4059a9"));
+		List<Member> lm = new AdminBusiness().DisplayAllMember();
+		for (Member member : lm) {
+			if (LoginId.getText().equals(member.getLogin()) && !LoginId.getText().equals(nom)) {
+				t = 1;
+			}
+		}
+		if (t == 1) {
+			
+			Label label = new Label();
+			pop.setContentNode(label);
+			LoginId.focusColorProperty().set(Paint.valueOf("red"));
+			LoginId.setPromptText("Login Exist !");
+			label.setText("Login Already Exists");
+			pop.show(LoginId);
+		}
 	}
-	
-	 @FXML
-	    void BackAction(ActionEvent event) {
-		 SelectAdminController.stage.close();
-	    }
-	
+
+	@FXML
+	void BackAction(ActionEvent event) {
+		SelectAdminController.stage.close();
+	}
 
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;

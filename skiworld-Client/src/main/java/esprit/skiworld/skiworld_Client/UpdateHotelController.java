@@ -1,9 +1,5 @@
 package esprit.skiworld.skiworld_Client;
 
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.TextField;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,11 +9,11 @@ import org.controlsfx.control.Rating;
 import Entity.Hotel;
 import esprit.skiworld.Business.HotelBusiness;
 import javafx.event.ActionEvent;
-
-import javafx.scene.control.TextArea;
-
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 public class UpdateHotelController implements Initializable {
 	@FXML
