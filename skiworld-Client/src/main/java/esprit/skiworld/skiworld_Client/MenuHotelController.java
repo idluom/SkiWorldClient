@@ -103,7 +103,7 @@ public class MenuHotelController implements Initializable {
 	@FXML
 	public void updateInfos(ActionEvent event) {
 		try {
-			rootPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/fxml/MainPage.fxml"));
+			rootPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/fxml/UpdateHotel.fxml"));
 			PaneDrawer.setContent(rootPane);
 			PaneDrawer.setDefaultDrawerSize(0);
 			PaneDrawer.toFront();

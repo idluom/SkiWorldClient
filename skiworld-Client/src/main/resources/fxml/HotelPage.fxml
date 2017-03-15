@@ -5,6 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -15,7 +16,7 @@
             <Image url="@../images/hotel.jpg" />
          </image>
       </ImageView>
-      <Text layoutX="300.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SkiWorld Luxurous Hotel And Spa">
+      <Text fx:id="hotelName" layoutX="300.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SkiWorld Luxurous Hotel And Spa">
          <font>
             <Font size="20.0" />
          </font>
@@ -24,5 +25,14 @@
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding></HBox>
+      <Pane layoutX="250.0" layoutY="250.0" opacity="0.8" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #dddddd;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0">
+         <children>
+            <Text fx:id="description" layoutX="15.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

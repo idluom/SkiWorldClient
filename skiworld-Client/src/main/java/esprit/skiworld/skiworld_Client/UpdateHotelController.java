@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -30,13 +31,15 @@ public class UpdateHotelController implements Initializable {
 
 	// Event Listener on Button.onAction
 	@FXML
-	public void updateHotel(ActionEvent event) {
+	public void updateHotel(ActionEvent event) throws IOException {
 		Long l=new Long(1);
 		Hotel hotel=new HotelBusiness().findHotelById(l);
 		hotel.setName(nameTF.getText());
 		hotel.setDescription(descTA.getText());
 		hotel.setStars((int) starRate.getRating());
 		new HotelBusiness().updateHotel(hotel);
+		
+		MainApp.changeScene("/fxml/MenuHotel.fxml", "SkiWorld Hotel");
 	}
 	// Event Listener on Button.onAction
 	@FXML

@@ -5,12 +5,19 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 <?import org.controlsfx.control.Rating?>
 
-<AnchorPane id="AnchorPane" minHeight="500.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.UpdateHotelController">
+<AnchorPane id="AnchorPane" minHeight="500.0" minWidth="600.0" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.skiworld.skiworld_Client.UpdateHotelController">
    <children>
+      <ImageView fitHeight="500.0" fitWidth="900.0" layoutX="10.0" layoutY="10.0" opacity="0.7" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../images/flatsnow.jpg" />
+         </image>
+      </ImageView>
       <Label layoutX="103.0" layoutY="104.0" text="Name" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="100.0" />
       <Label layoutX="103.0" layoutY="159.0" text="Stars" AnchorPane.leftAnchor="103.0" AnchorPane.topAnchor="159.0" />
       <Label layoutX="102.0" layoutY="296.0" text="Description :" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="250.0" />
